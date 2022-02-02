@@ -13,6 +13,11 @@ public class Player : MonoBehaviourOwner
     public IInput input => (IInput)_input;
     public IMover mover => (IMover)_mover;
 
+    public override void MyStart()
+    {
+        Physics2D.IgnoreLayerCollision(6, 6);
+    }
+
     public override void OtherStart()
     {
         Destroy(GetComponentInChildren<Rigidbody2D>());

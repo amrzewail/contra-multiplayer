@@ -1,23 +1,25 @@
+using Mirror;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
 
-public abstract class MonoBehaviourOwner : MonoBehaviourPunCallbacks
+public abstract class MonoBehaviourOwner : MonoBehaviour
 {
-    protected PhotonView _photonView;
+    protected NetworkIdentity identity;
+
+    protected bool isMine => identity.isLocalPlayer;
 
     public virtual void Awake()
     {
         Transform trans = transform;
-        while (!_photonView)
+        while (!identity)
         {
-            _photonView = trans.GetComponent<PhotonView>();
+            identity = trans.GetComponent<NetworkIdentity>();
             if (!trans.parent) break;
             trans = trans.parent;
         }
 
-        if (_photonView.IsMine)
+        if (isMine)
         {
             MyAwake();
         }
@@ -29,7 +31,7 @@ public abstract class MonoBehaviourOwner : MonoBehaviourPunCallbacks
 
     public virtual void Start()
     {
-        if (_photonView.IsMine)
+        if (isMine)
         {
             MyStart();
         }
@@ -41,7 +43,7 @@ public abstract class MonoBehaviourOwner : MonoBehaviourPunCallbacks
 
     public virtual void Update()
     {
-        if (_photonView.IsMine)
+        if (isMine)
         {
             MyUpdate();
         }
@@ -54,13 +56,25 @@ public abstract class MonoBehaviourOwner : MonoBehaviourPunCallbacks
 
     public virtual void FixedUpdate()
     {
-        if (_photonView.IsMine)
+        if (isMine)
         {
             MyFixedUpdate();
         }
         else
         {
             OtherFixedUpdate();
+        }
+    }
+
+    public virtual void OnDestroy()
+    {
+        if (isMine)
+        {
+            MyOnDestroy();
+        }
+        else
+        {
+            OtherOnDestroy();
         }
     }
 
@@ -93,6 +107,16 @@ public abstract class MonoBehaviourOwner : MonoBehaviourPunCallbacks
 
     }
     public virtual void OtherFixedUpdate()
+    {
+
+    }
+
+    public virtual void MyOnDestroy()
+    {
+
+    }
+
+    public virtual void OtherOnDestroy()
     {
 
     }

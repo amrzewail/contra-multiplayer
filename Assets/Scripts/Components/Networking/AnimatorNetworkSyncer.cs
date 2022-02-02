@@ -1,9 +1,9 @@
-using Photon.Pun;
+using Mirror;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimatorNetworkSyncer : MonoBehaviourOwner
+public class AnimatorNetworkSyncer : NetworkBehaviourOwner
 {
     [SerializeField] [RequireInterface(typeof(IAnimator))] Object _animator;
 
@@ -16,15 +16,22 @@ public class AnimatorNetworkSyncer : MonoBehaviourOwner
 
     private void AnimationChangedCallback(IAnimation animation)
     {
-        _photonView.RPC("ChangeAnimation", RpcTarget.All, _photonView.ViewID, animation.name);
+        if (isServer) RpcChangeAnimation(identity.netId, animation.name);
+        else CmdChangeAnimation(identity.netId, animation.name);
     }
 
-    [PunRPC]
-    public void ChangeAnimation(int viewID, string animationName)
+    [ClientRpc]
+    public void RpcChangeAnimation(uint netID, string animationName)
     {
-        if (!_photonView.IsMine && _photonView.ViewID == viewID)
+        if (!isMine && identity.netId == netID)
         {
             animator.Play(animationName, true);
         }
+    }
+
+    [Command]
+    public void CmdChangeAnimation(uint netID, string animationName)
+    {
+        RpcChangeAnimation(netID, animationName);
     }
 }

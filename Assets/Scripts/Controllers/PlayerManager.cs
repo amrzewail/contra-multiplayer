@@ -1,30 +1,78 @@
+using Mirror;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
+using UnityEngine.SceneManagement;
 
-public class PlayerManager : MonoBehaviourPunCallbacks
+public class PlayerManager : NetworkBehaviourOwner
 {
-    private PhotonView _photonView;
-    private GameObject _instantiatedPlayer;
+    [SerializeField] GameObject playerObject;
 
-    [SerializeField] string playerName;
-
-    // Start is called before the first frame update
-    void Start()
+    public struct CharacterMessage : NetworkMessage
     {
-        _photonView = GetComponentInChildren<PhotonView>();
 
-        if (_photonView.IsMine) Spawn();
     }
 
-    public void Spawn()
+    public override void OnStartServer()
     {
-        _instantiatedPlayer = PhotonNetwork.Instantiate($"PhotonPrefabs/{playerName}", transform.position, transform.rotation);
+        base.OnStartServer();
+
+        NetworkServer.RegisterHandler<CharacterMessage>(SpawnPlayerCallback);
     }
 
-    public void Destroy()
+    public override void MyStart()
     {
-        PhotonNetwork.Destroy(_instantiatedPlayer);
+        NetworkClient.Send(new CharacterMessage() { });
+
+
+        SceneManager.sceneLoaded += SceneLoadedCallback;
+    }
+
+    public override void MyOnDestroy()
+    {
+        SceneManager.sceneLoaded -= SceneLoadedCallback;
+    }
+
+
+    private void SceneLoadedCallback(Scene scene, LoadSceneMode mode)
+    {
+        if(scene.buildIndex == 1)
+        {
+            NetworkServer.Spawn(playerObject);
+        }
+    }
+
+    private void SpawnPlayerCallback(NetworkConnection conn, CharacterMessage message)
+    {
+        GameObject instantiatedObject = Instantiate(playerObject);
+
+        NetworkServer.AddPlayerForConnection(conn, instantiatedObject);
+    }
+
+    public void SpawnPlayer()
+    {
+        if (isServer)
+        {
+            RpcSpawnPlayer(identity.netId);
+        }
+        else
+        {
+            CmdSpawnPlayer(identity.netId);
+        }
+    }
+
+    [ClientRpc]
+    public void RpcSpawnPlayer(uint id)
+    {
+        if(identity.netId == id)
+        {
+            
+        }
+    }
+
+    [Command]
+    public void CmdSpawnPlayer(uint id)
+    {
+        RpcSpawnPlayer(id);
     }
 }

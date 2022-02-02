@@ -328,11 +328,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1641163793}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b56a339fee3109a438bb3dc6fdef321b, type: 3}
+  m_Script: {fileID: 11500000, guid: 0900bbf6a634c0e4d8d51fa0d7a264f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerManagerName: Player Manager
-  playerRespawnLocation: {fileID: 593591965}
+  spawnLocation: {fileID: 593591965}
 --- !u!4 &1641163795
 Transform:
   m_ObjectHideFlags: 0
