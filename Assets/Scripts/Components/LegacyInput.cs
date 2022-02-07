@@ -5,10 +5,13 @@ using UnityEngine;
 public class LegacyInput : MonoBehaviourOwner, IInput
 {
     private float _horizontal;
+    private float _vertical;
 
     public override void MyUpdate()
     {
         _horizontal = 0;
+        _vertical = 0;
+
         if (Input.GetKey(KeyCode.RightArrow))
         {
             _horizontal += 1;
@@ -19,13 +22,26 @@ public class LegacyInput : MonoBehaviourOwner, IInput
             _horizontal -= 1;
         }
 
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            _vertical += 1;
+        }
+
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            _vertical -= 1;
+        }
+
     }
 
     public float GetHorizontal()
     {
         return _horizontal;
     }
-
+    public float GetVertical()
+    {
+        return _vertical;
+    }
     public bool IsRunning()
     {
         return Input.GetKey(KeyCode.Z);

@@ -6,6 +6,8 @@ public interface IInput
 {
     public float GetHorizontal();
 
+    public float GetVertical();
+
     public bool Jump();
 
     public bool JumpHold();

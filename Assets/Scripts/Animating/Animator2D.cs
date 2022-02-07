@@ -77,7 +77,7 @@ public class Animator2D : MonoBehaviour, IAnimator
 #endif
             if (!IsAnimationFinished())
             {
-                if (_time > currentAnimation.interval * (_currentFrame + 1))
+                if (_time >= currentAnimation.interval * (_currentFrame))
                 {
 
                     spriteRenderer.sprite = GetCurrentFrame();
@@ -151,7 +151,7 @@ public class Animator2D : MonoBehaviour, IAnimator
 
     public bool IsAnimationFinished()
     {
-        if (_currentFrame >= currentAnimation.length)
+        if (_time >= (currentAnimation.interval * currentAnimation.length))
             return true;
         else
             return false;
@@ -180,7 +180,8 @@ public class Animator2D : MonoBehaviour, IAnimator
 
     public void SetNormalizedTime(float time)
     {
-        _time = currentAnimation.interval * (((float)currentAnimation.length) * time);
+        _currentFrame = (int)(currentAnimation.length * time);
+        _time = (currentAnimation.interval * currentAnimation.length) * time;
     }
 
 }

@@ -10,8 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea5411406c28df848abcdd357e6b2207, type: 3}
-  m_Name: Controller2D
+  m_Name: Controller Legs
   m_EditorClassIdentifier: 
   _animations:
-  - {fileID: 11400000, guid: bd5afd51850aeb446b1c19d5e370fe9f, type: 2}
-  - {fileID: 11400000, guid: ee2b7910aabd7904c9d5612cefc5e4af, type: 2}
+  - {fileID: 11400000, guid: 4d83369757f691b4d86fbd66c625ee73, type: 2}
+  - {fileID: 11400000, guid: 2a6df711ecbc5fe4cb6d5436a3c8c56b, type: 2}
+  - {fileID: 11400000, guid: 04a60e5aef8a2df4f8947a883f5e6607, type: 2}
+  - {fileID: 11400000, guid: a41e9d5104ef4284593455ee1b7b8d41, type: 2}
+  - {fileID: 11400000, guid: 6aab2eaa918b281489ab435f1b0f8c35, type: 2}

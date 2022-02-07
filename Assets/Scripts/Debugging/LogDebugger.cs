@@ -25,6 +25,7 @@ public class LogDebugger : MonoBehaviour
                 _text.text = "* "+condition + "\n" + _text.text;
                 break;
         }
+        if(_text.text.Length > 1000) _text.text = _text.text.Substring(0, 1000);
     }
 
 }

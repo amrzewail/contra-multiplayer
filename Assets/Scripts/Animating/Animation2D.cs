@@ -28,6 +28,8 @@ namespace com.sigma.scripts.data.animation
             get { return interval * frames.Count; }
         }
 
+        public new string name => identifier;
+
         public int length => frames.Count;
 
         bool IAnimation.loop => this.loop;

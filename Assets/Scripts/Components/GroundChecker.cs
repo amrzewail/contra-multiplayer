@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GroundChecker : MonoBehaviour, IGrounder
+public class GroundChecker : MonoBehaviourOwner, IGrounder
 {
     [SerializeField] string groundLayer = "Ground";
 
@@ -10,7 +10,7 @@ public class GroundChecker : MonoBehaviour, IGrounder
 
     private List<Collider2D> _colliders = new List<Collider2D>();
 
-    internal void OnTriggerEnter2D(Collider2D other)
+    public override void MyOnTriggerEnter2D(Collider2D other)
     {
         if (LayerMask.NameToLayer(groundLayer).Equals(other.gameObject.layer))
         {
@@ -22,7 +22,7 @@ public class GroundChecker : MonoBehaviour, IGrounder
         }
     }
 
-    internal void OnTriggerExit2D(Collider2D other)
+    public override void MyOnTriggerExit2D(Collider2D other)
     {
         if (LayerMask.NameToLayer(groundLayer).Equals(other.gameObject.layer))
         {
@@ -34,7 +34,7 @@ public class GroundChecker : MonoBehaviour, IGrounder
         }
     }
 
-    internal void FixedUpdate()
+    public override void MyFixedUpdate()
     {
         for (int i = 0; i < _colliders.Count; i++)
         {

@@ -1,0 +1,1221 @@
+fileFormatVersion: 2
+guid: ab05ed5bca42e8f46b01799acaab56bc
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8689991667420190741
+    second: Body Aim
+  - first:
+      213: -7914079296390950500
+    second: Shoot Straight
+  - first:
+      213: -1112540174957815319
+    second: Legs Run 1
+  - first:
+      213: 6535109423327409043
+    second: Legs Run 2
+  - first:
+      213: -2357856800417437739
+    second: Legs Run 3
+  - first:
+      213: -5146020013555506694
+    second: Legs Run 4
+  - first:
+      213: 7004902390997308770
+    second: Legs Run 5
+  - first:
+      213: -3919427526645705650
+    second: Legs Run 6
+  - first:
+      213: 5786050863199565366
+    second: Body Aim Up
+  - first:
+      213: 1637602197772819392
+    second: Shoot Up
+  - first:
+      213: 5192227632922971349
+    second: Aim Down
+  - first:
+      213: -3464494612551440950
+    second: Shoot Down
+  - first:
+      213: -2625971375082706230
+    second: Jump 1
+  - first:
+      213: -8975017171555315504
+    second: Jump 2
+  - first:
+      213: 8563333738879766359
+    second: Jump 3
+  - first:
+      213: 6152951045423901791
+    second: Jump 4
+  - first:
+      213: 5804118286217020914
+    second: Run Shoot 1
+  - first:
+      213: -2596999508949165342
+    second: Run Shoot 2
+  - first:
+      213: 6800618397931339709
+    second: Run Shoot 3
+  - first:
+      213: 2654474036420700930
+    second: Run Shoot 4
+  - first:
+      213: 3894927606136178107
+    second: Run Shoot 5
+  - first:
+      213: 8030937428476008837
+    second: Run Shoot 6
+  - first:
+      213: -2093143877380252191
+    second: Body Aim High
+  - first:
+      213: 3008030599839579122
+    second: Run Up Shoot 2
+  - first:
+      213: 8340412939054037477
+    second: Shoot High
+  - first:
+      213: -2271392787263640857
+    second: Run Up Shoot 6
+  - first:
+      213: -5086366593234394720
+    second: Run Up Shoot 5
+  - first:
+      213: 4459146519005260754
+    second: Run Up Shoot 4
+  - first:
+      213: -1255948113214942211
+    second: Aim Low
+  - first:
+      213: -1878813536136958894
+    second: Run Down Shoot 2
+  - first:
+      213: -5970616580229098724
+    second: Run Down Shoot 3
+  - first:
+      213: 8148294062614710558
+    second: Run Down Shoot 6
+  - first:
+      213: -5268613961077778176
+    second: Run Down Shoot 5
+  - first:
+      213: -2956711266489372733
+    second: Shoot Low
+  - first:
+      213: -5412029509738281114
+    second: Jump Hit 1
+  - first:
+      213: 6984097859350768903
+    second: Jump Hit 2
+  - first:
+      213: 8020533409223332744
+    second: Jump Hit 3
+  - first:
+      213: -6266563325087458980
+    second: Jump Hit 4
+  - first:
+      213: 7893265355985664126
+    second: Jump Hit 5
+  - first:
+      213: -8078647055261997815
+    second: Body Run 1
+  - first:
+      213: 1476778276274134104
+    second: Body Run 2
+  - first:
+      213: -5210164673568959710
+    second: Body Run 3
+  - first:
+      213: -7898330309824910494
+    second: Body Run 4
+  - first:
+      213: 1047169283769303222
+    second: Body Run 5
+  - first:
+      213: -5045640556201848750
+    second: Body Run 6
+  - first:
+      213: -2892458618919583672
+    second: Legs Idle
+  - first:
+      213: -6877828694723992983
+    second: Bullet Normal
+  - first:
+      213: -5718674761601205386
+    second: Bullet Big
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Aim Straight
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 505
+        width: 24
+        height: 23
+      alignment: 9
+      pivot: {x: 0.3125, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be7a05abe92f66780800000000000000
+      internalID: -8689991667420190741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shoot Straight
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 504
+        width: 24
+        height: 24
+      alignment: 9
+      pivot: {x: 0.3125, y: 0.041666668}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c91185e7fca8b2290800000000000000
+      internalID: -7914079296390950500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legs Run 1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 449
+        width: 18
+        height: 19
+      alignment: 9
+      pivot: {x: 0.41666666, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e9d949fa967f80f0800000000000000
+      internalID: -1112540174957815319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legs Run 2
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 449
+        width: 19
+        height: 19
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 393fcb1656f51ba50800000000000000
+      internalID: 6535109423327409043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legs Run 3
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 449
+        width: 20
+        height: 19
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d721e38bb5374fd0800000000000000
+      internalID: -2357856800417437739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legs Run 4
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 449
+        width: 16
+        height: 19
+      alignment: 9
+      pivot: {x: 0.46875, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af129fcff0aa598b0800000000000000
+      internalID: -5146020013555506694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legs Run 5
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 449
+        width: 18
+        height: 19
+      alignment: 9
+      pivot: {x: 0.5277778, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 265ddad6c99663160800000000000000
+      internalID: 7004902390997308770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legs Run 6
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 449
+        width: 20
+        height: 19
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4415673e656b99c0800000000000000
+      internalID: -3919427526645705650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aim Up
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 505
+        width: 15
+        height: 23
+      alignment: 9
+      pivot: {x: 0.4, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6363a51ba9e2c4050800000000000000
+      internalID: 5786050863199565366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shoot Up
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 504
+        width: 15
+        height: 24
+      alignment: 9
+      pivot: {x: 0.4, y: 0.041666668}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cbd5a1c58ee9b610800000000000000
+      internalID: 1637602197772819392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aim Down
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 487
+        width: 33
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5dc4755c58f7e0840800000000000000
+      internalID: 5192227632922971349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shoot Down
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 486
+        width: 33
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac5ed9c6184abefc0800000000000000
+      internalID: -3464494612551440950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump 1
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 442
+        width: 20
+        height: 34
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acae9d582fcae8bd0800000000000000
+      internalID: -2625971375082706230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump 2
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 442
+        width: 20
+        height: 34
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d01a642f65527380800000000000000
+      internalID: -8975017171555315504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump 3
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 442
+        width: 20
+        height: 34
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75fcb0f3aa217d670800000000000000
+      internalID: 8563333738879766359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump 4
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 442
+        width: 20
+        height: 34
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5c2cd6406ca36550800000000000000
+      internalID: 6152951045423901791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run Shoot 4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 380
+        width: 25
+        height: 35
+      alignment: 9
+      pivot: {x: 0.44, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20b6a56721696d420800000000000000
+      internalID: 2654474036420700930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run Shoot 5
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 380
+        width: 25
+        height: 35
+      alignment: 9
+      pivot: {x: 0.48, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb50c9585009d0630800000000000000
+      internalID: 3894927606136178107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run Shoot 6
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 380
+        width: 25
+        height: 35
+      alignment: 9
+      pivot: {x: 0.48, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58993bd9a0f937f60800000000000000
+      internalID: 8030937428476008837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aim High
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 363
+        width: 18
+        height: 16
+      alignment: 9
+      pivot: {x: 0.33333334, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ed57f4cbb8a3f2e0800000000000000
+      internalID: -2093143877380252191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run Up Shoot 2
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 344
+        width: 20
+        height: 35
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fb71f0b4ebaeb920800000000000000
+      internalID: 3008030599839579122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shoot High
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 361
+        width: 18
+        height: 16
+      alignment: 9
+      pivot: {x: 0.33333334, y: 0.055555556}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e93360f0691fb370800000000000000
+      internalID: 8340412939054037477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run Up Shoot 6
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 308
+        width: 20
+        height: 35
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ea24c95b446a70e0800000000000000
+      internalID: -2271392787263640857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run Up Shoot 5
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 308
+        width: 20
+        height: 35
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a1a9dc38889969b0800000000000000
+      internalID: -5086366593234394720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run Up Shoot 4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 308
+        width: 18
+        height: 35
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2db6aba222212ed30800000000000000
+      internalID: 4459146519005260754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aim Low
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 286
+        width: 22
+        height: 21
+      alignment: 9
+      pivot: {x: 0.36363637, y: 0.23809524}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df3508768d9f19ee0800000000000000
+      internalID: -1255948113214942211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run Down Shoot 2
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 272
+        width: 22
+        height: 35
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25c6c531b0d1de5e0800000000000000
+      internalID: -1878813536136958894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run Down Shoot 3
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 272
+        width: 22
+        height: 35
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c13136d9adb142da0800000000000000
+      internalID: -5970616580229098724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run Down Shoot 6
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 236
+        width: 22
+        height: 35
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e190397474e841170800000000000000
+      internalID: 8148294062614710558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run Down Shoot 5
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 236
+        width: 22
+        height: 35
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0099b47448f12e6b0800000000000000
+      internalID: -5268613961077778176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shoot Low
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 249
+        width: 22
+        height: 21
+      alignment: 9
+      pivot: {x: 0.36363637, y: 0.2857143}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cf6189b4c6a7f6d0800000000000000
+      internalID: -2956711266489372733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump Hit 1
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 415
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6674e16c5db94e4b0800000000000000
+      internalID: -5412029509738281114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump Hit 2
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 415
+        width: 21
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70d2b2fefff7ce060800000000000000
+      internalID: 6984097859350768903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump Hit 3
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 415
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 883d8ed14a8ae4f60800000000000000
+      internalID: 8020533409223332744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump Hit 4
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 415
+        width: 21
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c59dba58bd1b809a0800000000000000
+      internalID: -6266563325087458980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump Hit 5
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 415
+        width: 34
+        height: 23
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e783c6d55038a8d60800000000000000
+      internalID: 7893265355985664126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Body Run 1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 470
+        width: 18
+        height: 16
+      alignment: 9
+      pivot: {x: 0.41666666, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9056a554e41e2ef80800000000000000
+      internalID: -8078647055261997815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Body Run 2
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 470
+        width: 19
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85c555994029e7410800000000000000
+      internalID: 1476778276274134104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Body Run 3
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 468
+        width: 20
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22312a285d6c1b7b0800000000000000
+      internalID: -5210164673568959710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Body Run 4
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 470
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.46875, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26b6f2c2e6e736290800000000000000
+      internalID: -7898330309824910494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Body Run 5
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 470
+        width: 18
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5277778, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b005ca5aea488e00800000000000000
+      internalID: 1047169283769303222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Body Run 6
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 468
+        width: 20
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 250d847a5a84af9b0800000000000000
+      internalID: -5045640556201848750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legs Idle
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 486
+        width: 24
+        height: 19
+      alignment: 9
+      pivot: {x: 0.3125, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84008c3063cebd7d0800000000000000
+      internalID: -2892458618919583672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bullet Normal
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 515
+        width: 3
+        height: 3
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 962ecf01e3b0d80a0800000000000000
+      internalID: -6877828694723992983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bullet Big
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 514
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67bb4c86a9f23a0b0800000000000000
+      internalID: -5718674761601205386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -7,7 +7,7 @@ public abstract class MonoBehaviourOwner : MonoBehaviour
 {
     protected NetworkIdentity identity;
 
-    protected bool isMine => identity.isLocalPlayer;
+    public bool isMine => identity.isLocalPlayer || identity.hasAuthority;
 
     public virtual void Awake()
     {
@@ -78,6 +78,30 @@ public abstract class MonoBehaviourOwner : MonoBehaviour
         }
     }
 
+    public virtual void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (isMine)
+        {
+            MyOnTriggerEnter2D(collider);
+        }
+        else
+        {
+            OtherOnTriggerEnter2D(collider);
+        }
+    }
+
+    public virtual void OnTriggerExit2D(Collider2D collider)
+    {
+        if (isMine)
+        {
+            MyOnTriggerExit2D(collider);
+        }
+        else
+        {
+            OtherOnTriggerExit2D(collider);
+        }
+    }
+
     public virtual void MyAwake()
     {
 
@@ -117,6 +141,26 @@ public abstract class MonoBehaviourOwner : MonoBehaviour
     }
 
     public virtual void OtherOnDestroy()
+    {
+
+    }
+
+    public virtual void MyOnTriggerEnter2D(Collider2D collider)
+    {
+
+    }
+    public virtual void OtherOnTriggerEnter2D(Collider2D collider)
+    {
+
+    }
+
+
+    public virtual void MyOnTriggerExit2D(Collider2D collider)
+    {
+
+    }
+
+    public virtual void OtherOnTriggerExit2D(Collider2D collider)
     {
 
     }
