@@ -23,20 +23,49 @@ public class ProjectileShooter : MonoBehaviourOwner, IShooter
     public UnityEvent<int> BulletChanged { get => _BulletChanged; set => _BulletChanged = value; }
 
 
+    public float reloadInterval = 1;
+    public int maxBullets = 4;
+
+    private int _currentBullets = 0;
+    private float _currentReloadTime;
+
     public override void MyStart()
     {
         base.MyAwake();
 
         _points = GetComponentsInChildren<ShootPoint>().ToList();
+
+        Reload();
+    }
+
+    public override void MyUpdate()
+    {
+        if(_currentBullets < maxBullets)
+        {
+            _currentReloadTime += Time.deltaTime;
+        }
+        else
+        {
+            _currentReloadTime = 0;
+        }
+        if (_currentReloadTime > reloadInterval)
+        {
+            Reload();
+        }
+
     }
 
     public bool Shoot(AimDirection direction)
     {
         //GameObject g = Instantiate(bullet.gameObject, point.transform.position, point.transform.rotation);
+        if (_currentBullets > 0)
+        {
+            _currentBullets--;
+            OnShoot?.Invoke(direction);
 
-        OnShoot?.Invoke(direction);
-
-        return true;
+            return true;
+        }
+        return false;
     }
 
     public void AssignBullet(int index)
@@ -62,5 +91,10 @@ public class ProjectileShooter : MonoBehaviourOwner, IShooter
         //    point.transform.eulerAngles = new Vector3(point.transform.eulerAngles.x, 180, point.transform.eulerAngles.z);
         //}
         return point.transform;
+    }
+
+    private void Reload()
+    {
+        _currentBullets = maxBullets;
     }
 }

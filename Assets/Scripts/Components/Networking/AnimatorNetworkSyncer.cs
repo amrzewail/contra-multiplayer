@@ -9,8 +9,17 @@ public class AnimatorNetworkSyncer : NetworkBehaviourOwner
 
     public IAnimator animator => (IAnimator)_animator;
 
+    public bool serverAuthority = false;
+
     public override void MyStart()
     {
+        if (serverAuthority) return;
+        animator.AnimationChanged += AnimationChangedCallback;
+    }
+
+    public override void ServerStart()
+    {
+        if (!serverAuthority) return;
         animator.AnimationChanged += AnimationChangedCallback;
     }
 

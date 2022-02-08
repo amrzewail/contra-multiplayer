@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5562181373514309765}
   - component: {fileID: 4528706484550952900}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Jumper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4701553701129616299}
   - component: {fileID: 4197784218647839993}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Straight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   m_Component:
   - component: {fileID: 200292762911493978}
   - component: {fileID: 230296108838441348}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Input
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 1458326917756823431}
   - component: {fileID: 7842234377895354290}
   - component: {fileID: 940226523918340105}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Body Renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 1737530523544634730}
   - component: {fileID: 2280277517766040785}
   - component: {fileID: 6067494274432623516}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -314,7 +314,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2033901474899753162}
   - component: {fileID: 8542703644469140135}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Shooter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -367,6 +367,8 @@ MonoBehaviour:
   _BulletChanged:
     m_PersistentCalls:
       m_Calls: []
+  reloadInterval: 0.75
+  maxBullets: 4
 --- !u!1 &3966524922812548495
 GameObject:
   m_ObjectHideFlags: 0
@@ -377,7 +379,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7978731057167543741}
   - component: {fileID: 8958084746426115365}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: High
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -421,7 +423,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5638941791058212220}
   - component: {fileID: 5560783691200643973}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Straight Up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -466,7 +468,7 @@ GameObject:
   - component: {fileID: 5788007162636543036}
   - component: {fileID: 1491086208956824403}
   - component: {fileID: 1102915339310005689}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Legs Renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -564,7 +566,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8029375279716775109}
   - component: {fileID: 6536402407719381724}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Straight Down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -616,7 +618,7 @@ GameObject:
   - component: {fileID: 7314813965483850602}
   - component: {fileID: 4051524762163847942}
   - component: {fileID: 3153364937947053879}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -707,8 +709,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0.1
 --- !u!114 &8254194886552927955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -792,6 +794,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   _animator: {fileID: 940226523918340105}
+  serverAuthority: 0
 --- !u!114 &4051524762163847942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -807,6 +810,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   _animator: {fileID: 1102915339310005689}
+  serverAuthority: 0
 --- !u!114 &3153364937947053879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -832,7 +836,7 @@ GameObject:
   m_Component:
   - component: {fileID: 950047702713401663}
   - component: {fileID: 5378885618406469635}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -876,7 +880,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8676173717163843555}
   - component: {fileID: 976074375381924522}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Low
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -920,7 +924,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7229778848700920367}
   - component: {fileID: 1869165482424948988}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -964,7 +968,7 @@ GameObject:
   m_Component:
   - component: {fileID: 540058821621271940}
   - component: {fileID: 2890030516219591286}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Water Up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1009,7 +1013,7 @@ GameObject:
   - component: {fileID: 4072214638686031079}
   - component: {fileID: 8021096960253012333}
   - component: {fileID: 3725906965244581825}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Ground Checker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1044,7 +1048,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerMask:
     serializedVersion: 2
-    m_Bits: 896
+    m_Bits: 400
   isGrounded: 0
 --- !u!61 &3725906965244581825
 BoxCollider2D:
@@ -1082,7 +1086,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7114089646536032276}
   - component: {fileID: 3043187707888338870}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Water Straight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1126,7 +1130,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7003665984043816508}
   - component: {fileID: 3963390366667931969}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Water High
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1170,7 +1174,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6541431838373661492}
   - component: {fileID: 7400310267576641141}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mover
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -611,6 +611,7 @@ MonoBehaviour:
   spawnPrefabs:
   - {fileID: 7395015139121695209, guid: b2087b428a3f42841beec79a7b9c86a5, type: 3}
   - {fileID: 7395015139121695209, guid: 0c059d470eff13c4690384d45b092d1e, type: 3}
+  - {fileID: 5604256638219856562, guid: 5b6e458a79ae07946a7906c51c0a186f, type: 3}
 --- !u!114 &2092249759
 MonoBehaviour:
   m_ObjectHideFlags: 0

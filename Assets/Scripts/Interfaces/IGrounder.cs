@@ -6,7 +6,9 @@ public interface IGrounder
 {
     bool IsGrounded();
 
-    string GetGroundLayer();
+    Layer GetGroundLayer();
 
-    bool HasGroundLayer(string layer);
+    Collider2D GetGroundCollider(Layer layer);
+
+    bool HasGroundLayer(Layer layer);
 }

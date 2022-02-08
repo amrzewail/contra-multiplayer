@@ -23,10 +23,11 @@ public class Hitbox : MonoBehaviourOwner, IHitbox
     public bool isPlayer { get => _isPlayer; set => _isPlayer = value; }
     public bool isInvincible { get => _isInvincible; set => _isInvincible = value; }
 
-    public void Hit()
+    public bool Hit()
     {
-        if (isInvincible) return;
+        if (isInvincible) return false;
         _isHit = true;
+        return true;
     }
 
     public bool IsHit()
@@ -41,6 +42,8 @@ public class Hitbox : MonoBehaviourOwner, IHitbox
 
     public void SetHSize(float size)
     {
+        if (!_col) return;
+
         var s = _col.size;
         if (s.x == size) return;
         var diff = size - s.x;
@@ -52,6 +55,7 @@ public class Hitbox : MonoBehaviourOwner, IHitbox
 
     public void SetVSize(float size)
     {
+        if (!_col) return;
         var s = _col.size;
         if (s.y == size) return;
         var diff = size - s.y;
@@ -63,6 +67,8 @@ public class Hitbox : MonoBehaviourOwner, IHitbox
 
     public void SetVOffset(float offset)
     {
+        if (!_col) return;
+
         var off = _startingOffset;
         _col.offset = off + new Vector2(0, offset);
         

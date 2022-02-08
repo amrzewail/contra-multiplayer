@@ -8,6 +8,7 @@ public abstract class MonoBehaviourOwner : MonoBehaviour
     protected NetworkIdentity identity;
 
     public bool isMine => identity.isLocalPlayer || identity.hasAuthority;
+    public bool isServer => identity.isServer;
 
     public virtual void Awake()
     {
@@ -27,6 +28,15 @@ public abstract class MonoBehaviourOwner : MonoBehaviour
         {
             OtherAwake();
         }
+
+        if (isServer)
+        {
+            ServerAwake();
+        }
+        else
+        {
+            ClientAwake();
+        }
     }
 
     public virtual void Start()
@@ -38,6 +48,14 @@ public abstract class MonoBehaviourOwner : MonoBehaviour
         else
         {
             OtherStart();
+        }
+        if (isServer)
+        {
+            ServerStart();
+        }
+        else
+        {
+            ClientStart();
         }
     }
 
@@ -51,7 +69,14 @@ public abstract class MonoBehaviourOwner : MonoBehaviour
         {
             OtherUpdate();
         }
-
+        if (isServer)
+        {
+            ServerUpdate();
+        }
+        else
+        {
+            ClientUpdate();
+        }
     }
 
     public virtual void FixedUpdate()
@@ -63,6 +88,14 @@ public abstract class MonoBehaviourOwner : MonoBehaviour
         else
         {
             OtherFixedUpdate();
+        }
+        if (isServer)
+        {
+            ServerFixedUpdate();
+        }
+        else
+        {
+            ClientFixedUpdate();
         }
     }
 
@@ -76,6 +109,14 @@ public abstract class MonoBehaviourOwner : MonoBehaviour
         {
             OtherOnDestroy();
         }
+        if (isServer)
+        {
+            ServerOnDestroy();
+        }
+        else
+        {
+            ClientOnDestroy();
+        }
     }
 
     public virtual void OnTriggerEnter2D(Collider2D collider)
@@ -87,6 +128,14 @@ public abstract class MonoBehaviourOwner : MonoBehaviour
         else
         {
             OtherOnTriggerEnter2D(collider);
+        }
+        if (isServer)
+        {
+            ServerOnTriggerEnter2D(collider);
+        }
+        else
+        {
+            ClientOnTriggerEnter2D(collider);
         }
     }
 
@@ -100,7 +149,17 @@ public abstract class MonoBehaviourOwner : MonoBehaviour
         {
             OtherOnTriggerExit2D(collider);
         }
+        if (isServer)
+        {
+            ServerOnTriggerExit2D(collider);
+        }
+        else
+        {
+            ClientOnTriggerExit2D(collider);
+        }
     }
+
+    #region My
 
     public virtual void MyAwake()
     {
@@ -118,6 +177,30 @@ public abstract class MonoBehaviourOwner : MonoBehaviour
     {
 
     }
+
+
+    public virtual void MyOnDestroy()
+    {
+
+    }
+
+
+    public virtual void MyOnTriggerEnter2D(Collider2D collider)
+    {
+
+    }
+
+
+    public virtual void MyOnTriggerExit2D(Collider2D collider)
+    {
+
+    }
+
+    #endregion My
+
+
+    #region Other
+
     public virtual void OtherAwake()
     {
 
@@ -135,33 +218,96 @@ public abstract class MonoBehaviourOwner : MonoBehaviour
 
     }
 
-    public virtual void MyOnDestroy()
-    {
-
-    }
-
     public virtual void OtherOnDestroy()
     {
 
     }
 
-    public virtual void MyOnTriggerEnter2D(Collider2D collider)
-    {
-
-    }
     public virtual void OtherOnTriggerEnter2D(Collider2D collider)
     {
 
     }
 
 
-    public virtual void MyOnTriggerExit2D(Collider2D collider)
-    {
-
-    }
 
     public virtual void OtherOnTriggerExit2D(Collider2D collider)
     {
 
     }
+
+    #endregion Other
+
+    #region Server
+    public virtual void ServerAwake()
+    {
+
+    }
+    public virtual void ServerStart()
+    {
+
+    }
+    public virtual void ServerUpdate()
+    {
+
+    }
+    public virtual void ServerFixedUpdate()
+    {
+
+    }
+
+    public virtual void ServerOnDestroy()
+    {
+
+    }
+
+    public virtual void ServerOnTriggerEnter2D(Collider2D collider)
+    {
+
+    }
+
+
+
+    public virtual void ServerOnTriggerExit2D(Collider2D collider)
+    {
+
+    }
+
+    #endregion Server
+
+    #region Client
+    public virtual void ClientAwake()
+    {
+
+    }
+    public virtual void ClientStart()
+    {
+
+    }
+    public virtual void ClientUpdate()
+    {
+
+    }
+    public virtual void ClientFixedUpdate()
+    {
+
+    }
+
+    public virtual void ClientOnDestroy()
+    {
+
+    }
+
+    public virtual void ClientOnTriggerEnter2D(Collider2D collider)
+    {
+
+    }
+
+
+
+    public virtual void ClientOnTriggerExit2D(Collider2D collider)
+    {
+
+    }
+
+    #endregion Client
 }

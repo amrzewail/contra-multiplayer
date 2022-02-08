@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
+
+public enum LookDirection
+{
+    Right,
+    Left
+}
+
 public class Player : MonoBehaviourOwner
 {
 
-    private enum LookDirection
-    {
-        Right,
-        Left
-    }
 
     private enum State
     {
@@ -52,6 +54,7 @@ public class Player : MonoBehaviourOwner
     private Rigidbody2D _rigidBody;
 
     private bool _isShooting = false;
+    private Vector2 _lastVelocity;
     private Vector3 _lastPosition;
     private float _lastShootingTime;
     private float _startFallTime;
@@ -64,7 +67,8 @@ public class Player : MonoBehaviourOwner
 
     public override void MyStart()
     {
-        Physics2D.IgnoreLayerCollision(6, 6);
+        Physics2D.IgnoreLayerCollision((int)Layer.Player, (int)Layer.Player);
+        Physics2D.IgnoreLayerCollision((int)Layer.Player, (int)Layer.Character);
         _collider = GetComponent<Collider2D>();
         _rigidBody = GetComponent<Rigidbody2D>();
     }
@@ -104,9 +108,11 @@ public class Player : MonoBehaviourOwner
 
     private void Shoot()
     {
-        _isShooting = true;
-        _lastShootingTime = Time.time;
-        shooter.Shoot(_aimDirection);
+        if (shooter.Shoot(_aimDirection))
+        {
+            _isShooting = true;
+            _lastShootingTime = Time.time;
+        }
     }
 
     private void UpdateState()
@@ -127,10 +133,10 @@ public class Player : MonoBehaviourOwner
                 {
                     if(_aimDirection == AimDirection.Down)
                     {
-                        if (grounder.GetGroundLayer() == "Platform" && !grounder.HasGroundLayer("Ground"))
+                        if (grounder.GetGroundLayer() == Layer.Platform && !grounder.HasGroundLayer(Layer.Ground))
                         {
                             _state = State.Falling;
-                            _collider.enabled = false;
+                            Physics2D.IgnoreLayerCollision(this.gameObject.layer, (int)Layer.Platform, true);
                             _startFallTime = Time.time;
                         }
                     }
@@ -147,7 +153,7 @@ public class Player : MonoBehaviourOwner
                         _isShooting = false;
                     }
                 }
-                if (grounder.GetGroundLayer() == "Water" && (!grounder.HasGroundLayer("Ground") && !grounder.HasGroundLayer("Platform")))
+                if (grounder.GetGroundLayer() == Layer.Water && (!grounder.HasGroundLayer(Layer.Ground) && !grounder.HasGroundLayer(Layer.Platform)))
                 {
                     _state = State.Splash;
                 }
@@ -171,7 +177,7 @@ public class Player : MonoBehaviourOwner
                         _isShooting = false;
                     }
                 }
-                if (grounder.GetGroundLayer() == "Water" && (!grounder.HasGroundLayer("Ground") && !grounder.HasGroundLayer("Platform")))
+                if (grounder.GetGroundLayer() == Layer.Water && (!grounder.HasGroundLayer(Layer.Ground) && !grounder.HasGroundLayer(Layer.Platform)))
                 {
                     _state = State.Splash;
                 }
@@ -183,13 +189,13 @@ public class Player : MonoBehaviourOwner
 
                 if (_rigidBody.velocity.y > 0.1f)
                 {
-                    _collider.enabled = false;
+                    Physics2D.IgnoreLayerCollision(this.gameObject.layer, (int)Layer.Platform, true);
                 }
                 else
                 {
                     if (grounder.IsGrounded())
                     {
-                        if (grounder.GetGroundLayer() == "Water" && (!grounder.HasGroundLayer("Ground") && !grounder.HasGroundLayer("Platform")))
+                        if (grounder.GetGroundLayer() == Layer.Water && (!grounder.HasGroundLayer(Layer.Ground) && !grounder.HasGroundLayer(Layer.Platform)))
                         {
                             _state = State.Splash;
                         }
@@ -198,9 +204,10 @@ public class Player : MonoBehaviourOwner
                             _state = State.Idle;
                         }
                     }
-                    _collider.enabled = true;
+                    Physics2D.IgnoreLayerCollision(this.gameObject.layer, (int)Layer.Platform, false);
+
                 }
-                if(Mathf.Abs(horizontal) > 0.01f)
+                if (Mathf.Abs(horizontal) > 0.01f)
                 {
                     mover.Move(new Vector2(horizontal, 0));
                 }
@@ -211,10 +218,10 @@ public class Player : MonoBehaviourOwner
 
                 if (Time.time - _startFallTime > 0.3f)
                 {
-                    _collider.enabled = true;
+                    Physics2D.IgnoreLayerCollision(this.gameObject.layer, (int)Layer.Platform, false);
                     if (grounder.IsGrounded())
                     {
-                        if (grounder.GetGroundLayer() == "Water" && (!grounder.HasGroundLayer("Ground") && !grounder.HasGroundLayer("Platform")))
+                        if (grounder.GetGroundLayer() == Layer.Water && (!grounder.HasGroundLayer(Layer.Ground) && !grounder.HasGroundLayer(Layer.Platform)))
                         {
                             _state = State.Splash;
                         }
@@ -250,7 +257,7 @@ public class Player : MonoBehaviourOwner
                     _state = State.Dive;
                 }
                 if (shoot) Shoot();
-                if(grounder.HasGroundLayer("Ground") || grounder.HasGroundLayer("Platform"))
+                if(grounder.HasGroundLayer(Layer.Ground) || grounder.HasGroundLayer(Layer.Platform))
                 {
                     _state = State.WaterGetUp;
                 }
@@ -277,6 +284,15 @@ public class Player : MonoBehaviourOwner
                 if (!legsAnimator.IsAnimationFinished())
                 {
                     mover.Move(new Vector2(_lookDirection == LookDirection.Right ? -1 : 1, 0));
+                    if (_rigidBody.velocity.y > 0.1f)
+                    {
+                        Physics2D.IgnoreLayerCollision(this.gameObject.layer, (int)Layer.Platform, true);
+                    }
+                    else
+                    {
+                        Physics2D.IgnoreLayerCollision(this.gameObject.layer, (int)Layer.Platform, false);
+
+                    }
                 }
                 else
                 {
@@ -284,7 +300,7 @@ public class Player : MonoBehaviourOwner
                 }
                 hitbox.isInvincible = true;
 
-                if(Time.time - _deadTime > 5)
+                if(Time.time - _deadTime > 2)
                 {
                     _state = State.Idle;
                     hitbox.isInvincible = false;
@@ -301,11 +317,14 @@ public class Player : MonoBehaviourOwner
             jumper.Jump();
         }
 
+        _lastVelocity = _rigidBody.velocity;
         _lastPosition = transform.position;
     }
 
     private void UpdateHitbox()
     {
+        if (_state == State.Dead) return;
+
         hitbox.isInvincible = false;
         hitbox.SetVSize(2);
         hitbox.SetVOffset(0);

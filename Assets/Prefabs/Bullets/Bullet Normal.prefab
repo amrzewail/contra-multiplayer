@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c390392ae3257947bd35571f8285df0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagePlayer: 1
+  damagePlayer: 0
   generalDamage: 1
   OnHit:
     m_PersistentCalls:

@@ -25,6 +25,7 @@ public class GameNetworkManager : NetworkManager
         base.OnStartServer();
 
         NetworkServer.RegisterHandler<CreateCharacterMessage>(CreateCharacterCallback);
+        NetworkServer.SetAllClientsNotReady();
     }
 
     public override void OnClientConnect()
@@ -63,22 +64,9 @@ public class GameNetworkManager : NetworkManager
                                                         Random.Range(0f, 1f)
                                                     ));
         playerObj.GetComponent<PlayerIdentity>().SetName($"Player {NetworkServer.connections.Count}");
-        //switch (message.color)
-        //{
-        //    case Color.Blue:
-        //        break;
-        //    case Color.Green:
-        //        playerObj.GetComponentInChildren<SpriteRenderer>().color = UnityEngine.Color.green;
-        //        break;
-        //    case Color.Yellow:
-        //        playerObj.GetComponentInChildren<SpriteRenderer>().color = UnityEngine.Color.yellow;
-        //        break;
-        //    case Color.Red:
-        //        playerObj.GetComponentInChildren<SpriteRenderer>().color = UnityEngine.Color.red;
-        //        break;
-        //}
-
         // call this to use this gameobject as the primary controller
         NetworkServer.AddPlayerForConnection(conn, playerObj);
+        NetworkServer.SetClientReady(conn);
+        NetworkServer.SpawnObjects();
     }
 }

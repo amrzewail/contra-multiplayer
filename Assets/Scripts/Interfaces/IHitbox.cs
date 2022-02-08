@@ -11,7 +11,7 @@ public interface IHitbox
     public void SetHSize(float size);
 
     public void SetVOffset(float offset);
-    public void Hit();
+    public bool Hit();
 
     public bool IsHit();
 

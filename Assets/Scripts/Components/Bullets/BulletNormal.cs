@@ -18,17 +18,36 @@ public class BulletNormal : NetworkBehaviourOwner, IBullet
     [SyncVar]
     private uint _shooterId;
 
+    public override void OtherStart()
+    {
+        GetComponentInChildren<Damage>().OnHit.AddListener(OnHitCallback);
+    }
+
     public override void MyStart()
     {
         var instance = FindObjectsOfType<NetworkBehaviourOwner>().First(x => x.netId.Equals(_shooterId));
 
         transform.position += instance.transform.position;
 
-        Invoke("DestroySelf", 2);
+        Invoke("CmdDestroySelf", 2);
+
+        GetComponentInChildren<Damage>().OnHit.AddListener(OnHitCallback);
     }
 
-    [Command]
-    public void DestroySelf()
+    private void OnHitCallback()
+    {
+        CmdDestroySelf();
+    }
+
+    [Command(requiresAuthority = false)]
+    public void CmdDestroySelf()
+    {
+        if (!this || !this.gameObject) return;
+        RpcDestroySelf();
+    }
+
+    [ClientRpc]
+    public void RpcDestroySelf()
     {
         Destroy(this.gameObject);
     }
