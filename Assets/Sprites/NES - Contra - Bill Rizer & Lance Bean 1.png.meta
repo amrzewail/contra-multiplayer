@@ -106,19 +106,19 @@ TextureImporter:
     second: Shoot Low
   - first:
       213: -5412029509738281114
-    second: Jump Hit 1
+    second: Dead 4
   - first:
       213: 6984097859350768903
-    second: Jump Hit 2
+    second: Dead 3
   - first:
       213: 8020533409223332744
-    second: Jump Hit 3
+    second: Dead 2
   - first:
       213: -6266563325087458980
-    second: Jump Hit 4
+    second: Dead 1
   - first:
       213: 7893265355985664126
-    second: Jump Hit 5
+    second: Dead 5
   - first:
       213: -8078647055261997815
     second: Body Run 1
@@ -949,7 +949,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jump Hit 1
+      name: Dead 4
       rect:
         serializedVersion: 2
         x: 78
@@ -970,7 +970,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jump Hit 2
+      name: Dead 3
       rect:
         serializedVersion: 2
         x: 101
@@ -991,7 +991,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jump Hit 3
+      name: Dead 2
       rect:
         serializedVersion: 2
         x: 122
@@ -1012,7 +1012,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jump Hit 4
+      name: Dead 1
       rect:
         serializedVersion: 2
         x: 145
@@ -1033,7 +1033,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jump Hit 5
+      name: Dead 5
       rect:
         serializedVersion: 2
         x: 166

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D))]
-public class Hitbox : MonoBehaviour, IHitbox
+public class Hitbox : MonoBehaviourOwner, IHitbox
 {
     [SerializeField] bool _isPlayer;
     [SerializeField] bool _isInvincible;
@@ -12,10 +12,12 @@ public class Hitbox : MonoBehaviour, IHitbox
 
     private BoxCollider2D _col;
     private bool _isHit = false;
+    private Vector2 _startingOffset;
 
-    internal void Start()
+    public override void MyStart()
     {
         _col = GetComponent<BoxCollider2D>();
+        _startingOffset = _col.offset;
     }
 
     public bool isPlayer { get => _isPlayer; set => _isPlayer = value; }
@@ -57,5 +59,12 @@ public class Hitbox : MonoBehaviour, IHitbox
         _col.size = s;
         var off = 0.5f - pivot.y;
         _col.offset += Vector2.up * off * diff;
+    }
+
+    public void SetVOffset(float offset)
+    {
+        var off = _startingOffset;
+        _col.offset = off + new Vector2(0, offset);
+        
     }
 }

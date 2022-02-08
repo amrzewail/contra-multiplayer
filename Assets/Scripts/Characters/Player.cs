@@ -21,7 +21,8 @@ public class Player : MonoBehaviourOwner
         Splash,
         Dive,
         Swimming,
-        WaterGetUp
+        WaterGetUp,
+        Dead
     }
 
     [SerializeField] [RequireInterface(typeof(IAnimator))] Object _bodyAnimator;
@@ -32,6 +33,7 @@ public class Player : MonoBehaviourOwner
     [SerializeField] [RequireInterface(typeof(IMover))] Object _mover;
     [SerializeField] [RequireInterface(typeof(IJumper))] Object _jumper;
     [SerializeField] [RequireInterface(typeof(IShooter))] Object _shooter;
+    [SerializeField] [RequireInterface(typeof(IHitbox))] Object _hitbox;
 
     public IAnimator bodyAnimator => (IAnimator)_bodyAnimator;
     public IAnimator legsAnimator => (IAnimator)_legsAnimator;
@@ -44,6 +46,8 @@ public class Player : MonoBehaviourOwner
 
     public IShooter shooter => (IShooter)_shooter;
 
+    public IHitbox hitbox => (IHitbox)_hitbox;
+
     private Collider2D _collider;
     private Rigidbody2D _rigidBody;
 
@@ -51,6 +55,7 @@ public class Player : MonoBehaviourOwner
     private Vector3 _lastPosition;
     private float _lastShootingTime;
     private float _startFallTime;
+    private float _deadTime;
 
     private State _state;
     private AimDirection _aimDirection;
@@ -83,6 +88,8 @@ public class Player : MonoBehaviourOwner
         UpdateAimDirection();
 
         UpdateAnimations();
+
+        UpdateHitbox();
         
 
         if (Input.GetKeyDown("u"))
@@ -253,8 +260,10 @@ public class Player : MonoBehaviourOwner
                 if (vertical > -0.05f)
                 {
                     _state = State.Swimming;
+                    hitbox.isInvincible = false;
                 }
                 mover.Move(new Vector2(0, 0));
+                hitbox.isInvincible = true;
                 break;
             case State.WaterGetUp:
                 if (bodyAnimator.IsAnimationFinished())
@@ -263,9 +272,66 @@ public class Player : MonoBehaviourOwner
                 }
                 mover.Move(new Vector2(0, 0));
                 break;
+
+            case State.Dead:
+                if (!legsAnimator.IsAnimationFinished())
+                {
+                    mover.Move(new Vector2(_lookDirection == LookDirection.Right ? -1 : 1, 0));
+                }
+                else
+                {
+                    mover.Move(new Vector2(0, 0));
+                }
+                hitbox.isInvincible = true;
+
+                if(Time.time - _deadTime > 5)
+                {
+                    _state = State.Idle;
+                    hitbox.isInvincible = false;
+                }
+
+                break;
+        }
+
+
+        if (hitbox.IsHit())
+        {
+            _state = State.Dead;
+            _deadTime = Time.time;
+            jumper.Jump();
         }
 
         _lastPosition = transform.position;
+    }
+
+    private void UpdateHitbox()
+    {
+        hitbox.isInvincible = false;
+        hitbox.SetVSize(2);
+        hitbox.SetVOffset(0);
+        switch (_state)
+        {
+            case State.Idle:
+                if(_aimDirection == AimDirection.Down)
+                {
+                    hitbox.SetVSize(1);
+                }
+                break;
+            case State.Swimming:
+            case State.WaterGetUp:
+                hitbox.SetVSize(1);
+                break;
+            case State.Jumping:
+                hitbox.SetVSize(1);
+                hitbox.SetVOffset(0.5f);
+                break;
+
+            case State.Splash:
+            case State.Dive:
+                hitbox.isInvincible = true;
+                break;
+
+        }
     }
 
     private void UpdateLookDirection()
@@ -425,6 +491,10 @@ public class Player : MonoBehaviourOwner
             legsAnimation = "Water GetUp";
             bodyAnimation = "Water GetUp";
 
+        }else if(_state == State.Dead)
+        {
+            bodyAnimation = "Empty";
+            legsAnimation = "Dead";
         }
 
         bodyAnimator.Play(bodyAnimation, ignoreBodyAnimation);
