@@ -9,4 +9,6 @@ public interface IBullet
     GameObject gameObject { get; }
 
     void SetDirection(Vector2 direction);
+
+    void SetShooterId(uint id);
 }

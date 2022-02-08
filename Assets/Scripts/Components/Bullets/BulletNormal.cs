@@ -1,6 +1,7 @@
 using Mirror;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BulletNormal : NetworkBehaviourOwner, IBullet
@@ -14,8 +15,15 @@ public class BulletNormal : NetworkBehaviourOwner, IBullet
     [SyncVar]
     private Vector3 _direction;
 
+    [SyncVar]
+    private uint _shooterId;
+
     public override void MyStart()
     {
+        var instance = FindObjectsOfType<NetworkBehaviourOwner>().First(x => x.netId.Equals(_shooterId));
+
+        transform.position += instance.transform.position;
+
         Invoke("DestroySelf", 2);
     }
 
@@ -35,5 +43,10 @@ public class BulletNormal : NetworkBehaviourOwner, IBullet
     public void SetDirection(Vector2 direction)
     {
         _direction = direction;
+    }
+
+    public void SetShooterId(uint id)
+    {
+        _shooterId = id;
     }
 }

@@ -16,7 +16,8 @@ public class Player : MonoBehaviourOwner
     {
         Idle,
         Moving,
-        Jumping
+        Jumping,
+        Falling
     }
 
     [SerializeField] [RequireInterface(typeof(IAnimator))] Object _bodyAnimator;
@@ -39,9 +40,15 @@ public class Player : MonoBehaviourOwner
 
     public IShooter shooter => (IShooter)_shooter;
 
-    private State _state;
+    private Collider2D _collider;
+    private Rigidbody2D _rigidBody;
+
     private bool _isShooting = false;
+    private Vector3 _lastPosition;
     private float _lastShootingTime;
+    private float _startFallTime;
+
+    private State _state;
     private AimDirection _aimDirection;
     private LookDirection _lookDirection;
 
@@ -49,6 +56,8 @@ public class Player : MonoBehaviourOwner
     public override void MyStart()
     {
         Physics2D.IgnoreLayerCollision(6, 6);
+        _collider = GetComponent<Collider2D>();
+        _rigidBody = GetComponent<Rigidbody2D>();
     }
 
     public override void OtherStart()
@@ -70,7 +79,6 @@ public class Player : MonoBehaviourOwner
 
         UpdateAnimations();
         
-        mover.Move(new Vector2(horizontal, 0));
 
         if (Input.GetKeyDown("u"))
         {
@@ -94,8 +102,24 @@ public class Player : MonoBehaviourOwner
         {
             case State.Idle:
                 if (Mathf.Abs(horizontal) > 0.05f) _state = State.Moving;
-                if (!grounder.IsGrounded()) _state = State.Jumping;
-                if (jump) jumper.Jump();
+                if (!grounder.IsGrounded()) _state = State.Falling;
+                if (jump)
+                {
+                    if(_aimDirection == AimDirection.Down)
+                    {
+                        if (grounder.GetGroundLayer() == "Platform")
+                        {
+                            _state = State.Falling;
+                            _collider.enabled = false;
+                            _startFallTime = Time.time;
+                        }
+                    }
+                    else
+                    {
+                        _state = State.Jumping;
+                        jumper.Jump();
+                    }
+                }
                 if (_isShooting)
                 {
                     if(bodyAnimator.IsAnimationFinished())
@@ -103,11 +127,16 @@ public class Player : MonoBehaviourOwner
                         _isShooting = false;
                     }
                 }
+                mover.Move(new Vector2(0, 0));
                 break;
             case State.Moving:
                 if (Mathf.Abs(horizontal) <= 0.05f) _state = State.Idle;
-                if (!grounder.IsGrounded()) _state = State.Jumping;
-                if (jump) jumper.Jump();
+                if (!grounder.IsGrounded()) _state = State.Falling;
+                if (jump)
+                {
+                    _state = State.Jumping;
+                    jumper.Jump();
+                }
                 if (_isShooting)
                 {
                     if (bodyAnimator.IsAnimationFinished())
@@ -115,9 +144,30 @@ public class Player : MonoBehaviourOwner
                         _isShooting = false;
                     }
                 }
+                mover.Move(new Vector2(horizontal, 0));
                 break;
             case State.Jumping:
-                if (grounder.IsGrounded()) _state = State.Idle;
+                if(_rigidBody.velocity.y > 0.1f)
+                {
+                    _collider.enabled = false;
+                }
+                else
+                {
+                    if (grounder.IsGrounded()) _state = State.Idle;
+
+                    _collider.enabled = true;
+                }
+                if(Mathf.Abs(horizontal) > 0.01f)
+                {
+                    mover.Move(new Vector2(horizontal, 0));
+                }
+                break;
+            case State.Falling:
+                if(Time.time - _startFallTime > 0.3f)
+                {
+                    _collider.enabled = true;
+                    if (grounder.IsGrounded()) _state = State.Idle;
+                }
                 break;
         }
         if (shoot)
@@ -128,7 +178,7 @@ public class Player : MonoBehaviourOwner
             shooter.Shoot(_aimDirection);
         }
 
-
+        _lastPosition = transform.position;
     }
 
     private void UpdateLookDirection()
@@ -155,6 +205,11 @@ public class Player : MonoBehaviourOwner
         {
             if (_aimDirection == AimDirection.Up) _aimDirection = AimDirection.StraightUp;
             else if (_aimDirection == AimDirection.Down) _aimDirection = AimDirection.StraightDown;
+        }
+
+        if(_state == State.Falling)
+        {
+            _aimDirection = AimDirection.Straight;
         }
 
     }
@@ -217,14 +272,16 @@ public class Player : MonoBehaviourOwner
                 }
 
             }
-        }
-
-        if(_state == State.Jumping)
+        }else if(_state == State.Jumping)
         {
             bodyAnimation = "Jump";
             legsAnimation = "Jump";
 
             transform.localScale = new Vector3(_lookDirection == LookDirection.Right ? 1 : -1, 1, 1);
+        }else if (_state == State.Falling)
+        {
+            bodyAnimation = "Falling";
+            legsAnimation = "Falling";
         }
 
         bodyAnimator.Play(bodyAnimation, ignoreBodyAnimation);

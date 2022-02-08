@@ -29,7 +29,7 @@ public class AnimatorNetworkSyncer : NetworkBehaviourOwner
         }
     }
 
-    [Command]
+    [Command(channel = Channels.Unreliable)]
     public void CmdChangeAnimation(uint netID, string animationName)
     {
         RpcChangeAnimation(netID, animationName);

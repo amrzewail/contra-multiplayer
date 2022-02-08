@@ -21,11 +21,11 @@ public class ShooterNetworkSyncer : NetworkBehaviourOwner
         var point = shooter.GetShootingPoint(direction);
         if (isServer)
         {
-            RpcShoot(identity.netId, point.position, point.forward);
+            RpcShoot(identity.netId, point.position - transform.position, point.forward);
         }
         else
         {
-            CmdShoot(identity.netId, point.position, point.forward);
+            CmdShoot(identity.netId, point.position - transform.position, point.forward);
         }
     }
 
@@ -35,7 +35,7 @@ public class ShooterNetworkSyncer : NetworkBehaviourOwner
         Shoot(netID, position, direction);
     }
 
-    [Command]
+    [Command(channel = Channels.Unreliable)]
     public void CmdShoot(uint netID, Vector3 position, Vector3 direction)
     {
         Shoot(netID, position, direction);
@@ -45,9 +45,12 @@ public class ShooterNetworkSyncer : NetworkBehaviourOwner
     {
         if (isServer)
         {
+            var instance = FindObjectsOfType<ShooterNetworkSyncer>().First(x => x.identity.netId.Equals(netID));
+
             GameObject g = Instantiate(shooter.GetBullet().gameObject, position, Quaternion.identity);
             g.GetComponent<IBullet>().SetDirection(direction);
-            var connection = FindObjectsOfType<ShooterNetworkSyncer>().Single(x => x.identity.netId.Equals(netID)).connectionToClient;
+            g.GetComponent<IBullet>().SetShooterId(netID);
+            var connection = instance.connectionToClient;
             NetworkServer.Spawn(g, connection);
         }
     }
@@ -66,7 +69,7 @@ public class ShooterNetworkSyncer : NetworkBehaviourOwner
         }
     }
 
-    [Command]
+    [Command(channel = Channels.Unreliable)]
     public void CmdChangeBullet(uint netId, int index)
     {
         RpcChangeBullet(netId, index);

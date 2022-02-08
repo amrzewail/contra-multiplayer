@@ -57,6 +57,12 @@ public class GameNetworkManager : NetworkManager
         // Manager but you can use different prefabs per race for example
         GameObject playerObj = Instantiate(playerPrefab);
         playerObj.transform.position = LevelController.instance.GetSpawnLocation().position;
+        playerObj.GetComponent<PlayerIdentity>().SetColor(new UnityEngine.Color(
+                                                        Random.Range(0f, 1f),
+                                                        Random.Range(0f, 1f),
+                                                        Random.Range(0f, 1f)
+                                                    ));
+        playerObj.GetComponent<PlayerIdentity>().SetName($"Player {NetworkServer.connections.Count}");
         //switch (message.color)
         //{
         //    case Color.Blue:
