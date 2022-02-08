@@ -7,4 +7,6 @@ public interface IGrounder
     bool IsGrounded();
 
     string GetGroundLayer();
+
+    bool HasGroundLayer(string layer);
 }

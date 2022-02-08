@@ -26,5 +26,8 @@ public enum AimDirection
     Down,
     StraightUp,
     StraightDown,
-    JumpStraight
+    JumpStraight,
+    WaterStraight,
+    WaterHigh,
+    WaterUp
 }

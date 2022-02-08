@@ -146,6 +146,45 @@ TextureImporter:
   - first:
       213: -5718674761601205386
     second: Bullet Big
+  - first:
+      213: -881042599823958739
+    second: Splash
+  - first:
+      213: -1074738316540178080
+    second: Dive 1
+  - first:
+      213: 8571792221730450013
+    second: Dive 2
+  - first:
+      213: 8355704211671882035
+    second: Water Idle 1
+  - first:
+      213: -8779055399239729808
+    second: Water Idle 2
+  - first:
+      213: -9167455286861306582
+    second: Water Shooting Straight 1
+  - first:
+      213: -998993890745564088
+    second: Water Shooting High 1
+  - first:
+      213: 7340443950661251003
+    second: Water Shooting Up 1
+  - first:
+      213: 8068249930730714602
+    second: Water Aim Up
+  - first:
+      213: -2252130554807991125
+    second: Water Aim High
+  - first:
+      213: -3964197973934395473
+    second: Water Aim Straight
+  - first:
+      213: 5458291075477958982
+    second: Water Aim High 2
+  - first:
+      213: -1523847652799924369
+    second: Water Aim Up 2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -1199,6 +1238,279 @@ TextureImporter:
       bones: []
       spriteID: 67bb4c86a9f23a0b0800000000000000
       internalID: -5718674761601205386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Splash
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 205
+        width: 16
+        height: 15
+      alignment: 9
+      pivot: {x: 0.53125, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2d91856c68e5c3f0800000000000000
+      internalID: -881042599823958739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dive 1
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 209
+        width: 16
+        height: 7
+      alignment: 9
+      pivot: {x: 0.53125, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0611f100233c511f0800000000000000
+      internalID: -1074738316540178080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dive 2
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 209
+        width: 16
+        height: 8
+      alignment: 9
+      pivot: {x: 0.53125, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5a23b04c9f15f670800000000000000
+      internalID: 8571792221730450013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Water Idle 1
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 209
+        width: 16
+        height: 15
+      alignment: 9
+      pivot: {x: 0.53125, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33910f8c5bc65f370800000000000000
+      internalID: 8355704211671882035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Water Idle 2
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 209
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.53125, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07d37d8b0a78a2680800000000000000
+      internalID: -8779055399239729808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Water Shooting Straight 1
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 212
+        width: 25
+        height: 16
+      alignment: 9
+      pivot: {x: 0.34, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a25ea54ecf7a6c080800000000000000
+      internalID: -9167455286861306582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Water Shooting High 1
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 212
+        width: 19
+        height: 17
+      alignment: 9
+      pivot: {x: 0.4473684, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8444359695cd222f0800000000000000
+      internalID: -998993890745564088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Water Shooting Up 1
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 212
+        width: 17
+        height: 27
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbf24dcb1ee7ed560800000000000000
+      internalID: 7340443950661251003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Water Aim Up
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 183
+        width: 17
+        height: 28
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae53648809e28ff60800000000000000
+      internalID: 8068249930730714602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Water Aim High
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 183
+        width: 19
+        height: 18
+      alignment: 9
+      pivot: {x: 0.4473684, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba4cdd45133deb0e0800000000000000
+      internalID: -2252130554807991125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Water Aim Straight
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 183
+        width: 25
+        height: 17
+      alignment: 9
+      pivot: {x: 0.34, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: faf215822f65cf8c0800000000000000
+      internalID: -3964197973934395473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Water Aim High 2
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 183
+        width: 19
+        height: 18
+      alignment: 9
+      pivot: {x: 0.4473684, y: -0.055555556}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6417c8a50debfbb40800000000000000
+      internalID: 5458291075477958982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Water Aim Up 2
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 183
+        width: 17
+        height: 28
+      alignment: 9
+      pivot: {x: 0.5, y: -0.035714287}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f673c0b22a43adae0800000000000000
+      internalID: -1523847652799924369
       vertices: []
       indices: 
       edges: []

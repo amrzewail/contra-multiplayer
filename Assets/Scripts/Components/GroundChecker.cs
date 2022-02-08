@@ -77,4 +77,14 @@ public class GroundChecker : MonoBehaviourOwner, IGrounder
     {
         return _currentLayer;
     }
+
+    public bool HasGroundLayer(string layer)
+    {
+        for(int i = 0; i < _colliders.Count; i++)
+        {
+            string n = LayerMask.LayerToName(_colliders[i].gameObject.layer);
+            if (n.Equals(layer)) return true;
+        }
+        return false;
+    }
 }

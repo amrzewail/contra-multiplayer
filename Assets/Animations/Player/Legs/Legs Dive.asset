@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd3b96cd86dc0942bf5612219c216b3, type: 3}
+  m_Name: Legs Dive
+  m_EditorClassIdentifier: 
+  identifier: Dive
+  loop: 1
+  speed: 4
+  frames:
+  - {fileID: -1074738316540178080, guid: ab05ed5bca42e8f46b01799acaab56bc, type: 3}
+  - {fileID: 8571792221730450013, guid: ab05ed5bca42e8f46b01799acaab56bc, type: 3}
+  animationEvents: []

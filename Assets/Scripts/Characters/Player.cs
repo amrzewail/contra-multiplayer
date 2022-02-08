@@ -17,7 +17,11 @@ public class Player : MonoBehaviourOwner
         Idle,
         Moving,
         Jumping,
-        Falling
+        Falling,
+        Splash,
+        Dive,
+        Swimming,
+        WaterGetUp
     }
 
     [SerializeField] [RequireInterface(typeof(IAnimator))] Object _bodyAnimator;
@@ -63,6 +67,7 @@ public class Player : MonoBehaviourOwner
     public override void OtherStart()
     {
         Destroy(GetComponentInChildren<Rigidbody2D>());
+        Destroy(GetComponentInChildren<Collider2D>());
     }
 
     public override void MyUpdate()
@@ -90,6 +95,13 @@ public class Player : MonoBehaviourOwner
         }
     }
 
+    private void Shoot()
+    {
+        _isShooting = true;
+        _lastShootingTime = Time.time;
+        shooter.Shoot(_aimDirection);
+    }
+
     private void UpdateState()
     {
         float horizontal = input.GetHorizontal();
@@ -101,13 +113,14 @@ public class Player : MonoBehaviourOwner
         switch (_state)
         {
             case State.Idle:
+
                 if (Mathf.Abs(horizontal) > 0.05f) _state = State.Moving;
                 if (!grounder.IsGrounded()) _state = State.Falling;
                 if (jump)
                 {
                     if(_aimDirection == AimDirection.Down)
                     {
-                        if (grounder.GetGroundLayer() == "Platform")
+                        if (grounder.GetGroundLayer() == "Platform" && !grounder.HasGroundLayer("Ground"))
                         {
                             _state = State.Falling;
                             _collider.enabled = false;
@@ -127,9 +140,16 @@ public class Player : MonoBehaviourOwner
                         _isShooting = false;
                     }
                 }
+                if (grounder.GetGroundLayer() == "Water" && (!grounder.HasGroundLayer("Ground") && !grounder.HasGroundLayer("Platform")))
+                {
+                    _state = State.Splash;
+                }
                 mover.Move(new Vector2(0, 0));
+                if (shoot) Shoot();
+
                 break;
             case State.Moving:
+
                 if (Mathf.Abs(horizontal) <= 0.05f) _state = State.Idle;
                 if (!grounder.IsGrounded()) _state = State.Falling;
                 if (jump)
@@ -144,38 +164,105 @@ public class Player : MonoBehaviourOwner
                         _isShooting = false;
                     }
                 }
+                if (grounder.GetGroundLayer() == "Water" && (!grounder.HasGroundLayer("Ground") && !grounder.HasGroundLayer("Platform")))
+                {
+                    _state = State.Splash;
+                }
                 mover.Move(new Vector2(horizontal, 0));
+                if (shoot) Shoot();
+
                 break;
             case State.Jumping:
-                if(_rigidBody.velocity.y > 0.1f)
+
+                if (_rigidBody.velocity.y > 0.1f)
                 {
                     _collider.enabled = false;
                 }
                 else
                 {
-                    if (grounder.IsGrounded()) _state = State.Idle;
-
+                    if (grounder.IsGrounded())
+                    {
+                        if (grounder.GetGroundLayer() == "Water" && (!grounder.HasGroundLayer("Ground") && !grounder.HasGroundLayer("Platform")))
+                        {
+                            _state = State.Splash;
+                        }
+                        else
+                        {
+                            _state = State.Idle;
+                        }
+                    }
                     _collider.enabled = true;
                 }
                 if(Mathf.Abs(horizontal) > 0.01f)
                 {
                     mover.Move(new Vector2(horizontal, 0));
                 }
+                if (shoot) Shoot();
+
                 break;
             case State.Falling:
-                if(Time.time - _startFallTime > 0.3f)
+
+                if (Time.time - _startFallTime > 0.3f)
                 {
                     _collider.enabled = true;
-                    if (grounder.IsGrounded()) _state = State.Idle;
+                    if (grounder.IsGrounded())
+                    {
+                        if (grounder.GetGroundLayer() == "Water" && (!grounder.HasGroundLayer("Ground") && !grounder.HasGroundLayer("Platform")))
+                        {
+                            _state = State.Splash;
+                        }
+                        else
+                        {
+                            _state = State.Idle;
+                        }
+                    }
+                }
+                if (shoot) Shoot();
+
+                break;
+
+            case State.Splash:
+                if (legsAnimator.IsAnimationFinished())
+                {
+                    _state = State.Swimming;
+                }
+                mover.Move(new Vector2(0, 0));
+                break;
+
+            case State.Swimming:
+                mover.Move(new Vector2(horizontal, 0));
+                if (_isShooting)
+                {
+                    if (legsAnimator.IsAnimationFinished())
+                    {
+                        _isShooting = false;
+                    }
+                }
+                if(vertical < -0.05f)
+                {
+                    _state = State.Dive;
+                }
+                if (shoot) Shoot();
+                if(grounder.HasGroundLayer("Ground") || grounder.HasGroundLayer("Platform"))
+                {
+                    _state = State.WaterGetUp;
                 }
                 break;
-        }
-        if (shoot)
-        {
-            _isShooting = true;
-            _lastShootingTime = Time.time;
 
-            shooter.Shoot(_aimDirection);
+            case State.Dive:
+                if (vertical > -0.05f)
+                {
+                    _state = State.Swimming;
+                }
+                mover.Move(new Vector2(0, 0));
+                break;
+            case State.WaterGetUp:
+                if (bodyAnimator.IsAnimationFinished())
+                {
+                    _state = State.Idle;
+                }
+                mover.Move(new Vector2(0, 0));
+                break;
         }
 
         _lastPosition = transform.position;
@@ -210,6 +297,17 @@ public class Player : MonoBehaviourOwner
         if(_state == State.Falling)
         {
             _aimDirection = AimDirection.Straight;
+        }
+
+        if(_state == State.Swimming)
+        {
+            switch (_aimDirection)
+            {
+                case AimDirection.Straight: _aimDirection = AimDirection.WaterStraight; break;
+                case AimDirection.High: _aimDirection = AimDirection.WaterHigh; break;
+                case AimDirection.Up: _aimDirection = AimDirection.WaterUp; break;
+
+            }
         }
 
     }
@@ -282,6 +380,51 @@ public class Player : MonoBehaviourOwner
         {
             bodyAnimation = "Falling";
             legsAnimation = "Falling";
+        }else if (_state == State.Swimming)
+        {
+            transform.localScale = new Vector3(_lookDirection == LookDirection.Right ? 1 : -1, 1, 1);
+
+            bodyAnimation = "Empty";
+            legsAnimation = "Water Idle";
+            switch (_aimDirection)
+            {
+                case AimDirection.WaterUp:
+                    legsAnimation = "Water Aim Up";
+                    break;
+                case AimDirection.WaterHigh:
+                    legsAnimation = "Water Aim High";
+                    break;
+            }
+            if (_isShooting)
+            {
+                if(_aimDirection == AimDirection.WaterStraight)
+                {
+                    legsAnimation = "Water Shoot Straight";
+                }
+                else
+                {
+                    legsAnimation = legsAnimation.Replace("Aim", "Shoot");
+                }
+
+                if (Time.time - _lastShootingTime < Time.deltaTime)
+                {
+                    ignoreLegsAnimation = Time.time - _lastShootingTime < Time.deltaTime;
+                }
+
+            }
+        }else if(_state == State.Splash)
+        {
+            legsAnimation = "Splash";
+            bodyAnimation = "Empty";
+        }else if (_state == State.Dive)
+        {
+            legsAnimation = "Dive";
+            bodyAnimation = "Empty";
+        }else if (_state == State.WaterGetUp)
+        {
+            legsAnimation = "Water GetUp";
+            bodyAnimation = "Water GetUp";
+
         }
 
         bodyAnimator.Play(bodyAnimation, ignoreBodyAnimation);
