@@ -29,26 +29,27 @@ public class BulletNormal : NetworkBehaviourOwner, IBullet
 
         transform.position += instance.transform.position;
 
-        Invoke("CmdDestroySelf", 2);
+        Invoke("CmdDestroySelf", 1);
 
         GetComponentInChildren<Damage>().OnHit.AddListener(OnHitCallback);
     }
 
     private void OnHitCallback()
     {
+        Destroy(this.gameObject);
         CmdDestroySelf();
     }
 
     [Command(requiresAuthority = false)]
     public void CmdDestroySelf()
     {
-        if (!this || !this.gameObject) return;
         RpcDestroySelf();
     }
 
     [ClientRpc]
     public void RpcDestroySelf()
     {
+        if (!this || !this.gameObject) return;
         Destroy(this.gameObject);
     }
 

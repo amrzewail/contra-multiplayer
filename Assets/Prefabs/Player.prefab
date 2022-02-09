@@ -760,12 +760,12 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   clientAuthority: 1
-  sendInterval: 0.05
+  sendInterval: 0.01
   syncPosition: 1
   syncRotation: 0
   syncScale: 1
-  interpolatePosition: 1
-  interpolateRotation: 1
+  interpolatePosition: 0
+  interpolateRotation: 0
   interpolateScale: 0
   bufferTimeMultiplier: 1
   bufferSizeLimit: 64
@@ -773,9 +773,9 @@ MonoBehaviour:
   catchupMultiplier: 0.1
   onlySyncOnChange: 1
   bufferResetMultiplier: 5
-  positionSensitivity: 0.01
+  positionSensitivity: 0.001
   rotationSensitivity: 0.01
-  scaleSensitivity: 0.01
+  scaleSensitivity: 0.1
   showGizmos: 0
   showOverlay: 0
   overlayColor: {r: 0, g: 0, b: 0, a: 0.5}

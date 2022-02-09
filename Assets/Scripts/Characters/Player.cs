@@ -75,8 +75,11 @@ public class Player : MonoBehaviourOwner
 
     public override void OtherStart()
     {
-        Destroy(GetComponentInChildren<Rigidbody2D>());
-        Destroy(GetComponentInChildren<Collider2D>());
+        _collider = GetComponent<Collider2D>();
+        _rigidBody = GetComponent<Rigidbody2D>();
+
+        _collider.isTrigger = true;
+        _rigidBody.isKinematic = true;
     }
 
     public override void MyUpdate()
@@ -314,6 +317,7 @@ public class Player : MonoBehaviourOwner
         {
             _state = State.Dead;
             _deadTime = Time.time;
+            _rigidBody.velocity = Vector2.zero;
             jumper.Jump();
         }
 

@@ -31,7 +31,10 @@ public class Thief : NetworkBehaviourOwner
     };
 
 
-
+    public override void ServerStart()
+    {
+        Physics2D.IgnoreLayerCollision((int)Layer.Character, (int)Layer.Character);
+    }
 
     public override void ServerUpdate()
     {
@@ -75,8 +78,19 @@ public class Thief : NetworkBehaviourOwner
             case State.Moving:
                 if (!grounder.IsGrounded())
                 {
-                    jumper.Jump();
-                    _state = State.Jumping;
+                    int random = UnityEngine.Random.Range(0, 11);
+                    if(random < 4)
+                    {
+                        lookDirection = (lookDirection == LookDirection.Right ? LookDirection.Left : LookDirection.Right);
+                        moveDirection = new Vector2(lookDirection == LookDirection.Right ? 1 : -1, 0);
+                        mover.Move(moveDirection);
+                        transform.position += moveDirection * 0.2f;
+                    }
+                    else
+                    {
+                        jumper.Jump();
+                        _state = State.Jumping;
+                    }
                 }
                 else
                 {
@@ -95,6 +109,7 @@ public class Thief : NetworkBehaviourOwner
                     if (grounder.HasGroundLayer(Layer.Water))
                     {
                         _state = State.Splash;
+                        RpcDisableHitboxes();
                     }
                     else
                     {
@@ -108,10 +123,14 @@ public class Thief : NetworkBehaviourOwner
                 if (animator.IsAnimationFinished())
                 {
                     _state = State.Empty;
+                    RpcDestroy();
                 }
                 else
                 {
-                    mover.Move(new Vector2(lookDirection == LookDirection.Right ? -1 : 1, 0));
+                    if(_state == State.Dead)
+                    {
+                        mover.Move(new Vector2(lookDirection == LookDirection.Right ? -1 : 1, 0));
+                    }
                 }
                 break;
         }
@@ -166,6 +185,12 @@ public class Thief : NetworkBehaviourOwner
         GetComponentInChildren<Damage>().enabled = false;
         //GetComponentInChildren<Rigidbody2D>().isKinematic = true;
         hitbox.isInvincible = true;
+    }
+
+    [ClientRpc]
+    public void RpcDestroy()
+    {
+        Destroy(this.gameObject);
     }
 
 

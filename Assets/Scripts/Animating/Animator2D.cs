@@ -43,7 +43,7 @@ public class Animator2D : MonoBehaviour, IAnimator
         get => (IAnimatorController)_controller; set => _controller = (Object)value;
     }
 
-    private void Start()
+    private void Awake()
     {
         _invokationList = new List<string>();
         if(playFirstAnimation) Play(controller.GetAnimation(0).name, true);

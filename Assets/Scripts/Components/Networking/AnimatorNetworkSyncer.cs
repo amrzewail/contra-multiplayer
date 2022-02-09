@@ -11,10 +11,19 @@ public class AnimatorNetworkSyncer : NetworkBehaviourOwner
 
     public bool serverAuthority = false;
 
+    [SyncVar]
+    private string _currentAnimation;
+
     public override void MyStart()
     {
         if (serverAuthority) return;
         animator.AnimationChanged += AnimationChangedCallback;
+    }
+
+    public override void OtherStart()
+    {
+        if (string.IsNullOrEmpty(_currentAnimation)) return;
+        animator.Play(_currentAnimation, true);
     }
 
     public override void ServerStart()
@@ -32,7 +41,7 @@ public class AnimatorNetworkSyncer : NetworkBehaviourOwner
     [ClientRpc]
     public void RpcChangeAnimation(uint netID, string animationName)
     {
-        if (!isMine && identity.netId == netID)
+        if (!isMine)
         {
             animator.Play(animationName, true);
         }
@@ -41,6 +50,7 @@ public class AnimatorNetworkSyncer : NetworkBehaviourOwner
     [Command(channel = Channels.Unreliable)]
     public void CmdChangeAnimation(uint netID, string animationName)
     {
+        _currentAnimation = animationName;
         RpcChangeAnimation(netID, animationName);
     }
 }
