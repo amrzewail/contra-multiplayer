@@ -330,27 +330,40 @@ public class Player : MonoBehaviourOwner
         if (_state == State.Dead) return;
 
         hitbox.isInvincible = false;
-        hitbox.SetVSize(2);
-        hitbox.SetVOffset(0);
         switch (_state)
         {
             case State.Idle:
-                if(_aimDirection == AimDirection.Down)
+            case State.Moving:
+                if (_aimDirection == AimDirection.Down)
                 {
+                    hitbox.SetVOffset(-0.5f);
                     hitbox.SetVSize(1);
+                }
+                else
+                {
+                    hitbox.SetVOffset(0);
+                    hitbox.SetVSize(2);
                 }
                 break;
             case State.Swimming:
             case State.WaterGetUp:
+                hitbox.SetVOffset(-0.5f);
                 hitbox.SetVSize(1);
                 break;
             case State.Jumping:
-                hitbox.SetVSize(1);
                 hitbox.SetVOffset(0.5f);
+                hitbox.SetVSize(1);
+                break;
+
+            case State.Falling:
+                hitbox.SetVOffset(0);
+                hitbox.SetVSize(2);
                 break;
 
             case State.Splash:
             case State.Dive:
+                hitbox.SetVOffset(0);
+                hitbox.SetVSize(2);
                 hitbox.isInvincible = true;
                 break;
 

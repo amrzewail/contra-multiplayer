@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,10 +15,18 @@ public class Hitbox : MonoBehaviourOwner, IHitbox
     private bool _isHit = false;
     private Vector2 _startingOffset;
 
+    public Action<float> OnVSizeChanged { get; set; }
+    public Action<float> OnHSizeChanged { get; set; }
+    public Action<float> OnVOffsetChanged { get; set; }
+
     public override void MyStart()
     {
         _col = GetComponent<BoxCollider2D>();
         _startingOffset = _col.offset;
+    }
+    public override void OtherStart()
+    {
+        MyStart();
     }
 
     public bool isPlayer { get => _isPlayer; set => _isPlayer = value; }
@@ -45,32 +54,35 @@ public class Hitbox : MonoBehaviourOwner, IHitbox
         if (!_col) return;
 
         var s = _col.size;
-        if (s.x == size) return;
+        if (Mathf.Abs(s.x - size) < 0.01f) return;
         var diff = size - s.x;
         s.x = size;
         _col.size = s;
-        var off = 0.5f - pivot.x;
-        _col.offset += Vector2.right * off * diff;
+
+        OnHSizeChanged?.Invoke(size);
     }
 
     public void SetVSize(float size)
     {
         if (!_col) return;
+
         var s = _col.size;
-        if (s.y == size) return;
+        if (Mathf.Abs(s.y - size) < 0.01f) return;
         var diff = size - s.y;
         s.y = size;
         _col.size = s;
-        var off = 0.5f - pivot.y;
-        _col.offset += Vector2.up * off * diff;
+
+        OnVSizeChanged?.Invoke(size);
     }
 
     public void SetVOffset(float offset)
     {
         if (!_col) return;
 
-        var off = _startingOffset;
-        _col.offset = off + new Vector2(0, offset);
-        
+        var off = _startingOffset + new Vector2(0, offset);
+        if (Mathf.Abs(off.y - _col.offset.y) < 0.01f) return;
+        _col.offset = off;
+        OnVOffsetChanged?.Invoke(offset);
+
     }
 }

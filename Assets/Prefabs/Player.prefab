@@ -618,6 +618,7 @@ GameObject:
   - component: {fileID: 7314813965483850602}
   - component: {fileID: 4051524762163847942}
   - component: {fileID: 3153364937947053879}
+  - component: {fileID: 3249902230054562043}
   m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
@@ -825,7 +826,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  serverAuthority: 0
   _shooter: {fileID: 8542703644469140135}
+--- !u!114 &3249902230054562043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5604256638219856562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74853211a04587b49b985fc341d3ac50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  serverAuthority: 0
+  _hitbox: {fileID: 6067494274432623516}
 --- !u!1 &6057377799302767333
 GameObject:
   m_ObjectHideFlags: 0

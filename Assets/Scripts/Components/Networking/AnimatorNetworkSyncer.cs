@@ -41,7 +41,7 @@ public class AnimatorNetworkSyncer : NetworkBehaviourOwner
     [ClientRpc]
     public void RpcChangeAnimation(uint netID, string animationName)
     {
-        if (!isMine)
+        if (netID == identity.netId && !isMine)
         {
             animator.Play(animationName, true);
         }
