@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public interface IShooter
 {
     public bool Shoot(AimDirection direction);
+    public bool Shoot(AimDirection direction, Vector2 axis);
 
     public void AssignBullet(int index);
 
@@ -15,7 +16,8 @@ public interface IShooter
 
     public Transform GetShootingPoint(AimDirection direction);
 
-    UnityEvent<AimDirection> OnShoot { get; set; }
+    UnityEvent<AimDirection, Vector2> OnShoot { get; set; }
+
 }
 public enum AimDirection
 {

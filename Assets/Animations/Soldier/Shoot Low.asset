@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd3b96cd86dc0942bf5612219c216b3, type: 3}
+  m_Name: Shoot Low
+  m_EditorClassIdentifier: 
+  identifier: Shoot Low
+  loop: 0
+  speed: 15
+  frames:
+  - {fileID: -6438459705901272254, guid: 8b6d716335b42d34a8f72e9a32e94895, type: 3}
+  - {fileID: -6438459705901272254, guid: 8b6d716335b42d34a8f72e9a32e94895, type: 3}
+  animationEvents: []

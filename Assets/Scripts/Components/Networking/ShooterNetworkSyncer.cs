@@ -6,26 +6,37 @@ using UnityEngine;
 
 public class ShooterNetworkSyncer : NetworkBehaviourOwner
 {
+    [SerializeField] bool serverAuthority = false;
     [SerializeField] [RequireInterface(typeof(IShooter))] Object _shooter;
 
     public IShooter shooter => (IShooter)_shooter;
 
     public override void MyStart()
     {
+        if (serverAuthority) return;
+
         shooter.OnShoot.AddListener(ShootCallback);
         shooter.BulletChanged.AddListener(BulletChangedCallback);
     }
 
-    private void ShootCallback(AimDirection direction)
+    public override void ServerStart()
+    {
+        if (!serverAuthority) return;
+        shooter.OnShoot.AddListener(ShootCallback);
+        shooter.BulletChanged.AddListener(BulletChangedCallback);
+    }
+
+    private void ShootCallback(AimDirection direction, Vector2 axis)
     {
         var point = shooter.GetShootingPoint(direction);
+
         if (isServer)
         {
-            RpcShoot(identity.netId, point.position - transform.position, point.forward);
+            RpcShoot(identity.netId, point.position - transform.position, axis);// point.forward);
         }
         else
         {
-            CmdShoot(identity.netId, point.position - transform.position, point.forward);
+            CmdShoot(identity.netId, point.position - transform.position, axis);// point.forward);
         }
     }
 

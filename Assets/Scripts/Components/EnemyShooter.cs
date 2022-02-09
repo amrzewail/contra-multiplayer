@@ -4,25 +4,23 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ProjectileShooter : MonoBehaviourOwner, IShooter
+public class EnemyShooter : MonoBehaviourOwner, IShooter
 {
 
-    [SerializeField] [RequireInterface(typeof(IBullet))] Object _currentBullet;
-    [SerializeField] [RequireInterface(typeof(IBullet))] Object[] _bullets;
+    [SerializeField] [RequireInterface(typeof(IBullet))] Object _bullet;
 
 
     [SerializeField] UnityEvent<AimDirection, Vector2> _OnShoot;
 
-    [SerializeField] UnityEvent<int> _BulletChanged;
-
 
     private List<ShootPoint> _points;
 
-    public IBullet currentBullet => (IBullet)_currentBullet;
+    public IBullet currentBullet => (IBullet)_bullet;
 
     public UnityEvent<AimDirection, Vector2> OnShoot { get => _OnShoot; set => _OnShoot = value; }
 
-    public UnityEvent<int> BulletChanged { get => _BulletChanged; set => _BulletChanged = value; }
+
+    public UnityEvent<int> BulletChanged { get => new UnityEvent<int>(); set { } }
 
 
     public float reloadInterval = 1;
@@ -31,7 +29,7 @@ public class ProjectileShooter : MonoBehaviourOwner, IShooter
     private int _currentBullets = 0;
     private float _currentReloadTime;
 
-    public override void MyStart()
+    public override void ServerStart()
     {
         base.MyAwake();
 
@@ -40,9 +38,9 @@ public class ProjectileShooter : MonoBehaviourOwner, IShooter
         Reload();
     }
 
-    public override void MyUpdate()
+    public override void ServerUpdate()
     {
-        if(_currentBullets < maxBullets)
+        if(_currentBullets == 0)
         {
             _currentReloadTime += Time.deltaTime;
         }
@@ -59,27 +57,23 @@ public class ProjectileShooter : MonoBehaviourOwner, IShooter
 
     public bool Shoot(AimDirection direction)
     {
-        //GameObject g = Instantiate(bullet.gameObject, point.transform.position, point.transform.rotation);
+        return Shoot(direction, new Vector2(1, 0));
+    }
+
+    public bool Shoot(AimDirection direction, Vector2 axis)
+    {
         if (_currentBullets > 0)
         {
             _currentBullets--;
-
-            var point = GetShootingPoint(direction);
-
-            OnShoot?.Invoke(direction, point.forward);
+            OnShoot?.Invoke(direction, axis);
 
             return true;
         }
         return false;
     }
-    public bool Shoot(AimDirection direction, Vector2 axis)
-    {
-        return Shoot(direction);
-    }
 
     public void AssignBullet(int index)
     {
-        _currentBullet = _bullets.Single(x => ((IBullet)x).index == index);
         BulletChanged?.Invoke(index);
     }
 
