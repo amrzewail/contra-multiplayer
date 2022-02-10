@@ -57,7 +57,17 @@ public class EnemyShooter : MonoBehaviourOwner, IShooter
 
     public bool Shoot(AimDirection direction)
     {
-        return Shoot(direction, new Vector2(1, 0));
+        if (_currentBullets > 0)
+        {
+            _currentBullets--;
+
+            var point = GetShootingPoint(direction);
+
+            OnShoot?.Invoke(direction, point.forward);
+
+            return true;
+        }
+        return false;
     }
 
     public bool Shoot(AimDirection direction, Vector2 axis)

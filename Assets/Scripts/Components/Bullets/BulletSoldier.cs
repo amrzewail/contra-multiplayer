@@ -29,10 +29,18 @@ public class BulletSoldier : NetworkBehaviourOwner, IBullet
         GetComponentInChildren<Damage>().OnHit.AddListener(OnHitCallback);
     }
 
-    private void OnHitCallback()
+    public override void ClientStart()
     {
-        Destroy(this.gameObject);
-        CmdDestroySelf();
+        GetComponentInChildren<Damage>().OnHit.AddListener(OnHitCallback);
+    }
+
+    private void OnHitCallback(IHitbox hitbox)
+    {
+        if (hitbox.gameObject.GetComponent<MonoBehaviourOwner>().isMine)
+        {
+            Destroy(this.gameObject);
+            CmdDestroySelf();
+        }
     }
 
     [Command(requiresAuthority = false)]

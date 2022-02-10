@@ -1,7 +1,205 @@
 fileFormatVersion: 2
 guid: 8136a93dccdc7cd42827c0d48f07df15
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -1813247173979453597
+    second: ContraSheet4_0
+  - first:
+      213: 7244997734539477061
+    second: ContraSheet4_1
+  - first:
+      213: -4033575176325398059
+    second: ContraSheet4_2
+  - first:
+      213: -6058880793555168455
+    second: ContraSheet4_3
+  - first:
+      213: -2942433605488191581
+    second: ContraSheet4_4
+  - first:
+      213: 4395449197178286284
+    second: ContraSheet4_5
+  - first:
+      213: -4160303554549609961
+    second: ContraSheet4_6
+  - first:
+      213: -5362552395052611487
+    second: ContraSheet4_7
+  - first:
+      213: 8563608989776199385
+    second: ContraSheet4_8
+  - first:
+      213: 4779179089023187438
+    second: ContraSheet4_9
+  - first:
+      213: 3423499998678329647
+    second: ContraSheet4_10
+  - first:
+      213: -5315909519602906216
+    second: ContraSheet4_11
+  - first:
+      213: -4863872488824494384
+    second: ContraSheet4_12
+  - first:
+      213: -91678488576825668
+    second: ContraSheet4_13
+  - first:
+      213: -7687477000942473367
+    second: ContraSheet4_14
+  - first:
+      213: 799763084455236645
+    second: ContraSheet4_15
+  - first:
+      213: 8925679373668905185
+    second: ContraSheet4_16
+  - first:
+      213: 3482454445433821518
+    second: ContraSheet4_17
+  - first:
+      213: -7119929579593016365
+    second: ContraSheet4_18
+  - first:
+      213: -380061595167628181
+    second: ContraSheet4_19
+  - first:
+      213: 2258712212077189801
+    second: ContraSheet4_20
+  - first:
+      213: 7399632868215007402
+    second: ContraSheet4_21
+  - first:
+      213: 7148644913357315551
+    second: ContraSheet4_22
+  - first:
+      213: -213610861726558050
+    second: ContraSheet4_23
+  - first:
+      213: 6230380054853573581
+    second: ContraSheet4_24
+  - first:
+      213: 498399931857955675
+    second: ContraSheet4_25
+  - first:
+      213: -2120807664086186499
+    second: ContraSheet4_26
+  - first:
+      213: 4024756073619946544
+    second: ContraSheet4_27
+  - first:
+      213: 4040499558423228889
+    second: ContraSheet4_28
+  - first:
+      213: 1033452098343873292
+    second: ContraSheet4_29
+  - first:
+      213: -8669349641301288278
+    second: ContraSheet4_30
+  - first:
+      213: 5358918993572460693
+    second: ContraSheet4_31
+  - first:
+      213: 4780637997985018565
+    second: ContraSheet4_32
+  - first:
+      213: 7960257736227259273
+    second: ContraSheet4_33
+  - first:
+      213: -5651665324996346370
+    second: ContraSheet4_34
+  - first:
+      213: 2842459677001732513
+    second: ContraSheet4_35
+  - first:
+      213: -8657537158111081350
+    second: ContraSheet4_36
+  - first:
+      213: 168861368119042618
+    second: ContraSheet4_37
+  - first:
+      213: 6898224011112788663
+    second: ContraSheet4_38
+  - first:
+      213: -4273715963761091033
+    second: ContraSheet4_39
+  - first:
+      213: -4923211933914811581
+    second: ContraSheet4_40
+  - first:
+      213: 85642472185527249
+    second: ContraSheet4_41
+  - first:
+      213: -7812774520076187191
+    second: ContraSheet4_42
+  - first:
+      213: -8935647767296903617
+    second: ContraSheet4_43
+  - first:
+      213: 7235819875821386164
+    second: ContraSheet4_44
+  - first:
+      213: 5341057206307262601
+    second: ContraSheet4_45
+  - first:
+      213: 1746929882066043858
+    second: ContraSheet4_46
+  - first:
+      213: -8763803905237233513
+    second: ContraSheet4_47
+  - first:
+      213: 8090120639488189684
+    second: ContraSheet4_48
+  - first:
+      213: -5464431208955029651
+    second: ContraSheet4_49
+  - first:
+      213: -5927898432102771905
+    second: ContraSheet4_50
+  - first:
+      213: 8274021314430364935
+    second: ContraSheet4_51
+  - first:
+      213: 2271922750894677545
+    second: ContraSheet4_52
+  - first:
+      213: -7686170707662132269
+    second: ContraSheet4_53
+  - first:
+      213: 3835286010660829536
+    second: ContraSheet4_54
+  - first:
+      213: 46381455009985862
+    second: ContraSheet4_55
+  - first:
+      213: -1391425216655733997
+    second: ContraSheet4_56
+  - first:
+      213: -7564442318632898257
+    second: ContraSheet4_57
+  - first:
+      213: -3264091966955183646
+    second: ContraSheet4_58
+  - first:
+      213: 6869408352814173410
+    second: ContraSheet4_59
+  - first:
+      213: 7821645855256194754
+    second: ContraSheet4_60
+  - first:
+      213: -8157639115050029591
+    second: ContraSheet4_61
+  - first:
+      213: 2180713743700477091
+    second: ContraSheet4_62
+  - first:
+      213: 1648610845461173805
+    second: ContraSheet4_63
+  - first:
+      213: -7376659232270419146
+    second: ContraSheet4_76
+  - first:
+      213: 318924544023478089
+    second: ContraSheet4_77
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -113,7 +311,1393 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: ContraSheet4_0
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 435
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36749f06d4d06d6e0800000000000000
+      internalID: -1813247173979453597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_1
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 435
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5404cbdcd076b8460800000000000000
+      internalID: 7244997734539477061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_2
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 435
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d18a487fbcd508c0800000000000000
+      internalID: -4033575176325398059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_3
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 435
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93315b305088aeba0800000000000000
+      internalID: -6058880793555168455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_4
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 435
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a754b9b9306a27d0800000000000000
+      internalID: -2942433605488191581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_5
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 435
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc0761ab1c5cffc30800000000000000
+      internalID: 4395449197178286284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_6
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 435
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71a864995f1a346c0800000000000000
+      internalID: -4160303554549609961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_8
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 401
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9deb3f6110d08d670800000000000000
+      internalID: 8563608989776199385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_9
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 401
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee9b33f6f0e035240800000000000000
+      internalID: 4779179089023187438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_11
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 401
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89b83f1f4781a36b0800000000000000
+      internalID: -5315909519602906216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_12
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 401
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d622d6cdbd008cb0800000000000000
+      internalID: -4863872488824494384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_14
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 401
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96fa6dbc568905590800000000000000
+      internalID: -7687477000942473367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_15
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 401
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 524dc69b944591b00800000000000000
+      internalID: 799763084455236645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_17
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 367
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4910960ed9245030800000000000000
+      internalID: 3482454445433821518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_18
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 367
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dbdf8635cde03d90800000000000000
+      internalID: -7119929579593016365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_20
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 367
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9aa92ba2ace885f10800000000000000
+      internalID: 2258712212077189801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_21
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 367
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa8a24283e6c0b660800000000000000
+      internalID: 7399632868215007402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_23
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 367
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e989f929d0a190df0800000000000000
+      internalID: -213610861726558050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_24
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 367
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcbd93166a1c67650800000000000000
+      internalID: 6230380054853573581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_26
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 333
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df587318aa06192e0800000000000000
+      internalID: -2120807664086186499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_27
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 333
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03c76bb235ecad730800000000000000
+      internalID: 4024756073619946544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_29
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 333
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0b2b2e353f875e00800000000000000
+      internalID: 1033452098343873292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_30
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 333
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aaa9394fe6840b780800000000000000
+      internalID: -8669349641301288278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_32
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 333
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c2b1a52eec385240800000000000000
+      internalID: 4780637997985018565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_33
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 333
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98381606c34887e60800000000000000
+      internalID: 7960257736227259273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_49
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 231
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d675daa64c07a24b0800000000000000
+      internalID: -5464431208955029651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_50
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 231
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f335be988cfdbbda0800000000000000
+      internalID: -5927898432102771905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_51
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 231
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70de1ae3c8a33d270800000000000000
+      internalID: 8274021314430364935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_52
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 231
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92e943c64bd778f10800000000000000
+      internalID: 2271922750894677545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_53
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 231
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3db29c6e67c355590800000000000000
+      internalID: -7686170707662132269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_54
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 197
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 069b6757e4ca93530800000000000000
+      internalID: 3835286010660829536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_55
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 197
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 645390600b7c4a000800000000000000
+      internalID: 46381455009985862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_56
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 197
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31bc6b5332aa0bce0800000000000000
+      internalID: -1391425216655733997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_57
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 197
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2134f11ac3b50790800000000000000
+      internalID: -7564442318632898257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_58
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 197
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e12e6366ad93b2d0800000000000000
+      internalID: -3264091966955183646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_59
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 163
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ec079e408a055f50800000000000000
+      internalID: 6869408352814173410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_60
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 163
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cea379e6711c8c60800000000000000
+      internalID: 7821645855256194754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_61
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 163
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ed6c95227e3ace80800000000000000
+      internalID: -8157639115050029591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_62
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 163
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a444129893734e10800000000000000
+      internalID: 2180713743700477091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_63
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 163
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d26d19844da01e610800000000000000
+      internalID: 1648610845461173805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_7
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 401
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 168087b32036495b0800000000000000
+      internalID: -5362552395052611487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_10
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 401
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f29a5cd3c17b28f20800000000000000
+      internalID: 3423499998678329647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_13
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 401
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb665de76ea4abef0800000000000000
+      internalID: -91678488576825668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_16
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 367
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e0f09e99126edb70800000000000000
+      internalID: 8925679373668905185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_19
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 367
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b64e34b2effb9baf0800000000000000
+      internalID: -380061595167628181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_22
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 367
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fddd01e6ca6153360800000000000000
+      internalID: 7148644913357315551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_25
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 333
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5be87ee81caae600800000000000000
+      internalID: 498399931857955675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_28
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 333
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d170fed0fcb21830800000000000000
+      internalID: 4040499558423228889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_31
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 333
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 598faff8e64be5a40800000000000000
+      internalID: 5358918993572460693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_34
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 299
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efd333aa4504191b0800000000000000
+      internalID: -5651665324996346370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_35
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 299
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a15f082402727720800000000000000
+      internalID: 2842459677001732513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_36
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 299
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7c4b0503df3ad780800000000000000
+      internalID: -8657537158111081350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_37
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 299
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a32a507058ae75200800000000000000
+      internalID: 168861368119042618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_38
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 299
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b2b273903a6bbf50800000000000000
+      internalID: 6898224011112788663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_39
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 299
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72e9a1d59f5b0b4c0800000000000000
+      internalID: -4273715963761091033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_40
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 265
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3433b0594dc3dabb0800000000000000
+      internalID: -4923211933914811581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_41
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 265
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dbfd4cef53403100800000000000000
+      internalID: 85642472185527249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_42
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 265
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c9c2a4c7f2739390800000000000000
+      internalID: -7812774520076187191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_43
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 265
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f367140e2b33ef380800000000000000
+      internalID: -8935647767296903617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_44
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 265
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b97b0d07dbca6460800000000000000
+      internalID: 7235819875821386164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_45
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 265
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9801cf22b3f3f1a40800000000000000
+      internalID: 5341057206307262601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_46
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 265
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d3cf0cd8775e3810800000000000000
+      internalID: 1746929882066043858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_47
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 265
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7905723e7c6b06680800000000000000
+      internalID: -8763803905237233513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_48
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 265
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f4efbabbd1e54070800000000000000
+      internalID: 8090120639488189684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_76
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 61
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63b7a6fe287d0a990800000000000000
+      internalID: -7376659232270419146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraSheet4_77
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 61
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94f3cacde2c0d6400800000000000000
+      internalID: 318924544023478089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

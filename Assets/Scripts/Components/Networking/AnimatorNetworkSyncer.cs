@@ -34,8 +34,15 @@ public class AnimatorNetworkSyncer : NetworkBehaviourOwner
 
     private void AnimationChangedCallback(IAnimation animation)
     {
-        if (isServer) RpcChangeAnimation(identity.netId, animation.name);
-        else CmdChangeAnimation(identity.netId, animation.name);
+        if (isServer)
+        {
+            _currentAnimation = animation.name;
+            RpcChangeAnimation(identity.netId, animation.name);
+        }
+        else
+        {
+            CmdChangeAnimation(identity.netId, animation.name);
+        }
     }
 
     [ClientRpc]

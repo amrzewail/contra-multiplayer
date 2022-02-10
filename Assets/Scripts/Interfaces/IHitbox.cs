@@ -5,6 +5,7 @@ using UnityEngine;
 
 public interface IHitbox
 {
+    public GameObject gameObject { get; }
     public bool isPlayer { get; set; }
     public bool isInvincible { get; set; }
 

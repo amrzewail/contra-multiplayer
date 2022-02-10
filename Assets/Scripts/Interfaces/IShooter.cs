@@ -31,5 +31,6 @@ public enum AimDirection
     JumpStraight,
     WaterStraight,
     WaterHigh,
-    WaterUp
+    WaterUp,
+    Extra1
 }

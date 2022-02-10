@@ -34,7 +34,7 @@ public class BulletNormal : NetworkBehaviourOwner, IBullet
         GetComponentInChildren<Damage>().OnHit.AddListener(OnHitCallback);
     }
 
-    private void OnHitCallback()
+    private void OnHitCallback(IHitbox hitbox)
     {
         Destroy(this.gameObject);
         CmdDestroySelf();

@@ -11,6 +11,15 @@ TextureImporter:
   - first:
       213: -1290249202209369453
     second: Explosion a 3
+  - first:
+      213: 8653300689978295583
+    second: Explosion b 1
+  - first:
+      213: -6760588602598073362
+    second: Explosion b 2
+  - first:
+      213: -6863203622448469594
+    second: Explosion b 3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -182,6 +191,69 @@ TextureImporter:
       bones: []
       spriteID: 3925496cf2d181ee0800000000000000
       internalID: -1290249202209369453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion b 1
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 208
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f158cc06123b61870800000000000000
+      internalID: 8653300689978295583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion b 2
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 208
+        width: 23
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eeb569d2c709d22a0800000000000000
+      internalID: -6760588602598073362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion b 3
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 208
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a9e8ce0ba001c0a0800000000000000
+      internalID: -6863203622448469594
       vertices: []
       indices: 
       edges: []

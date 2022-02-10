@@ -7,7 +7,7 @@ public class Damage : MonoBehaviourOwner
 {
     [SerializeField] bool damagePlayer = true;
     public bool generalDamage = false;
-    public UnityEvent OnHit;
+    public UnityEvent<IHitbox> OnHit;
 
     public override void OnTriggerEnter2D(Collider2D collision)
     {
@@ -23,7 +23,7 @@ public class Damage : MonoBehaviourOwner
                 {
                     if (hit.Hit())
                     {
-                        OnHit?.Invoke();
+                        OnHit?.Invoke(hit);
                     }
                 }
             }
