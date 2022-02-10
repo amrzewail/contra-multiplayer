@@ -193,6 +193,7 @@ public class Player : MonoBehaviourOwner
                 if (_rigidBody.velocity.y > 0.1f)
                 {
                     Physics2D.IgnoreLayerCollision(this.gameObject.layer, (int)Layer.Platform, true);
+                    Physics2D.IgnoreLayerCollision(this.gameObject.layer, (int)Layer.Ground, true);
                 }
                 else
                 {
@@ -208,6 +209,7 @@ public class Player : MonoBehaviourOwner
                         }
                     }
                     Physics2D.IgnoreLayerCollision(this.gameObject.layer, (int)Layer.Platform, false);
+                    Physics2D.IgnoreLayerCollision(this.gameObject.layer, (int)Layer.Ground, false);
 
                 }
                 if (Mathf.Abs(horizontal) > 0.01f)
@@ -219,7 +221,7 @@ public class Player : MonoBehaviourOwner
                 break;
             case State.Falling:
 
-                if (Time.time - _startFallTime > 0.3f)
+                if (Time.time - _startFallTime > 0.4f)
                 {
                     Physics2D.IgnoreLayerCollision(this.gameObject.layer, (int)Layer.Platform, false);
                     if (grounder.IsGrounded())
@@ -336,8 +338,8 @@ public class Player : MonoBehaviourOwner
             case State.Moving:
                 if (_aimDirection == AimDirection.Down)
                 {
-                    hitbox.SetVOffset(-0.5f);
-                    hitbox.SetVSize(1);
+                    hitbox.SetVOffset(-0.625f);
+                    hitbox.SetVSize(0.75f);
                 }
                 else
                 {

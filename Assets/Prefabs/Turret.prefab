@@ -410,7 +410,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  health: 5
+  health: 8
   attackRange: 15
   turretRotateInterval: 0.5
   shootInterval: 2

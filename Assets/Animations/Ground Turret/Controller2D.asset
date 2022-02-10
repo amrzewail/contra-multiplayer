@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea5411406c28df848abcdd357e6b2207, type: 3}
+  m_Name: Controller2D
+  m_EditorClassIdentifier: 
+  _animations:
+  - {fileID: 11400000, guid: 06d62712f7b757d43abc8d093dd76efc, type: 2}
+  - {fileID: 11400000, guid: e282f396444cd9341b14eee6d537bc8f, type: 2}
+  - {fileID: 11400000, guid: 2f1be3f7708e8b942ae4aa5d64a8fa8f, type: 2}
+  - {fileID: 11400000, guid: 663d4234c616a3548a491e33984da65e, type: 2}
+  - {fileID: 11400000, guid: 9bbfce333c78b2f409e83e6ce8dd3a0c, type: 2}
+  - {fileID: 11400000, guid: d2ae0792af8f1ec419a1d3e5d33ebd6b, type: 2}

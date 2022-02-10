@@ -555,7 +555,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   lookDirection: 1
-  attackRange: 10
+  attackRange: 15
   _animator: {fileID: 1102915339310005689}
   _jumper: {fileID: 8754406687945316588}
   _hitbox: {fileID: 6067494274432623516}

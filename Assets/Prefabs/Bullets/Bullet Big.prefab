@@ -228,4 +228,4 @@ MonoBehaviour:
   syncMode: 1
   syncInterval: 0.1
   _index: 1
-  speed: 12
+  speed: 10

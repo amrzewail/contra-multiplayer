@@ -6,6 +6,7 @@ using UnityEngine;
 public class Thief : NetworkBehaviourOwner
 {
     [SerializeField] LookDirection lookDirection = LookDirection.Left;
+    [SerializeField] float moveRange = 15;
     [SerializeField] [RequireInterface(typeof(IAnimator))] Object _animator;
     [SerializeField] [RequireInterface(typeof(IMover))] Object _mover;
     [SerializeField] [RequireInterface(typeof(IJumper))] Object _jumper;
@@ -20,6 +21,9 @@ public class Thief : NetworkBehaviourOwner
 
     public IGrounder grounder => (IGrounder)_grounder;
     public IHitbox hitbox => (IHitbox)_hitbox;
+
+    private Player _target;
+    private float _lastTargetUpdateTime;
 
     private enum State
     {
@@ -68,6 +72,27 @@ public class Thief : NetworkBehaviourOwner
 
     }
 
+    private void UpdateTarget(float cooldown)
+    {
+        if (Time.time - _lastTargetUpdateTime < cooldown) return;
+
+        _lastTargetUpdateTime = Time.time;
+        Player[] players = Object.FindObjectsOfType<Player>();
+        float dist = Vector2.Distance(transform.position, players[0].transform.position);
+        int targetIndex = 0;
+        for (int i = 1; i < players.Length; i++)
+        {
+            float d = Vector2.Distance(transform.position, players[i].transform.position);
+            if (d < dist)
+            {
+                dist = d;
+                targetIndex = i;
+            }
+        }
+        if (dist < moveRange) _target = players[targetIndex];
+        else _target = null;
+    }
+
     private void UpdateState()
     {
         Vector3 moveDirection = new Vector2(lookDirection == LookDirection.Right ? 1 : -1, 0);
@@ -76,29 +101,33 @@ public class Thief : NetworkBehaviourOwner
         switch (_state)
         {
             case State.Moving:
-                if (!grounder.IsGrounded())
+                UpdateTarget(0.5f);
+                if (_target)
                 {
-                    int random = UnityEngine.Random.Range(0, 11);
-                    if(random < 4)
+                    if (!grounder.IsGrounded())
                     {
-                        lookDirection = (lookDirection == LookDirection.Right ? LookDirection.Left : LookDirection.Right);
-                        moveDirection = new Vector2(lookDirection == LookDirection.Right ? 1 : -1, 0);
-                        mover.Move(moveDirection);
-                        transform.position += moveDirection * 0.2f;
+                        int random = UnityEngine.Random.Range(0, 11);
+                        if (random < 3)
+                        {
+                            lookDirection = (lookDirection == LookDirection.Right ? LookDirection.Left : LookDirection.Right);
+                            moveDirection = new Vector2(lookDirection == LookDirection.Right ? 1 : -1, 0);
+                            mover.Move(moveDirection);
+                            transform.position += moveDirection * 0.2f;
+                        }
+                        else
+                        {
+                            jumper.Jump();
+                            _state = State.Jumping;
+                        }
                     }
                     else
                     {
-                        jumper.Jump();
-                        _state = State.Jumping;
-                    }
-                }
-                else
-                {
-                    mover.Move(moveDirection);
-                    if (grounder.HasGroundLayer(Layer.Water))
-                    {
-                        _state = State.Splash;
-                        RpcDisableHitboxes();
+                        mover.Move(moveDirection);
+                        if (grounder.HasGroundLayer(Layer.Water))
+                        {
+                            _state = State.Splash;
+                            RpcDisableHitboxes();
+                        }
                     }
                 }
                 break;

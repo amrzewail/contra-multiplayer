@@ -414,6 +414,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   lookDirection: 1
+  moveRange: 10
   _animator: {fileID: 1102915339310005689}
   _mover: {fileID: 7400310267576641141}
   _jumper: {fileID: 1151483836142576971}
