@@ -221,7 +221,7 @@ public class Player : MonoBehaviourOwner
                 break;
             case State.Falling:
 
-                if (Time.time - _startFallTime > 0.4f)
+                if (Time.time - _startFallTime > 0.3f)
                 {
                     Physics2D.IgnoreLayerCollision(this.gameObject.layer, (int)Layer.Platform, false);
                     if (grounder.IsGrounded())
