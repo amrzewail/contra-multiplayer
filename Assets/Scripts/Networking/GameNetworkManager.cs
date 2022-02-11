@@ -1,12 +1,20 @@
+using kcp2k;
 using Mirror;
+using Mirror.Discovery;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Sockets;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class GameNetworkManager : NetworkManager
 {
+    public static new GameNetworkManager singleton => (GameNetworkManager)NetworkManager.singleton;
+
+    public NetworkDiscovery networkDiscovery;
+
+
     public struct CreateCharacterMessage : NetworkMessage
     {
         public Color color;
@@ -18,6 +26,61 @@ public class GameNetworkManager : NetworkManager
         Red,
         Yellow,
         Green
+    }
+
+
+
+
+    public void StartSinglePlayer()
+    {
+        ((KcpTransport)transport).Port = 0;
+        StartHost();
+    }
+
+    public void HostMultiplayer()
+    {
+        ((KcpTransport)transport).Port = 7777;
+        InternalHostMultiplayer(0);
+    }
+
+    private async void InternalHostMultiplayer(int count)
+    {
+        try
+        {
+            StartHost();
+            networkDiscovery.AdvertiseServer();
+        }
+        catch (SocketException e)
+        {
+            if (count == 100)
+            {
+                Debug.Log("No available ports");
+            }
+            else
+            {
+                await System.Threading.Tasks.Task.Delay(100);
+                ((KcpTransport)transport).Port++;
+                InternalHostMultiplayer(count+1);
+            }
+        }
+    }
+
+    public void JoinMultiplayer()
+    {
+        ((KcpTransport)transport).Port = 7777;
+        networkDiscovery.StartDiscovery();
+        networkDiscovery.OnServerFound.AddListener(OnDiscoveredServer);
+    }
+
+    public void StopSearching()
+    {
+        networkDiscovery.StopDiscovery();
+    }
+
+    private void OnDiscoveredServer(ServerResponse info)
+    {
+        networkDiscovery.StopDiscovery();
+        StartClient(info.uri);
     }
 
     public override void OnStartServer()
@@ -35,7 +98,7 @@ public class GameNetworkManager : NetworkManager
 
         SceneManager.sceneLoaded += SceneLoadedCallback;
 
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene((int)SceneIndex.Game);
 
     }
 

@@ -7,9 +7,19 @@ public class LogDebugger : MonoBehaviour
 {
     private TextMeshProUGUI _text;
 
+    private static LogDebugger singleton;
+
     // Start is called before the first frame update
     void Awake()
     {
+        if (singleton)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+
+        singleton = this;
+
         DontDestroyOnLoad(this.gameObject);
 
         _text = GetComponentInChildren<TextMeshProUGUI>();

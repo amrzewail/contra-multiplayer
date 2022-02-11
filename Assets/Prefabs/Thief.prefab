@@ -468,7 +468,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  _animator: {fileID: 1102915339310005689, guid: c7ebf74e13919b84da1bf9e551860657, type: 3}
+  _animator: {fileID: 1102915339310005689}
   serverAuthority: 1
 --- !u!1 &8088022284237115981
 GameObject:

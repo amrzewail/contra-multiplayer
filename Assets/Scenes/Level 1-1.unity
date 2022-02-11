@@ -4791,6 +4791,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1589262555}
     m_Modifications:
+    - target: {fileID: 3722439691297778937, guid: 5b6e458a79ae07946a7906c51c0a186f, type: 3}
+      propertyPath: moveRange
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5604256638219856562, guid: 5b6e458a79ae07946a7906c51c0a186f, type: 3}
       propertyPath: m_Name
       value: Thief

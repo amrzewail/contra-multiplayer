@@ -556,7 +556,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   lookDirection: 1
-  attackRange: 20
+  attackRange: 17
   hidingTime: 3
   aimingTime: 3
   hidingYOffset: 0.6

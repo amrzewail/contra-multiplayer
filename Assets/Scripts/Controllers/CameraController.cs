@@ -35,7 +35,7 @@ public class CameraController : MonoBehaviour
         Vector3 pos = transform.position;
         if (!_lockCameraToBossLocation)
         {
-            pos.x = _target.position.x + 3;
+            pos.x = _target.position.x;
             pos.x = Mathf.Clamp(pos.x, -2, 190);
             transform.position = pos;
         }
