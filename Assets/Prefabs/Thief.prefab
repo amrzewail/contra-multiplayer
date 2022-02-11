@@ -414,7 +414,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   lookDirection: 1
-  moveRange: 10
+  moveRange: 15
   _animator: {fileID: 1102915339310005689}
   _mover: {fileID: 7400310267576641141}
   _jumper: {fileID: 1151483836142576971}
@@ -468,7 +468,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  _animator: {fileID: 1102915339310005689}
+  _animator: {fileID: 1102915339310005689, guid: c7ebf74e13919b84da1bf9e551860657, type: 3}
   serverAuthority: 1
 --- !u!1 &8088022284237115981
 GameObject:
@@ -544,6 +544,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 400
   isGrounded: 0
+  OnGrounded:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &9090518642940904202
 GameObject:
   m_ObjectHideFlags: 0

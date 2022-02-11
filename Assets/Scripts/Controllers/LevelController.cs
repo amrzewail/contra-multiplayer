@@ -7,6 +7,11 @@ public class LevelController : MonoBehaviour
     public static LevelController instance { get; private set; }
 
     [SerializeField] Transform spawnLocation;
+    [SerializeField] Transform bossCameraLocation;
+
+    public bool isBossDefeated = false;
+
+    
 
     internal void Awake()
     {
@@ -21,5 +26,10 @@ public class LevelController : MonoBehaviour
     public Transform GetSpawnLocation()
     {
         return spawnLocation;
+    }
+
+    public Transform GetBossCameraLocation()
+    {
+        return bossCameraLocation;
     }
 }

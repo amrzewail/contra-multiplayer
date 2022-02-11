@@ -7,8 +7,13 @@ public class CameraController : MonoBehaviour
 {
     private Transform _target;
 
+    private bool _lockCameraToBossLocation = false;
+
     private IEnumerator Start()
     {
+        LevelEvents.StageBossStarted += BossStartedCallback;
+        LevelEvents.StageBossDefeated += BossDefeatedCallback;
+
         while (!_target)
         {
 
@@ -28,7 +33,30 @@ public class CameraController : MonoBehaviour
         if (!_target) return;
 
         Vector3 pos = transform.position;
-        pos.x = _target.position.x;
-        transform.position = pos;
+        if (!_lockCameraToBossLocation)
+        {
+            pos.x = _target.position.x + 3;
+            pos.x = Mathf.Clamp(pos.x, -2, 190);
+            transform.position = pos;
+        }
+        else
+        {
+            pos = Vector3.MoveTowards(pos, LevelController.instance.GetBossCameraLocation().position, Time.deltaTime * 4);
+            transform.position = pos;
+        }
+
+        Vector3 targetPos = _target.transform.position;
+        targetPos.x = Mathf.Clamp(targetPos.x, pos.x - 8, Mathf.Infinity);
+        _target.transform.position = targetPos;
+    }
+
+    private void BossStartedCallback()
+    {
+        _lockCameraToBossLocation = true;
+    }
+
+    private void BossDefeatedCallback()
+    {
+        _lockCameraToBossLocation = false;
     }
 }

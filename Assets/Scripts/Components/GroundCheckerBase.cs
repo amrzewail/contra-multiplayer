@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GroundCheckerBase : MonoBehaviourOwner, IGrounder
 {
@@ -11,6 +12,8 @@ public class GroundCheckerBase : MonoBehaviourOwner, IGrounder
     private List<Collider2D> _colliders = new List<Collider2D>();
     private int _currentLayer;
 
+    public UnityEvent<int> OnGrounded;
+
     protected void BaseOnTriggerEnter2D(Collider2D collision)
     {
         if ((layerMask & 1 << collision.gameObject.layer) == 1 << collision.gameObject.layer)
@@ -20,6 +23,7 @@ public class GroundCheckerBase : MonoBehaviourOwner, IGrounder
                 _colliders.Add(collision);
                 _currentLayer = collision.gameObject.layer;
                 isGrounded = true;
+                OnGrounded?.Invoke(_currentLayer);
             }
         }
     }

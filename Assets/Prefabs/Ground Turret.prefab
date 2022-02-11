@@ -279,7 +279,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   health: 8
-  attackRange: 10
+  attackRange: 13
   turretRotateInterval: 0.5
   maxBulletCount: 3
   bulletInterval: 0.15
@@ -487,7 +487,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 1.5}
+  m_Size: {x: 1.5, y: 2}
   m_EdgeRadius: 0
 --- !u!114 &5517192421071154307
 MonoBehaviour:

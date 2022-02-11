@@ -556,7 +556,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   lookDirection: 1
-  attackRange: 15
+  attackRange: 20
   hidingTime: 3
   aimingTime: 3
   hidingYOffset: 0.6
@@ -764,6 +764,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 400
   isGrounded: 0
+  OnGrounded:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &9090518642940904202
 GameObject:
   m_ObjectHideFlags: 0

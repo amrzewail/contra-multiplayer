@@ -7,7 +7,8 @@ using UnityEngine;
 public class BulletSoldier : NetworkBehaviourOwner, IBullet
 {
     [SerializeField] int _index = 0;
-
+    [SerializeField] float destroyAfter = 1f;
+    [SerializeField] GameObject _explosion;
     public int index => _index;
 
     public float speed = 1;
@@ -24,13 +25,17 @@ public class BulletSoldier : NetworkBehaviourOwner, IBullet
 
         transform.position += instance.transform.position;
 
-        Invoke("CmdDestroySelf", 1);
+        Invoke("CmdDestroySelf", destroyAfter);
 
         GetComponentInChildren<Damage>().OnHit.AddListener(OnHitCallback);
     }
 
     public override void ClientStart()
     {
+        if (GetComponent<Rigidbody2D>())
+        {
+            Destroy(GetComponent<Rigidbody2D>());
+        }
         GetComponentInChildren<Damage>().OnHit.AddListener(OnHitCallback);
     }
 
@@ -38,7 +43,7 @@ public class BulletSoldier : NetworkBehaviourOwner, IBullet
     {
         if (hitbox.gameObject.GetComponent<MonoBehaviourOwner>().isMine)
         {
-            Destroy(this.gameObject);
+            Destroy();
             CmdDestroySelf();
         }
     }
@@ -53,9 +58,14 @@ public class BulletSoldier : NetworkBehaviourOwner, IBullet
     public void RpcDestroySelf()
     {
         if (!this || !this.gameObject) return;
-        Destroy(this.gameObject);
+        Destroy();
     }
 
+    public void Destroy()
+    {
+        GameObject.Instantiate(_explosion).transform.position = this.transform.position;
+        Destroy(this.gameObject);
+    }
 
     public override void ServerUpdate()
     {

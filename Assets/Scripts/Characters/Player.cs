@@ -52,6 +52,7 @@ public class Player : MonoBehaviourOwner
 
     private Collider2D _collider;
     private Rigidbody2D _rigidBody;
+    private Invincibility _invincibility;
 
     private bool _isShooting = false;
     private Vector2 _lastVelocity;
@@ -71,6 +72,7 @@ public class Player : MonoBehaviourOwner
         Physics2D.IgnoreLayerCollision((int)Layer.Player, (int)Layer.Character);
         _collider = GetComponent<Collider2D>();
         _rigidBody = GetComponent<Rigidbody2D>();
+        _invincibility = GetComponentInChildren<Invincibility>();
     }
 
     public override void OtherStart()
@@ -107,6 +109,18 @@ public class Player : MonoBehaviourOwner
         {
             shooter.AssignBullet(1);
         }
+    }
+
+    private void Respawn()
+    {
+        Camera camera = FindObjectOfType<Camera>();
+        Vector3 position = transform.position;
+        position.y = camera.transform.position.y + camera.orthographicSize;
+        transform.position = position;
+        _rigidBody.velocity = Vector2.zero;
+
+        _state = State.Jumping;
+        _invincibility.Trigger();
     }
 
     private void Shoot()
@@ -301,14 +315,14 @@ public class Player : MonoBehaviourOwner
                 }
                 else
                 {
+                    Physics2D.IgnoreLayerCollision(this.gameObject.layer, (int)Layer.Platform, false);
                     mover.Move(new Vector2(0, 0));
                 }
                 hitbox.isInvincible = true;
 
                 if(Time.time - _deadTime > 2)
                 {
-                    _state = State.Idle;
-                    hitbox.isInvincible = false;
+                    Respawn();
                 }
 
                 break;
@@ -331,7 +345,7 @@ public class Player : MonoBehaviourOwner
     {
         if (_state == State.Dead) return;
 
-        hitbox.isInvincible = false;
+        hitbox.isInvincible = _invincibility.isInvincible;
         switch (_state)
         {
             case State.Idle:

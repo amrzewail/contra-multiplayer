@@ -228,4 +228,6 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   _index: 0
+  destroyAfter: 1.5
+  _explosion: {fileID: 4412780893324412060, guid: 128f21651ddbc674787f7df3be773f36, type: 3}
   speed: 8

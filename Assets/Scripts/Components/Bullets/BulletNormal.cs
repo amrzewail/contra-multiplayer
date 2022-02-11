@@ -7,6 +7,9 @@ using UnityEngine;
 public class BulletNormal : NetworkBehaviourOwner, IBullet
 {
     [SerializeField] int _index = 0;
+    [SerializeField] float destroyAfter = 1f;
+
+    [SerializeField] GameObject _explosion;
 
     public int index => _index;
 
@@ -29,14 +32,14 @@ public class BulletNormal : NetworkBehaviourOwner, IBullet
 
         transform.position += instance.transform.position;
 
-        Invoke("CmdDestroySelf", 1);
+        Invoke("CmdDestroySelf", destroyAfter);
 
         GetComponentInChildren<Damage>().OnHit.AddListener(OnHitCallback);
     }
 
     private void OnHitCallback(IHitbox hitbox)
     {
-        Destroy(this.gameObject);
+        Destroy();
         CmdDestroySelf();
     }
 
@@ -50,7 +53,7 @@ public class BulletNormal : NetworkBehaviourOwner, IBullet
     public void RpcDestroySelf()
     {
         if (!this || !this.gameObject) return;
-        Destroy(this.gameObject);
+        Destroy();
     }
 
 
@@ -58,6 +61,12 @@ public class BulletNormal : NetworkBehaviourOwner, IBullet
     {
         transform.position += _direction.normalized * speed * Time.deltaTime;
 
+    }
+
+    private void Destroy()
+    {
+        GameObject.Instantiate(_explosion).transform.position = this.transform.position;
+        Destroy(this.gameObject);
     }
 
     public void SetDirection(Vector2 direction)
