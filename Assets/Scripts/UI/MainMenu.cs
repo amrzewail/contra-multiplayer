@@ -27,7 +27,7 @@ namespace UI
             while(root.anchoredPosition3D.x > 1)
             {
                 pos = root.anchoredPosition3D;
-                pos.x = Mathf.MoveTowards(pos.x, 0, Time.deltaTime * 350);
+                pos.x = Mathf.MoveTowards(pos.x, 0, Time.deltaTime * 315 * (Screen.width / 800f));
                 root.anchoredPosition3D = pos;
                 yield return null;
             }

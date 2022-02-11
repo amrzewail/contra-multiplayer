@@ -207,6 +207,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -1525,6 +1526,65 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Legs Run 1: -1112540174957815319
+      Water Shooting High 1: -998993890745564088
+      Legs Run 2: 6535109423327409043
+      Aim Down: 5192227632922971349
+      Bullet Normal: -6877828694723992983
+      Water Shooting Up 1: 7340443950661251003
+      Dive 1: -1074738316540178080
+      Shoot Straight: -7914079296390950500
+      Legs Idle: -2892458618919583672
+      Run Down Shoot 6: 8148294062614710558
+      Bullet Big: -5718674761601205386
+      Run Shoot 6: 8030937428476008837
+      Body Run 5: 1047169283769303222
+      Legs Run 4: -5146020013555506694
+      Run Down Shoot 3: -5970616580229098724
+      Shoot Down: -3464494612551440950
+      Water Aim Straight: -3964197973934395473
+      Jump 2: -8975017171555315504
+      Run Down Shoot 2: -1878813536136958894
+      Water Aim Up 2: -1523847652799924369
+      Run Up Shoot 6: -2271392787263640857
+      Dive 2: 8571792221730450013
+      Jump 4: 6152951045423901791
+      Body Run 3: -5210164673568959710
+      Run Down Shoot 5: -5268613961077778176
+      Legs Run 6: -3919427526645705650
+      Jump 1: -2625971375082706230
+      Dead 5: 7893265355985664126
+      Run Up Shoot 5: -5086366593234394720
+      Shoot High: 8340412939054037477
+      Body Run 2: 1476778276274134104
+      Run Shoot 5: 3894927606136178107
+      Run Up Shoot 4: 4459146519005260754
+      Water Idle 2: -8779055399239729808
+      Water Aim Up: 8068249930730714602
+      Dead 3: 6984097859350768903
+      Legs Run 3: -2357856800417437739
+      Dead 2: 8020533409223332744
+      Water Idle 1: 8355704211671882035
+      Water Aim High: -2252130554807991125
+      Water Aim High 2: 5458291075477958982
+      Dead 4: -5412029509738281114
+      Aim Low: -1255948113214942211
+      Aim Straight: -8689991667420190741
+      Legs Run 5: 7004902390997308770
+      Body Run 1: -8078647055261997815
+      Aim High: -2093143877380252191
+      Aim Up: 5786050863199565366
+      Water Shooting Straight 1: -9167455286861306582
+      Splash: -881042599823958739
+      Run Up Shoot 2: 3008030599839579122
+      Run Shoot 4: 2654474036420700930
+      Shoot Low: -2956711266489372733
+      Dead 1: -6266563325087458980
+      Body Run 4: -7898330309824910494
+      Body Run 6: -5045640556201848750
+      Shoot Up: 1637602197772819392
+      Jump 3: 8563333738879766359
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

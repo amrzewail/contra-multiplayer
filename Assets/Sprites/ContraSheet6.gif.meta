@@ -48,6 +48,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -316,6 +317,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      ContraSheet6_3: -1975791460181110022
+      ContraSheet6_6: -7137154763879195912
+      ContraSheet6_4: -6419899573568675581
+      ContraSheet6_7: 6825425726172576471
+      ContraSheet6_2: 1017865733280934575
+      ContraSheet6_0: 2902304958328315690
+      ContraSheet6_5: 7087625857801123953
+      ContraSheet6_1: -3218635458688805412
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

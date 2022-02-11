@@ -57,6 +57,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -388,6 +389,18 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Soldier Straight 2: -4379744135035803608
+      Soldier Straight 1: -2319483031994671190
+      Soldier High 1: -3793403216016668138
+      Thief Run 3: 4176941755035454086
+      Soldier High 2: 7458858278290375871
+      Thief Run 1: -1185165223248008553
+      Thief Run 2: -6034522455106717724
+      Thief Jump: 8500851167227188361
+      Thief Run 4: 1733650390023279314
+      Thief Run 5: 4321487748626279197
+      Soldier Low: -6438459705901272254
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

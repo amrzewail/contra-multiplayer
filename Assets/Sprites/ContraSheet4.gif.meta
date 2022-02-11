@@ -222,6 +222,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -1708,6 +1709,73 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      ContraSheet4_58: -3264091966955183646
+      ContraSheet4_0: -1813247173979453597
+      ContraSheet4_36: -8657537158111081350
+      ContraSheet4_19: -380061595167628181
+      ContraSheet4_59: 6869408352814173410
+      ContraSheet4_6: -4160303554549609961
+      ContraSheet4_50: -5927898432102771905
+      ContraSheet4_35: 2842459677001732513
+      ContraSheet4_48: 8090120639488189684
+      ContraSheet4_21: 7399632868215007402
+      ContraSheet4_12: -4863872488824494384
+      ContraSheet4_45: 5341057206307262601
+      ContraSheet4_15: 799763084455236645
+      ContraSheet4_20: 2258712212077189801
+      ContraSheet4_57: -7564442318632898257
+      ContraSheet4_2: -4033575176325398059
+      ContraSheet4_55: 46381455009985862
+      ContraSheet4_47: -8763803905237233513
+      ContraSheet4_56: -1391425216655733997
+      ContraSheet4_7: -5362552395052611487
+      ContraSheet4_13: -91678488576825668
+      ContraSheet4_42: -7812774520076187191
+      ContraSheet4_40: -4923211933914811581
+      ContraSheet4_53: -7686170707662132269
+      ContraSheet4_9: 4779179089023187438
+      ContraSheet4_11: -5315909519602906216
+      ContraSheet4_18: -7119929579593016365
+      ContraSheet4_27: 4024756073619946544
+      ContraSheet4_44: 7235819875821386164
+      ContraSheet4_76: -7376659232270419146
+      ContraSheet4_32: 4780637997985018565
+      ContraSheet4_14: -7687477000942473367
+      ContraSheet4_25: 498399931857955675
+      ContraSheet4_54: 3835286010660829536
+      ContraSheet4_33: 7960257736227259273
+      ContraSheet4_60: 7821645855256194754
+      ContraSheet4_17: 3482454445433821518
+      ContraSheet4_24: 6230380054853573581
+      ContraSheet4_8: 8563608989776199385
+      ContraSheet4_10: 3423499998678329647
+      ContraSheet4_43: -8935647767296903617
+      ContraSheet4_52: 2271922750894677545
+      ContraSheet4_62: 2180713743700477091
+      ContraSheet4_29: 1033452098343873292
+      ContraSheet4_16: 8925679373668905185
+      ContraSheet4_77: 318924544023478089
+      ContraSheet4_5: 4395449197178286284
+      ContraSheet4_41: 85642472185527249
+      ContraSheet4_34: -5651665324996346370
+      ContraSheet4_23: -213610861726558050
+      ContraSheet4_51: 8274021314430364935
+      ContraSheet4_22: 7148644913357315551
+      ContraSheet4_63: 1648610845461173805
+      ContraSheet4_26: -2120807664086186499
+      ContraSheet4_61: -8157639115050029591
+      ContraSheet4_49: -5464431208955029651
+      ContraSheet4_1: 7244997734539477061
+      ContraSheet4_4: -2942433605488191581
+      ContraSheet4_30: -8669349641301288278
+      ContraSheet4_46: 1746929882066043858
+      ContraSheet4_3: -6058880793555168455
+      ContraSheet4_37: 168861368119042618
+      ContraSheet4_31: 5358918993572460693
+      ContraSheet4_28: 4040499558423228889
+      ContraSheet4_39: -4273715963761091033
+      ContraSheet4_38: 6898224011112788663
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
