@@ -1,6 +1,7 @@
 using Mirror;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SuperMachine : NetworkBehaviourOwner
@@ -86,8 +87,8 @@ public class SuperMachine : NetworkBehaviourOwner
     private State _state;
     private ShooterState _rightShooterState;
     private ShooterState _leftShooterState;
-    private Player _target;
 
+    private PlayerTargeter _targeter;
 
     [SyncVar] private int _currentCoreHealth;
     [SyncVar] private int _currentRightShooterHealth;
@@ -106,6 +107,7 @@ public class SuperMachine : NetworkBehaviourOwner
         _currentRightShooterHealth = rightShooterHealth;
 
         _currentBullets = maxBulletCount;
+        _targeter = GetComponentInChildren<PlayerTargeter>();
     }
 
     public override void ServerUpdate()
@@ -116,9 +118,9 @@ public class SuperMachine : NetworkBehaviourOwner
 
         for(int i = 0; i < (int)Part.Count; i++)
         {
-            if (GetHitbox((Part)i).IsHit())
+            if (GetHitbox((Part)i).IsHit(out int x))
             {
-                CmdHit((Part)i);
+                CmdHit((Part)i, x);
             }
         }
     }
@@ -127,9 +129,9 @@ public class SuperMachine : NetworkBehaviourOwner
     {
         for (int i = 0; i < (int)Part.Count; i++)
         {
-            if (GetHitbox((Part)i).IsHit())
+            if (GetHitbox((Part)i).IsHit(out int x))
             {
-                CmdHit((Part)i);
+                CmdHit((Part)i, x);
             }
         }
     }
@@ -139,8 +141,8 @@ public class SuperMachine : NetworkBehaviourOwner
         switch (_state)
         {
             case State.Inactive:
-                UpdateTarget(2);
-                if (_target)
+                _targeter.UpdateTarget(2, attackRange);
+                if (_targeter.target)
                 {
                     RpcInvokeBossStarted();
                     _state = State.Shooting;
@@ -187,30 +189,11 @@ public class SuperMachine : NetworkBehaviourOwner
         }
     }
 
-    private void UpdateTarget(float cooldown)
-    {
-        if (Time.time - _lastTargetUpdateTime < cooldown) return;
-
-        _lastTargetUpdateTime = Time.time;
-        Player[] players = Object.FindObjectsOfType<Player>();
-        float dist = Vector2.Distance(transform.position, players[0].transform.position);
-        int targetIndex = 0;
-        for (int i = 1; i < players.Length; i++)
-        {
-            float d = Vector2.Distance(transform.position, players[i].transform.position);
-            if (d < dist)
-            {
-                dist = d;
-                targetIndex = i;
-            }
-        }
-        if (dist < attackRange) _target = players[targetIndex];
-        else _target = null;
-    }
 
     private void UpdateDirection()
     {
-        if (!_target) return;
+        if (!_targeter.target)
+            return;
 
     }
 
@@ -286,26 +269,26 @@ public class SuperMachine : NetworkBehaviourOwner
     }
 
     [Command(requiresAuthority = false)]
-    private void CmdHit(Part part)
+    private void CmdHit(Part part, int hits)
     {
         switch (part)
         {
             case Part.LeftShooter:
-                _currentLeftShooterHealth--;
+                _currentLeftShooterHealth-= hits;
                 if (_currentLeftShooterHealth <= 0)
                 {
                     Die(part);
                 }
                 break;
             case Part.RightShooter:
-                _currentRightShooterHealth--;
+                _currentRightShooterHealth-= hits;
                 if (_currentRightShooterHealth <= 0)
                 {
                     Die(part);
                 }
                 break;
             case Part.Core:
-                _currentCoreHealth--;
+                _currentCoreHealth-=hits;
                 if (_currentCoreHealth <= 0)
                 {
                     RpcInvokeBossDefeated();

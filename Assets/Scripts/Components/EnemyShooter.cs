@@ -110,4 +110,14 @@ public class EnemyShooter : MonoBehaviourOwner, IShooter
     {
         _currentBullets = maxBullets;
     }
+
+    public void IncreaseFireRate(int addedRate)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void ResetFireRate()
+    {
+        throw new System.NotImplementedException();
+    }
 }

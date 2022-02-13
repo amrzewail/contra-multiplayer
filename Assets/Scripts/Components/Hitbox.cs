@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class Hitbox : MonoBehaviourOwner, IHitbox
 {
-    [SerializeField] bool _isPlayer;
+    [SerializeField] List<DamageType> _supportedTypes;
     [SerializeField] bool _isInvincible;
 
     [SerializeField] Vector2 pivot = new Vector2(0.5f, 0.5f);
@@ -14,10 +14,12 @@ public class Hitbox : MonoBehaviourOwner, IHitbox
     private BoxCollider2D _col;
     private bool _isHit = false;
     private Vector2 _startingOffset;
+    private int _hitsCount = 0;
 
     public Action<float> OnVSizeChanged { get; set; }
     public Action<float> OnHSizeChanged { get; set; }
     public Action<float> OnVOffsetChanged { get; set; }
+    public List<DamageType> supportedTypes { get => _supportedTypes; set => _supportedTypes = value; }
 
     public override void MyStart()
     {
@@ -29,20 +31,29 @@ public class Hitbox : MonoBehaviourOwner, IHitbox
         MyStart();
     }
 
-    public bool isPlayer { get => _isPlayer; set => _isPlayer = value; }
+    public override void MyLateUpdate()
+    {
+        _hitsCount = 0;
+    }
+
     public bool isInvincible { get => _isInvincible; set => _isInvincible = value; }
 
-    public bool Hit()
+    public bool Hit(DamageType type)
     {
+        if (!supportedTypes.Contains(type) && type != DamageType.General) return false;
         if (isInvincible) return false;
         _isHit = true;
+        _hitsCount++;
         return true;
     }
 
-    public bool IsHit()
+    public bool IsHit(out int hitsCount)
     {
+        hitsCount = 0;
         if (_isHit)
         {
+            hitsCount = _hitsCount;
+            _hitsCount = 0;
             _isHit = false;
             return true;
         }

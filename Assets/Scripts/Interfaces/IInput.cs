@@ -10,11 +10,7 @@ public interface IInput
 
     public bool Jump();
 
-    public bool JumpHold();
+    public bool ShootDown();
 
-    public bool IsRunning();
-
-    public bool IsCrouching();
-
-    public bool Shoot();
+    public bool ShootHold();
 }

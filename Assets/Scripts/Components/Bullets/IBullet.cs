@@ -6,6 +6,12 @@ public interface IBullet
 {
     int index { get; }
 
+    int bullets { get; }
+
+    float reloadInterval { get; }
+    int fireRate { get; }
+    bool isContinuous { get; }
+
     GameObject gameObject { get; }
 
     void SetDirection(Vector2 direction);

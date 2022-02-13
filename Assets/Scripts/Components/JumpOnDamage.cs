@@ -26,16 +26,5 @@ public class JumpOnDamage : MonoBehaviour
     internal void OnTriggerEnter2D(Collider2D collision)
     {
         IHitbox hit;
-        if ((hit = collision.GetComponent<IHitbox>()) != null)
-        {
-            if ((hit.isPlayer && damagePlayer) || (!hit.isPlayer && !damagePlayer))
-            {
-                if (_positionOffset.y < -0.1f && !hit.isInvincible)
-                {
-                    hit.Hit();
-                    OnHit?.Invoke();
-                }
-            }
-        }
     }
 }

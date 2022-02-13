@@ -27,7 +27,9 @@ public class Bridge : NetworkBehaviourOwner
 
     public override void ServerOnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.layer == (int)Layer.Player)
+        if (!collider) return;
+        Player player = collider.GetComponent<Player>();
+        if (player && !player.isInvader)
         {
             StartChain();
             RpcStartChain();
@@ -36,7 +38,9 @@ public class Bridge : NetworkBehaviourOwner
 
     public override void ClientOnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.layer == (int)Layer.Player)
+        if (!collider) return;
+        Player player = collider.GetComponent<Player>();
+        if (player && !player.isInvader)
         {
             StartChain();
         }

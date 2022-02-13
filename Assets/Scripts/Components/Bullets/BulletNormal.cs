@@ -4,22 +4,16 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class BulletNormal : NetworkBehaviourOwner, IBullet
+public class BulletNormal : BulletBase, IBullet
 {
+
     [SerializeField] int _index = 0;
     [SerializeField] float destroyAfter = 1f;
 
-    [SerializeField] GameObject _explosion;
 
     public int index => _index;
 
-    public float speed = 1;
 
-    [SyncVar]
-    private Vector3 _direction;
-
-    [SyncVar]
-    private uint _shooterId;
 
     public override void OtherStart()
     {
@@ -30,30 +24,11 @@ public class BulletNormal : NetworkBehaviourOwner, IBullet
     {
         var instance = FindObjectsOfType<NetworkBehaviourOwner>().First(x => x.netId.Equals(_shooterId));
 
-        transform.position += instance.transform.position;
+        transform.position += instance.transform.position - Vector3.one * 9000;
 
         Invoke("CmdDestroySelf", destroyAfter);
 
         GetComponentInChildren<Damage>().OnHit.AddListener(OnHitCallback);
-    }
-
-    private void OnHitCallback(IHitbox hitbox)
-    {
-        Destroy();
-        CmdDestroySelf();
-    }
-
-    [Command(requiresAuthority = false)]
-    public void CmdDestroySelf()
-    {
-        RpcDestroySelf();
-    }
-
-    [ClientRpc]
-    public void RpcDestroySelf()
-    {
-        if (!this || !this.gameObject) return;
-        Destroy();
     }
 
 
@@ -61,21 +36,5 @@ public class BulletNormal : NetworkBehaviourOwner, IBullet
     {
         transform.position += _direction.normalized * speed * Time.deltaTime;
 
-    }
-
-    private void Destroy()
-    {
-        GameObject.Instantiate(_explosion).transform.position = this.transform.position;
-        Destroy(this.gameObject);
-    }
-
-    public void SetDirection(Vector2 direction)
-    {
-        _direction = direction;
-    }
-
-    public void SetShooterId(uint id)
-    {
-        _shooterId = id;
     }
 }

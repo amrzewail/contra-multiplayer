@@ -16,6 +16,6 @@ MonoBehaviour:
   loop: 0
   speed: 10
   frames:
-  - {fileID: 3549899909016842635, guid: ab05ed5bca42e8f46b01799acaab56bc, type: 3}
+  - {fileID: -2093143877380252191, guid: ab05ed5bca42e8f46b01799acaab56bc, type: 3}
   - {fileID: 8340412939054037477, guid: ab05ed5bca42e8f46b01799acaab56bc, type: 3}
   animationEvents: []

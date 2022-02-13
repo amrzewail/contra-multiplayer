@@ -20,11 +20,11 @@ public class OnTrigger : MonoBehaviourOwner
 
     public override void ServerOnTriggerEnter2D(Collider2D collider)
     {
-        if (serverAuthority) InternalOnTriggerEnter2D(collider);
+        InternalOnTriggerEnter2D(collider);
     }
     public override void ServerOnTriggerExit2D(Collider2D collider)
     {
-        if (serverAuthority) InternalOnTriggerExit2D(collider);
+        InternalOnTriggerExit2D(collider);
     }
     public override void ClientOnTriggerEnter2D(Collider2D collider)
     {

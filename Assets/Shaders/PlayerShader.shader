@@ -5,6 +5,7 @@ Shader "Unlit/PlayerShader"
 		[PerRendererData] _MainTex ("Sprite Texture", 2D) = "white" {}
 		_Color ("Tint", Color) = (1,1,1,1)
 		_ReplaceColor("Replace Color", Color) = (0, 0, 1, 1)
+		_OutlineColor("Outline Color", Color) = (0, 0, 0, 1)
 		[MaterialToggle] PixelSnap ("Pixel snap", Float) = 0
 	}
 
@@ -43,11 +44,13 @@ Shader "Unlit/PlayerShader"
 			{
 				float4 vertex   : SV_POSITION;
 				fixed4 color    : COLOR;
+				fixed4 outlineColor : COLOR1;
 				float2 texcoord  : TEXCOORD0;
 			};
 			
 			fixed4 _Color;
 			fixed4 _ReplaceColor;
+			fixed4 _OutlineColor;
 
 			v2f vert(appdata_t IN)
 			{
@@ -55,6 +58,7 @@ Shader "Unlit/PlayerShader"
 				OUT.vertex = UnityObjectToClipPos(IN.vertex);
 				OUT.texcoord = IN.texcoord;
 				OUT.color = IN.color * _Color;
+				OUT.outlineColor = _OutlineColor;
 				#ifdef PIXELSNAP_ON
 				OUT.vertex = UnityPixelSnap (OUT.vertex);
 				#endif
@@ -84,7 +88,11 @@ Shader "Unlit/PlayerShader"
 
 				half margin = 0.3;
 
-				if(abs(c.r - _ReplaceColor.r) < margin && abs(c.g - _ReplaceColor.g) < margin && abs(c.b - _ReplaceColor.b) < margin){
+				if(abs(c.r - 0) < margin && abs(c.g - 0) < margin && abs(c.b - 0) < margin)
+				{
+					c.rgb = IN.outlineColor;
+				} else if(abs(c.r - _ReplaceColor.r) < margin && abs(c.g - _ReplaceColor.g) < margin && abs(c.b - _ReplaceColor.b) < margin)
+				{
 					c.rgb = IN.color.rgb;
 				}
 

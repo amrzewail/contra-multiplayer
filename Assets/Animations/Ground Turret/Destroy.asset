@@ -16,9 +16,9 @@ MonoBehaviour:
   loop: 0
   speed: 8
   frames:
-  - {fileID: -6863203622448469594, guid: d1650c9550f0f8244873bfbc346adea1, type: 3}
-  - {fileID: 8653300689978295583, guid: d1650c9550f0f8244873bfbc346adea1, type: 3}
-  - {fileID: -6760588602598073362, guid: d1650c9550f0f8244873bfbc346adea1, type: 3}
-  - {fileID: -6863203622448469594, guid: d1650c9550f0f8244873bfbc346adea1, type: 3}
+  - {fileID: -1715718820, guid: d1650c9550f0f8244873bfbc346adea1, type: 3}
+  - {fileID: 1393711756, guid: d1650c9550f0f8244873bfbc346adea1, type: 3}
+  - {fileID: 1932101804, guid: d1650c9550f0f8244873bfbc346adea1, type: 3}
+  - {fileID: -1715718820, guid: d1650c9550f0f8244873bfbc346adea1, type: 3}
   - {fileID: 0}
   animationEvents: []

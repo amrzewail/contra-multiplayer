@@ -7,6 +7,8 @@ public class LevelController : MonoBehaviour
     public static LevelController instance { get; private set; }
 
     [SerializeField] Transform spawnLocation;
+    [SerializeField] Transform invaderSpawnLocation;
+
     [SerializeField] Transform bossCameraLocation;
 
     public bool isBossDefeated = false;
@@ -26,6 +28,11 @@ public class LevelController : MonoBehaviour
     public Transform GetSpawnLocation()
     {
         return spawnLocation;
+    }
+
+    public Transform GetInvaderSpawnLocation()
+    {
+        return invaderSpawnLocation;
     }
 
     public Transform GetBossCameraLocation()

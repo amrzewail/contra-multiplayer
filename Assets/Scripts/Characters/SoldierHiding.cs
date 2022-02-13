@@ -1,6 +1,7 @@
 using Mirror;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SoldierHiding : NetworkBehaviourOwner
@@ -17,7 +18,8 @@ public class SoldierHiding : NetworkBehaviourOwner
 
     private State _state = State.Aiming;
     private AimDirection _aimDirection = AimDirection.Straight;
-    private Player _target;
+    private PlayerTargeter _targeter;
+
     private float _lastTargetUpdateTime = -5000;
     private float _hidingStartedTime = 0;
     private float _aimingStartedTime = 0;
@@ -44,6 +46,7 @@ public class SoldierHiding : NetworkBehaviourOwner
         Physics2D.IgnoreLayerCollision((int)Layer.Character, (int)Layer.Character);
         _startYPosition = transform.position.y;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+        _targeter = GetComponentInChildren<PlayerTargeter>();
     }
 
     public override void ServerUpdate()
@@ -54,7 +57,7 @@ public class SoldierHiding : NetworkBehaviourOwner
 
         UpdateAnimations();
 
-        if (hitbox.IsHit())
+        if (hitbox.IsHit(out int _))
         {
             Die();
         }
@@ -62,40 +65,20 @@ public class SoldierHiding : NetworkBehaviourOwner
 
     public override void ClientUpdate()
     {
-        if (hitbox.IsHit())
+        if (hitbox.IsHit(out int _))
         {
             DisableHitboxes();
             CmdDisableHitboxes();
         }
     }
 
-    private void UpdateTarget(float cooldown)
-    {
-        if (Time.time - _lastTargetUpdateTime < cooldown) return;
-
-        _lastTargetUpdateTime = Time.time;
-        Player[] players = Object.FindObjectsOfType<Player>();
-        float dist = Vector2.Distance(transform.position, players[0].transform.position);
-        int targetIndex = 0;
-        for(int i = 1; i < players.Length; i++)
-        {
-            float d = Vector2.Distance(transform.position, players[i].transform.position);
-            if(d < dist)
-            {
-                dist = d;
-                targetIndex = i;
-            }
-        }
-        if (dist < attackRange) _target = players[targetIndex];
-        else _target = null;
-    }
 
     private void UpdateDirection()
     {
         _aimDirection = AimDirection.Straight;
-        if (_target)
+        if (_targeter.target)
         {
-            Vector2 axis = (_target.transform.position - transform.position).normalized;
+            Vector2 axis = (_targeter.target.transform.position - transform.position).normalized;
 
             if (axis.x > 0) lookDirection = LookDirection.Right;
             else lookDirection = LookDirection.Left;
@@ -106,9 +89,9 @@ public class SoldierHiding : NetworkBehaviourOwner
 
     private bool Shoot()
     {
-        if (!_target) return false;
+        if (!_targeter.target) return false;
 
-        var axis = (_target.transform.position - transform.position);
+        var axis = (_targeter.target.transform.position - transform.position);
         axis.y = 0;
         if (shooter.Shoot(_aimDirection, axis))
         {
@@ -138,7 +121,7 @@ public class SoldierHiding : NetworkBehaviourOwner
                 position.y = Mathf.MoveTowards(position.y, _startYPosition, Time.deltaTime * 4);
                 transform.position = position;
 
-                UpdateTarget(5);
+                _targeter.UpdateTarget(5, attackRange);
 
                 UpdateDirection();
 

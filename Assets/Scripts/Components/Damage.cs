@@ -5,9 +5,9 @@ using UnityEngine.Events;
 
 public class Damage : MonoBehaviourOwner
 {
-    [SerializeField] bool damagePlayer = true;
-    public bool generalDamage = false;
+    public DamageType damageType = DamageType.Enemy;
     public UnityEvent<IHitbox> OnHit;
+
 
     public override void OnTriggerEnter2D(Collider2D collision)
     {
@@ -17,15 +17,9 @@ public class Damage : MonoBehaviourOwner
         IHitbox hit;
         if ((hit = collision.GetComponent<IHitbox>()) != null)
         {
-            if (generalDamage || (hit.isPlayer && damagePlayer) || (!hit.isPlayer && !damagePlayer))
+            if (hit.Hit(damageType))
             {
-                if (generalDamage || damagePlayer || (!damagePlayer && isMine))
-                {
-                    if (hit.Hit())
-                    {
-                        OnHit?.Invoke(hit);
-                    }
-                }
+                OnHit?.Invoke(hit);
             }
         }
     }

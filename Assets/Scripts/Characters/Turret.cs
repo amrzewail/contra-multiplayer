@@ -1,6 +1,7 @@
 using Mirror;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Turret : NetworkBehaviourOwner
@@ -48,7 +49,7 @@ public class Turret : NetworkBehaviourOwner
     private State _state;
     private Direction _currentDirection;
     private Direction _targetDirection;
-    private Player _target;
+    private PlayerTargeter _targeter;
     [SyncVar] private int _currentHealth;
     private float _lastTargetUpdateTime = -5000;
     private float _lastRotateTime = 0;
@@ -58,6 +59,7 @@ public class Turret : NetworkBehaviourOwner
     {
         _state = State.Closed;
         _currentHealth = health;
+        _targeter = GetComponentInChildren<PlayerTargeter>();
     }
 
     public override void ServerUpdate()
@@ -66,17 +68,17 @@ public class Turret : NetworkBehaviourOwner
 
         UpdateAnimations();
 
-        if (hitbox.IsHit())
+        if (hitbox.IsHit(out int x))
         {
-            CmdHit();
+            CmdHit(x);
         }
     }
 
     public override void ClientUpdate()
     {
-        if (hitbox.IsHit())
+        if (hitbox.IsHit(out int x))
         {
-            CmdHit();
+            CmdHit(x);
         }
     }
 
@@ -85,8 +87,8 @@ public class Turret : NetworkBehaviourOwner
         switch (_state)
         {
             case State.Closed:
-                UpdateTarget(1);
-                if (_target)
+                _targeter.UpdateTarget(1, attackRange);
+                if (_targeter.target)
                 {
                     _state = State.Opening;
                 }
@@ -95,7 +97,7 @@ public class Turret : NetworkBehaviourOwner
             case State.Opening:
                 if (animator.IsAnimationFinished())
                 {
-                    UpdateTarget(1);
+                    _targeter.UpdateTarget(1, attackRange);
                     UpdateDirection();
                     _currentDirection = _targetDirection;
                     _state = State.Aiming;
@@ -103,11 +105,11 @@ public class Turret : NetworkBehaviourOwner
                 break;
 
             case State.Aiming:
-                UpdateTarget(1);
+                _targeter.UpdateTarget(1, attackRange);
                 UpdateDirection();
                 hitbox.isInvincible = false;
 
-                if (!_target)
+                if (!_targeter.target)
                 {
                     _state = State.Closing;
                 }
@@ -135,32 +137,11 @@ public class Turret : NetworkBehaviourOwner
         }
     }
 
-    private void UpdateTarget(float cooldown)
-    {
-        if (Time.time - _lastTargetUpdateTime < cooldown) return;
-
-        _lastTargetUpdateTime = Time.time;
-        Player[] players = Object.FindObjectsOfType<Player>();
-        float dist = Vector2.Distance(transform.position, players[0].transform.position);
-        int targetIndex = 0;
-        for (int i = 1; i < players.Length; i++)
-        {
-            float d = Vector2.Distance(transform.position, players[i].transform.position);
-            if (d < dist)
-            {
-                dist = d;
-                targetIndex = i;
-            }
-        }
-        if (dist < attackRange) _target = players[targetIndex];
-        else _target = null;
-    }
-
     private void UpdateDirection()
     {
-        if (!_target) return;
+        if (!_targeter.target) return;
 
-        Vector2 axis = (_target.transform.position - transform.position).normalized;
+        Vector2 axis = (_targeter.target.transform.position - transform.position).normalized;
         float angle = Mathf.Atan2(axis.y, axis.x) * Mathf.Rad2Deg;
         angle = 90 - angle;
         if (angle < 0) angle += 360;
@@ -247,9 +228,9 @@ public class Turret : NetworkBehaviourOwner
     }
 
     [Command(requiresAuthority = false)]
-    private void CmdHit()
+    private void CmdHit(int hits)
     {
-        _currentHealth--;
+        _currentHealth-=hits;
         if(_currentHealth <= 0)
         {
             Die();

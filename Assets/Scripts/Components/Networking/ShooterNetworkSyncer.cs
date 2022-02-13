@@ -11,6 +11,8 @@ public class ShooterNetworkSyncer : NetworkBehaviourOwner
 
     public IShooter shooter => (IShooter)_shooter;
 
+    [HideInInspector] public bool isInvader = false;
+
     public override void MyStart()
     {
         if (serverAuthority) return;
@@ -58,9 +60,13 @@ public class ShooterNetworkSyncer : NetworkBehaviourOwner
         {
             var instance = FindObjectsOfType<ShooterNetworkSyncer>().First(x => x.identity.netId.Equals(netID));
 
-            GameObject g = Instantiate(shooter.GetBullet().gameObject, position, Quaternion.identity);
+            GameObject g = Instantiate(shooter.GetBullet().gameObject, Vector3.one * 9000 + position, Quaternion.identity);
             g.GetComponent<IBullet>().SetDirection(direction);
             g.GetComponent<IBullet>().SetShooterId(netID);
+            if (instance.gameObject.layer == (int)Layer.Player && instance.isInvader)
+            {
+                g.GetComponentsInChildren<Damage>().ToList().ForEach(x => x.damageType = DamageType.Invader);
+            }
             var connection = instance.connectionToClient;
             NetworkServer.Spawn(g, connection);
         }

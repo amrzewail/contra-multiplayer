@@ -18,14 +18,7 @@ public class GameNetworkManager : NetworkManager
     public struct CreateCharacterMessage : NetworkMessage
     {
         public Color color;
-    }
-
-    public enum Color
-    {
-        Blue,
-        Red,
-        Yellow,
-        Green
+        public bool isInvader;
     }
 
 
@@ -109,7 +102,8 @@ public class GameNetworkManager : NetworkManager
         // you can send the message here, or wherever else you want
         CreateCharacterMessage characterMessage = new CreateCharacterMessage
         {
-            color = (Color)Random.Range(0, 4)
+            color = new UnityEngine.Color(Random.Range(0f, 1f), Random.Range(0f, 1f),Random.Range(0f, 1f)),
+            isInvader = GameManager.instance.isInvader
         };
 
         NetworkClient.Send(characterMessage);
@@ -120,13 +114,19 @@ public class GameNetworkManager : NetworkManager
         // playerPrefab is the one assigned in the inspector in Network
         // Manager but you can use different prefabs per race for example
         GameObject playerObj = Instantiate(playerPrefab);
-        playerObj.transform.position = LevelController.instance.GetSpawnLocation().position;
-        playerObj.GetComponent<PlayerIdentity>().SetColor(new UnityEngine.Color(
-                                                        Random.Range(0f, 1f),
-                                                        Random.Range(0f, 1f),
-                                                        Random.Range(0f, 1f)
-                                                    ));
+
+        playerObj.GetComponent<PlayerIdentity>().SetColor(message.color);
         playerObj.GetComponent<PlayerIdentity>().SetName($"Player {NetworkServer.connections.Count}");
+
+        if (message.isInvader)
+        {
+            playerObj.GetComponent<PlayerIdentity>().SetAsInvader();
+            playerObj.transform.position = LevelController.instance.GetInvaderSpawnLocation().position;
+        }
+        else
+        {
+            playerObj.transform.position = LevelController.instance.GetSpawnLocation().position;
+        }
         // call this to use this gameobject as the primary controller
         NetworkServer.AddPlayerForConnection(conn, playerObj);
         NetworkServer.SetClientReady(conn);

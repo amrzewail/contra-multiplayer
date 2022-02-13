@@ -1,6 +1,7 @@
 using Mirror;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Thief : NetworkBehaviourOwner
@@ -22,7 +23,7 @@ public class Thief : NetworkBehaviourOwner
     public IGrounder grounder => (IGrounder)_grounder;
     public IHitbox hitbox => (IHitbox)_hitbox;
 
-    private Player _target;
+    private PlayerTargeter _targeter;
     private float _lastTargetUpdateTime;
 
     private enum State
@@ -38,6 +39,7 @@ public class Thief : NetworkBehaviourOwner
     public override void ServerStart()
     {
         Physics2D.IgnoreLayerCollision((int)Layer.Character, (int)Layer.Character);
+        _targeter = GetComponentInChildren<PlayerTargeter>();
     }
 
     public override void ServerUpdate()
@@ -48,7 +50,7 @@ public class Thief : NetworkBehaviourOwner
 
         UpdateAnimations();
 
-        if (hitbox.IsHit())
+        if (hitbox.IsHit(out int _))
         {
             jumper.Jump();
             _state = State.Dead;
@@ -59,7 +61,7 @@ public class Thief : NetworkBehaviourOwner
 
     public override void ClientUpdate()
     {
-        if (hitbox.IsHit())
+        if (hitbox.IsHit(out int _))
         {
             DisableHitboxes();
             CmdDisableHitboxes();
@@ -72,26 +74,7 @@ public class Thief : NetworkBehaviourOwner
 
     }
 
-    private void UpdateTarget(float cooldown)
-    {
-        if (Time.time - _lastTargetUpdateTime < cooldown) return;
 
-        _lastTargetUpdateTime = Time.time;
-        Player[] players = Object.FindObjectsOfType<Player>();
-        float dist = Vector2.Distance(transform.position, players[0].transform.position);
-        int targetIndex = 0;
-        for (int i = 1; i < players.Length; i++)
-        {
-            float d = Vector2.Distance(transform.position, players[i].transform.position);
-            if (d < dist)
-            {
-                dist = d;
-                targetIndex = i;
-            }
-        }
-        if (dist < moveRange) _target = players[targetIndex];
-        else _target = null;
-    }
 
     private void UpdateState()
     {
@@ -101,8 +84,8 @@ public class Thief : NetworkBehaviourOwner
         switch (_state)
         {
             case State.Moving:
-                UpdateTarget(0.5f);
-                if (_target)
+                _targeter.UpdateTarget(0.5f, moveRange);
+                if (_targeter.target)
                 {
                     if (!grounder.IsGrounded())
                     {

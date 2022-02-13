@@ -1,6 +1,7 @@
 using Mirror;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GroundTurret : NetworkBehaviourOwner
@@ -40,7 +41,7 @@ public class GroundTurret : NetworkBehaviourOwner
     private State _state;
     private Direction _currentDirection;
     private Direction _targetDirection;
-    private Player _target;
+    private PlayerTargeter _targeter;
     [SyncVar] private int _currentHealth;
     private float _lastTargetUpdateTime = -5000;
     private float _lastRotateTime = 0;
@@ -53,6 +54,7 @@ public class GroundTurret : NetworkBehaviourOwner
         _state = State.Inactive;
         _currentHealth = health;
         _currentBullets = maxBulletCount;
+        _targeter = GetComponentInChildren<PlayerTargeter>();
     }
 
     public override void ServerUpdate()
@@ -61,17 +63,19 @@ public class GroundTurret : NetworkBehaviourOwner
 
         UpdateAnimations();
 
-        if (hitbox.IsHit())
+        int x;
+        if (hitbox.IsHit(out x))
         {
-            CmdHit();
+            CmdHit(x);
         }
     }
 
     public override void ClientUpdate()
     {
-        if (hitbox.IsHit())
+        int x;
+        if (hitbox.IsHit(out x))
         {
-            CmdHit();
+            CmdHit(x);
         }
     }
 
@@ -80,8 +84,8 @@ public class GroundTurret : NetworkBehaviourOwner
         switch (_state)
         {
             case State.Inactive:
-                UpdateTarget(1);
-                if (_target)
+                _targeter.UpdateTarget(1, attackRange);
+                if (_targeter.target)
                 {
                     _state = State.Appearing;
                 }
@@ -90,7 +94,7 @@ public class GroundTurret : NetworkBehaviourOwner
             case State.Appearing:
                 if (animator.IsAnimationFinished())
                 {
-                    UpdateTarget(1);
+                    _targeter.UpdateTarget(1, attackRange);
                     UpdateDirection();
                     _currentDirection = _targetDirection;
                     _state = State.Shooting;
@@ -98,10 +102,10 @@ public class GroundTurret : NetworkBehaviourOwner
                 break;
 
             case State.Shooting:
-                UpdateTarget(1);
+                _targeter.UpdateTarget(1, attackRange);
                 UpdateDirection();
                 hitbox.isInvincible = false;
-                if (_target)
+                if (_targeter.target)
                 {
                     Shoot();
                 }
@@ -116,32 +120,11 @@ public class GroundTurret : NetworkBehaviourOwner
         }
     }
 
-    private void UpdateTarget(float cooldown)
-    {
-        if (Time.time - _lastTargetUpdateTime < cooldown) return;
-
-        _lastTargetUpdateTime = Time.time;
-        Player[] players = Object.FindObjectsOfType<Player>();
-        float dist = Vector2.Distance(transform.position, players[0].transform.position);
-        int targetIndex = 0;
-        for (int i = 1; i < players.Length; i++)
-        {
-            float d = Vector2.Distance(transform.position, players[i].transform.position);
-            if (d < dist)
-            {
-                dist = d;
-                targetIndex = i;
-            }
-        }
-        if (dist < attackRange) _target = players[targetIndex];
-        else _target = null;
-    }
-
     private void UpdateDirection()
     {
-        if (!_target) return;
+        if (!_targeter.target) return;
 
-        Vector2 axis = (_target.transform.position - transform.position).normalized;
+        Vector2 axis = (_targeter.target.transform.position - transform.position).normalized;
         float angle = Mathf.Atan2(axis.y, axis.x) * Mathf.Rad2Deg;
         angle = 180 - angle;
 
@@ -215,9 +198,9 @@ public class GroundTurret : NetworkBehaviourOwner
     }
 
     [Command(requiresAuthority = false)]
-    private void CmdHit()
+    private void CmdHit(int hits)
     {
-        _currentHealth--;
+        _currentHealth-=hits;
         if(_currentHealth <= 0)
         {
             Die();

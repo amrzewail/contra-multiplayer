@@ -10,7 +10,7 @@ public class OnHitboxHit : MonoBehaviour
 
     internal void Update()
     {
-        if (hitbox.IsHit())
+        if (hitbox.IsHit(out int _))
         {
             OnHit?.Invoke();
         }

@@ -50,6 +50,8 @@ public class Player : MonoBehaviourOwner
 
     public IHitbox hitbox => (IHitbox)_hitbox;
 
+    public bool isInvader { get; set; }
+
     private Collider2D _collider;
     private Rigidbody2D _rigidBody;
     private Invincibility _invincibility;
@@ -73,6 +75,8 @@ public class Player : MonoBehaviourOwner
         _collider = GetComponent<Collider2D>();
         _rigidBody = GetComponent<Rigidbody2D>();
         _invincibility = GetComponentInChildren<Invincibility>();
+
+        _state = State.Jumping;
     }
 
     public override void OtherStart()
@@ -82,6 +86,8 @@ public class Player : MonoBehaviourOwner
 
         _collider.isTrigger = true;
         _rigidBody.isKinematic = true;
+
+        hitbox.gameObject.SetActive(false);
     }
 
     public override void MyUpdate()
@@ -99,16 +105,6 @@ public class Player : MonoBehaviourOwner
         UpdateAnimations();
 
         UpdateHitbox();
-        
-
-        if (Input.GetKeyDown("u"))
-        {
-            shooter.AssignBullet(0);
-        }
-        if (Input.GetKeyDown("i"))
-        {
-            shooter.AssignBullet(1);
-        }
     }
 
     private void Respawn()
@@ -118,7 +114,8 @@ public class Player : MonoBehaviourOwner
         position.y = camera.transform.position.y + camera.orthographicSize;
         transform.position = position;
         _rigidBody.velocity = Vector2.zero;
-
+        shooter.AssignBullet(0);
+        shooter.ResetFireRate();
         _state = State.Jumping;
         _invincibility.Trigger();
     }
@@ -136,7 +133,7 @@ public class Player : MonoBehaviourOwner
     {
         float horizontal = input.GetHorizontal();
         float vertical = input.GetVertical();
-        bool shoot = input.Shoot();
+        bool shoot = shooter.GetBullet().isContinuous ? input.ShootHold() : input.ShootDown();
         bool jump = input.Jump();
 
 
@@ -329,7 +326,7 @@ public class Player : MonoBehaviourOwner
         }
 
 
-        if (hitbox.IsHit())
+        if (hitbox.IsHit(out int _))
         {
             _state = State.Dead;
             _deadTime = Time.time;

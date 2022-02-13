@@ -12,6 +12,8 @@ public class EnemySpawner : NetworkBehaviourOwner
 
     public float spawnInterval;
 
+    public bool destroyAfterSpawn = false;
+
     private bool playerOnTrigger => _playerTriggerCount > 0;
 
     private float _currentSpawnTime;
@@ -33,8 +35,11 @@ public class EnemySpawner : NetworkBehaviourOwner
 
     public override void ServerOnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.GetComponent<Player>())
+        Player player;
+        if ((player = collider.GetComponent<Player>()))
         {
+            if (player.isInvader) return;
+
             _playerTriggerCount++;
         }
     }
@@ -42,8 +47,11 @@ public class EnemySpawner : NetworkBehaviourOwner
 
     public override void ServerOnTriggerExit2D(Collider2D collider)
     {
-        if (collider.GetComponent<Player>())
+        Player player;
+        if ((player = collider.GetComponent<Player>()))
         {
+            if (player.isInvader) return;
+
             _playerTriggerCount--;
             if (_playerTriggerCount < 0) _playerTriggerCount = 0;
         }
@@ -56,6 +64,26 @@ public class EnemySpawner : NetworkBehaviourOwner
             GameObject g = Instantiate(enemy);
             g.transform.position = spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Count)].position;
             NetworkServer.Spawn(g);
+
+            if (destroyAfterSpawn)
+            {
+                NetworkServer.Destroy(this.gameObject);
+            }
         }
     }
+
+#if UNITY_EDITOR
+
+    private void OnDrawGizmos()
+    {
+        if(spawnPoints != null)
+        {
+            for(int i = 0; i < spawnPoints.Count; i++)
+            {
+                Gizmos.DrawLine(transform.position, spawnPoints[i].position);
+            }
+        }
+    }
+
+#endif
 }

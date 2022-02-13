@@ -79,6 +79,26 @@ public abstract class MonoBehaviourOwner : MonoBehaviour
         }
     }
 
+    public virtual void LateUpdate()
+    {
+        if (isMine)
+        {
+            MyLateUpdate();
+        }
+        else
+        {
+            OtherLateUpdate();
+        }
+        if (isServer)
+        {
+            ServerLateUpdate();
+        }
+        else
+        {
+            ClientLateUpdate();
+        }
+    }
+
     public virtual void FixedUpdate()
     {
         if (isMine)
@@ -173,6 +193,10 @@ public abstract class MonoBehaviourOwner : MonoBehaviour
     {
 
     }
+    public virtual void MyLateUpdate()
+    {
+
+    }
     public virtual void MyFixedUpdate()
     {
 
@@ -213,6 +237,10 @@ public abstract class MonoBehaviourOwner : MonoBehaviour
     {
 
     }
+    public virtual void OtherLateUpdate()
+    {
+
+    }
     public virtual void OtherFixedUpdate()
     {
 
@@ -250,6 +278,10 @@ public abstract class MonoBehaviourOwner : MonoBehaviour
     {
 
     }
+    public virtual void ServerLateUpdate()
+    {
+
+    }
     public virtual void ServerFixedUpdate()
     {
 
@@ -284,6 +316,10 @@ public abstract class MonoBehaviourOwner : MonoBehaviour
 
     }
     public virtual void ClientUpdate()
+    {
+
+    }
+    public virtual void ClientLateUpdate()
     {
 
     }

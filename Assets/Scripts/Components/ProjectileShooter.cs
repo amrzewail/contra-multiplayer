@@ -24,12 +24,10 @@ public class ProjectileShooter : MonoBehaviourOwner, IShooter
 
     public UnityEvent<int> BulletChanged { get => _BulletChanged; set => _BulletChanged = value; }
 
-
-    public float reloadInterval = 1;
-    public int maxBullets = 4;
-
     private int _currentBullets = 0;
     private float _currentReloadTime;
+    private float _lastFireTime = 0;
+    private int _extraFireRate = 0;
 
     public override void MyStart()
     {
@@ -42,7 +40,7 @@ public class ProjectileShooter : MonoBehaviourOwner, IShooter
 
     public override void MyUpdate()
     {
-        if(_currentBullets < maxBullets)
+        if(_currentBullets < currentBullet.bullets)
         {
             _currentReloadTime += Time.deltaTime;
         }
@@ -50,8 +48,11 @@ public class ProjectileShooter : MonoBehaviourOwner, IShooter
         {
             _currentReloadTime = 0;
         }
-        if (_currentReloadTime > reloadInterval)
+
+        float interval = currentBullet.reloadInterval - _extraFireRate * 0.25f / currentBullet.reloadInterval;
+        if (_currentReloadTime > interval)
         {
+            Debug.Log(interval);
             Reload();
         }
 
@@ -62,13 +63,17 @@ public class ProjectileShooter : MonoBehaviourOwner, IShooter
         //GameObject g = Instantiate(bullet.gameObject, point.transform.position, point.transform.rotation);
         if (_currentBullets > 0)
         {
-            _currentBullets--;
+            if (Time.time - _lastFireTime > 1f / (currentBullet.fireRate + _extraFireRate))
+            {
+                _lastFireTime = Time.time;
+                _currentBullets--;
 
-            var point = GetShootingPoint(direction);
+                var point = GetShootingPoint(direction);
 
-            OnShoot?.Invoke(direction, point.forward);
+                OnShoot?.Invoke(direction, point.forward);
 
-            return true;
+                return true;
+            }
         }
         return false;
     }
@@ -81,6 +86,16 @@ public class ProjectileShooter : MonoBehaviourOwner, IShooter
     {
         _currentBullet = _bullets.Single(x => ((IBullet)x).index == index);
         BulletChanged?.Invoke(index);
+    }
+
+    public void IncreaseFireRate(int add)
+    {
+        _extraFireRate = add;
+    }
+
+    public void ResetFireRate()
+    {
+        _extraFireRate = 0;
     }
 
     public IBullet GetBullet()
@@ -104,6 +119,6 @@ public class ProjectileShooter : MonoBehaviourOwner, IShooter
 
     private void Reload()
     {
-        _currentBullets = maxBullets;
+        _currentBullets = currentBullet.bullets;
     }
 }

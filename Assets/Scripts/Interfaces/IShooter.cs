@@ -16,6 +16,10 @@ public interface IShooter
 
     public Transform GetShootingPoint(AimDirection direction);
 
+    public void IncreaseFireRate(int addedRate);
+
+    public void ResetFireRate();
+
     UnityEvent<AimDirection, Vector2> OnShoot { get; set; }
 
 }

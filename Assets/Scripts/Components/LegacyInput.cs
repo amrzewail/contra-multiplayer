@@ -42,27 +42,20 @@ public class LegacyInput : MonoBehaviourOwner, IInput
     {
         return _vertical;
     }
-    public bool IsRunning()
-    {
-        return Input.GetKey(KeyCode.Z);
-    }
 
     public bool Jump()
     {
         return Input.GetKeyDown(KeyCode.X);
     }
-    public bool JumpHold()
-    {
-        return Input.GetKey(KeyCode.X);
-    }
 
-    public bool IsCrouching()
-    {
-        return Input.GetKey(KeyCode.DownArrow);
-    }
 
-    public bool Shoot()
+    public bool ShootDown()
     {
         return Input.GetKeyDown(KeyCode.Z);
+    }
+
+    public bool ShootHold()
+    {
+        return Input.GetKey(KeyCode.Z);
     }
 }

@@ -5,7 +5,6 @@ using UnityEngine;
 public enum SceneIndex
 {
     MainMenu = 0,
-    Game = 1,
-    Multiplayer = 2
-
+    Multiplayer = 1,
+    Game = 2,
 }

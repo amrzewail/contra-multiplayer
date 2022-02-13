@@ -45,6 +45,8 @@ namespace UI
         public void MultiplayerCallback()
         {
             SceneManager.LoadScene((int)SceneIndex.Multiplayer);
+
+            Debug.Log("Multiplayer");
         }
 
         public void CustomizeCallback()

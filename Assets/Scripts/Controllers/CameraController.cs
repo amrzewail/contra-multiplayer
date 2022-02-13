@@ -33,17 +33,18 @@ public class CameraController : MonoBehaviour
         if (!_target) return;
 
         Vector3 pos = transform.position;
-        if (!_lockCameraToBossLocation)
+
+
+        pos.x = _target.position.x;
+        if (_lockCameraToBossLocation && !GameManager.instance.isInvader)
         {
-            pos.x = _target.position.x;
-            pos.x = Mathf.Clamp(pos.x, -2, 190);
-            transform.position = pos;
+            if (_target.transform.position.x < transform.position.x)
+            {
+                pos = Vector3.MoveTowards(pos, LevelController.instance.GetBossCameraLocation().position, Time.deltaTime * 2);
+            }
         }
-        else
-        {
-            pos = Vector3.MoveTowards(pos, LevelController.instance.GetBossCameraLocation().position, Time.deltaTime * 4);
-            transform.position = pos;
-        }
+        pos.x = Mathf.Clamp(pos.x, -2, 190);
+        transform.position = pos;
 
         Vector3 targetPos = _target.transform.position;
         targetPos.x = Mathf.Clamp(targetPos.x, pos.x - 8, Mathf.Infinity);

@@ -26,19 +26,21 @@ namespace UI
             joinSearchingText.gameObject.SetActive(false);
             invadeSearchingText.gameObject.SetActive(false);
 
+            GameManager.instance.isInvader = false;
             GameNetworkManager.singleton.HostMultiplayer();
-            Debug.Log("Singleplayer");
+            Debug.Log("Host");
         }
 
         public void JoinSession()
         {
             joinSearchingText.gameObject.SetActive(true);
             invadeSearchingText.gameObject.SetActive(false);
-            
+
+            GameManager.instance.isInvader = false;
             GameNetworkManager.singleton.StopSearching();
             GameNetworkManager.singleton.JoinMultiplayer();
 
-            Debug.Log("Multiplayer");
+            Debug.Log("Join");
         }
 
         public void Invade()
@@ -46,13 +48,15 @@ namespace UI
             joinSearchingText.gameObject.SetActive(false);
             invadeSearchingText.gameObject.SetActive(true);
 
+            GameManager.instance.isInvader = true;
             GameNetworkManager.singleton.StopSearching();
             GameNetworkManager.singleton.JoinMultiplayer();
 
-            Debug.Log("INVADE");
+            Debug.Log("Invade");
         }
         public void Back()
         {
+            GameManager.instance.isInvader = false;
             GameNetworkManager.singleton.StopSearching();
             SceneManager.LoadScene((int)SceneIndex.MainMenu);
         }

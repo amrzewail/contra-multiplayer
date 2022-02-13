@@ -1,6 +1,7 @@
 using Mirror;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Soldier : NetworkBehaviourOwner
@@ -14,7 +15,7 @@ public class Soldier : NetworkBehaviourOwner
 
     private State _state = State.Aiming;
     private AimDirection _aimDirection = AimDirection.Straight;
-    private Player _target;
+    private PlayerTargeter _targeter;
     private float _lastTargetUpdateTime = -5000;
 
     public IAnimator animator => (IAnimator)_animator;
@@ -35,6 +36,8 @@ public class Soldier : NetworkBehaviourOwner
     public override void ServerStart()
     {
         Physics2D.IgnoreLayerCollision((int)Layer.Character, (int)Layer.Character);
+
+        _targeter = GetComponentInChildren<PlayerTargeter>();
     }
 
     public override void ServerUpdate()
@@ -45,7 +48,7 @@ public class Soldier : NetworkBehaviourOwner
 
         UpdateAnimations();
 
-        if (hitbox.IsHit())
+        if (hitbox.IsHit(out int x))
         {
             Die();
         }
@@ -53,40 +56,19 @@ public class Soldier : NetworkBehaviourOwner
 
     public override void ClientUpdate()
     {
-        if (hitbox.IsHit())
+        if (hitbox.IsHit(out int x))
         {
             DisableHitboxes();
             CmdDisableHitboxes();
         }
     }
 
-    private void UpdateTarget(float cooldown)
-    {
-        if (Time.time - _lastTargetUpdateTime < cooldown) return;
-
-        _lastTargetUpdateTime = Time.time;
-        Player[] players = Object.FindObjectsOfType<Player>();
-        float dist = Vector2.Distance(transform.position, players[0].transform.position);
-        int targetIndex = 0;
-        for(int i = 1; i < players.Length; i++)
-        {
-            float d = Vector2.Distance(transform.position, players[i].transform.position);
-            if(d < dist)
-            {
-                dist = d;
-                targetIndex = i;
-            }
-        }
-        if (dist < attackRange) _target = players[targetIndex];
-        else _target = null;
-    }
-
     private void UpdateDirection()
     {
         _aimDirection = AimDirection.Straight;
-        if (_target)
+        if (_targeter.target)
         {
-            Vector2 axis = (_target.transform.position - transform.position).normalized;
+            Vector2 axis = (_targeter.target.transform.position - transform.position).normalized;
             float angle = Mathf.Atan2(axis.y, Mathf.Abs(axis.x)) * Mathf.Rad2Deg;
 
             if (angle > 30) _aimDirection = AimDirection.High;
@@ -104,9 +86,9 @@ public class Soldier : NetworkBehaviourOwner
 
     private bool Shoot()
     {
-        if (!_target) return false;
+        if (!_targeter.target) return false;
 
-        var axis = (_target.transform.position - transform.position);
+        var axis = (_targeter.target.transform.position - transform.position);
         if (_aimDirection == AimDirection.Low) axis += Vector3.down * 0.5f;
         if (shooter.Shoot(_aimDirection, axis))
         {
@@ -120,7 +102,7 @@ public class Soldier : NetworkBehaviourOwner
         switch (_state)
         {
             case State.Aiming:
-                UpdateTarget(5);
+                _targeter.UpdateTarget(1, attackRange);
 
                 UpdateDirection();
 

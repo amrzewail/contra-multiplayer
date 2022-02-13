@@ -19,11 +19,19 @@ public class BulletSoldier : NetworkBehaviourOwner, IBullet
     [SyncVar]
     private uint _shooterId;
 
+    public int bullets { get; }
+
+    public float reloadInterval { get; }
+
+    public int fireRate => 10;
+
+    public bool isContinuous => false;
+
     public override void ServerStart()
     {
         var instance = FindObjectsOfType<NetworkBehaviourOwner>().First(x => x.netId.Equals(_shooterId));
 
-        transform.position += instance.transform.position;
+        transform.position += instance.transform.position - Vector3.one * 9000;
 
         Invoke("CmdDestroySelf", destroyAfter);
 
