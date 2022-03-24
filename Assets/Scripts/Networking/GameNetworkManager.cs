@@ -4,6 +4,7 @@ using Mirror.Discovery;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Sockets;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -14,6 +15,8 @@ public class GameNetworkManager : NetworkManager
 
     public NetworkDiscovery networkDiscovery;
 
+    private int _numberOfPlayers = 0;
+    public int numberOfPlayers => _numberOfPlayers;
 
     public struct CreateCharacterMessage : NetworkMessage
     {
@@ -21,19 +24,83 @@ public class GameNetworkManager : NetworkManager
         public bool isInvader;
     }
 
+    private bool _readyToJoin=false;
+    private bool _cancelJoining = false;
 
 
-
-    public void StartSinglePlayer()
+    public async Task<bool> StartSinglePlayer()
     {
+        _readyToJoin = false;
+        _cancelJoining = false;
+
         ((KcpTransport)transport).Port = 0;
         StartHost();
+
+        await Task.Run(async () =>
+        {
+            while (!_readyToJoin && !_cancelJoining)
+            {
+                await Task.Delay(100);
+            }
+        });
+
+        return !_cancelJoining;
     }
 
-    public void HostMultiplayer()
+    public async Task<bool> HostMultiplayer()
     {
+        _readyToJoin = false;
+        _cancelJoining = false;
+
         ((KcpTransport)transport).Port = 7777;
-        InternalHostMultiplayer(0);
+        InternalHostMultiplayer(0); 
+        
+        await Task.Run(async () =>
+        {
+            while (!_readyToJoin && !_cancelJoining)
+            {
+                await Task.Delay(100);
+            }
+        });
+
+        return !_cancelJoining;
+
+    }
+    public async Task<bool> JoinMultiplayer()
+    {
+        _readyToJoin = false;
+        _cancelJoining = false;
+
+        ((KcpTransport)transport).Port = 7777;
+        networkDiscovery.StartDiscovery();
+        networkDiscovery.OnServerFound.AddListener(OnDiscoveredServer);
+
+        await Task.Run(async () =>
+        {
+            while (!_readyToJoin && !_cancelJoining)
+            {
+                await Task.Delay(100);
+            }
+        });
+
+        return !_cancelJoining;
+    }
+
+    public void StopClientOrServer()
+    {
+        if (NetworkServer.active && NetworkClient.isConnected)
+        {
+            NetworkManager.singleton.StopHost();
+            networkDiscovery.StopDiscovery();
+            _numberOfPlayers = 0;
+        }
+        // stop client if client-only
+        else if (NetworkClient.isConnected)
+        {
+            NetworkManager.singleton.StopClient();
+            networkDiscovery.StopDiscovery();
+            _numberOfPlayers = 0;
+        }
     }
 
     private async void InternalHostMultiplayer(int count)
@@ -58,15 +125,10 @@ public class GameNetworkManager : NetworkManager
         }
     }
 
-    public void JoinMultiplayer()
-    {
-        ((KcpTransport)transport).Port = 7777;
-        networkDiscovery.StartDiscovery();
-        networkDiscovery.OnServerFound.AddListener(OnDiscoveredServer);
-    }
 
     public void StopSearching()
     {
+        _cancelJoining = true;
         networkDiscovery.StopDiscovery();
     }
 
@@ -82,6 +144,8 @@ public class GameNetworkManager : NetworkManager
 
         NetworkServer.RegisterHandler<CreateCharacterMessage>(CreateCharacterCallback);
         NetworkServer.SetAllClientsNotReady();
+
+        NetworkEvents.OnHostConnect?.Invoke();
     }
 
     public override void OnClientConnect()
@@ -91,18 +155,37 @@ public class GameNetworkManager : NetworkManager
 
         SceneManager.sceneLoaded += SceneLoadedCallback;
 
-        SceneManager.LoadScene((int)SceneIndex.Game);
+        _readyToJoin = true;
+
+        NetworkEvents.OnClientConnect?.Invoke();
 
     }
+    public override void OnServerDisconnect(NetworkConnection conn)
+    {
+        base.OnServerDisconnect(conn);
+        _numberOfPlayers--;
+        if (_numberOfPlayers < 0) _numberOfPlayers = 0;
+    }
+
+    public override void OnClientDisconnect()
+    {
+        NetworkEvents.OnClientDisconnect?.Invoke();
+    }
+
 
     private void SceneLoadedCallback(Scene scene, LoadSceneMode mode)
     {
         SceneManager.sceneLoaded -= SceneLoadedCallback;
 
+        Color selectedColor = Color.blue;
+        if (ColorUtility.TryParseHtmlString(PlayerPrefs.GetString("player_color", $"#{ColorUtility.ToHtmlStringRGB(Color.blue)}"), out selectedColor))
+        {
+            
+        }
         // you can send the message here, or wherever else you want
         CreateCharacterMessage characterMessage = new CreateCharacterMessage
         {
-            color = new UnityEngine.Color(Random.Range(0f, 1f), Random.Range(0f, 1f),Random.Range(0f, 1f)),
+            color = selectedColor,
             isInvader = GameManager.instance.isInvader
         };
 
@@ -126,6 +209,7 @@ public class GameNetworkManager : NetworkManager
         else
         {
             playerObj.transform.position = LevelController.instance.GetSpawnLocation().position;
+            _numberOfPlayers++;
         }
         // call this to use this gameobject as the primary controller
         NetworkServer.AddPlayerForConnection(conn, playerObj);

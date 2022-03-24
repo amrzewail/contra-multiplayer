@@ -61,7 +61,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5084691617111489685, guid: 6bf7865e4562b994ea08b4ef900be4e4, type: 3}
       propertyPath: bulletIndex
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8186928151687979740, guid: 6bf7865e4562b994ea08b4ef900be4e4, type: 3}
       propertyPath: m_AssetId

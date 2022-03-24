@@ -26,6 +26,9 @@ public class Thief : NetworkBehaviourOwner
     private PlayerTargeter _targeter;
     private float _lastTargetUpdateTime;
 
+    [SyncVar]
+    private float _currentHealth;
+
     private enum State
     {
         Moving,
@@ -40,6 +43,7 @@ public class Thief : NetworkBehaviourOwner
     {
         Physics2D.IgnoreLayerCollision((int)Layer.Character, (int)Layer.Character);
         _targeter = GetComponentInChildren<PlayerTargeter>();
+        _currentHealth = 1;
     }
 
     public override void ServerUpdate()
@@ -50,21 +54,17 @@ public class Thief : NetworkBehaviourOwner
 
         UpdateAnimations();
 
-        if (hitbox.IsHit(out int _))
+        if (hitbox.IsHit(out int x))
         {
-            jumper.Jump();
-            _state = State.Dead;
-            UpdateAnimations();
-            RpcDisableHitboxes();
+            CmdHit(x);
         }
     }
 
     public override void ClientUpdate()
     {
-        if (hitbox.IsHit(out int _))
+        if (hitbox.IsHit(out int x))
         {
-            DisableHitboxes();
-            CmdDisableHitboxes();
+            CmdHit(x);
         }
     }
 
@@ -176,14 +176,22 @@ public class Thief : NetworkBehaviourOwner
         animator.Play(animation);
     }
 
-    [Command(requiresAuthority = false)]
-    public void CmdDisableHitboxes()
+    private void Die()
     {
         RpcDisableHitboxes();
 
         jumper.Jump();
         _state = State.Dead;
         UpdateAnimations();
+    }
+    [Command(requiresAuthority = false)]
+    private void CmdHit(int hits)
+    {
+        _currentHealth -= (float)hits / GameNetworkManager.singleton.numberOfPlayers;
+        if (_currentHealth <= 0)
+        {
+            Die();
+        }
     }
 
     [ClientRpc]

@@ -24,9 +24,11 @@ public class Player : MonoBehaviourOwner
         Dive,
         Swimming,
         WaterGetUp,
-        Dead
+        Dead,
+        Spectate
     }
 
+    [SerializeField] int _maxLives = 3;
     [SerializeField] [RequireInterface(typeof(IAnimator))] Object _bodyAnimator;
     [SerializeField] [RequireInterface(typeof(IAnimator))] Object _legsAnimator;
 
@@ -50,6 +52,8 @@ public class Player : MonoBehaviourOwner
 
     public IHitbox hitbox => (IHitbox)_hitbox;
 
+    [HideInInspector] public int lives = 3;
+
     public bool isInvader { get; set; }
 
     private Collider2D _collider;
@@ -70,6 +74,8 @@ public class Player : MonoBehaviourOwner
 
     public override void MyStart()
     {
+        lives = _maxLives;
+
         Physics2D.IgnoreLayerCollision((int)Layer.Player, (int)Layer.Player);
         Physics2D.IgnoreLayerCollision((int)Layer.Player, (int)Layer.Character);
         _collider = GetComponent<Collider2D>();
@@ -319,9 +325,23 @@ public class Player : MonoBehaviourOwner
 
                 if(Time.time - _deadTime > 2)
                 {
-                    Respawn();
+                    if (lives > 0)
+                    {
+                        lives--;
+                        Respawn();
+                    }
+                    else
+                    {
+                        _state = State.Spectate;
+                        LevelEvents.OnPlayerDead?.Invoke(identity.netId);
+                    }
                 }
 
+                break;
+
+            case State.Spectate:
+                mover.Move(new Vector2(horizontal, 0));
+                transform.position = new Vector2(transform.position.x, -9000);
                 break;
         }
 
@@ -544,6 +564,10 @@ public class Player : MonoBehaviourOwner
         {
             bodyAnimation = "Empty";
             legsAnimation = "Dead";
+        }else if (_state == State.Spectate)
+        {
+            bodyAnimation = "Empty";
+            legsAnimation = "Empty";
         }
 
         bodyAnimator.Play(bodyAnimation, ignoreBodyAnimation);

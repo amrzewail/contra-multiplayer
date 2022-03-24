@@ -5,7 +5,7 @@ using UnityEngine;
 
 public abstract class MonoBehaviourOwner : MonoBehaviour
 {
-    protected NetworkIdentity identity;
+    [HideInInspector] public NetworkIdentity identity;
 
     public bool isMine => identity.isLocalPlayer || identity.hasAuthority;
     public bool isServer => identity.isServer;

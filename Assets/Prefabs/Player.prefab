@@ -238,6 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d57458d852b6c2a498c0d7589cac21d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  identity: {fileID: 0}
 --- !u!1 &2460293489604788628
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,6 +410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc930167a06cf47418cd2d0e6d74512f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  identity: {fileID: 0}
   _supportedTypes: 0100000002000000
   _isInvincible: 0
   pivot: {x: 0.5, y: 0}
@@ -466,6 +468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: defa60d2a559464419cb666e69bb09a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  identity: {fileID: 0}
   _currentBullet: {fileID: 5711051318528095536, guid: b2087b428a3f42841beec79a7b9c86a5, type: 3}
   _bullets:
   - {fileID: 5711051318528095536, guid: b2087b428a3f42841beec79a7b9c86a5, type: 3}
@@ -478,8 +481,6 @@ MonoBehaviour:
   _BulletChanged:
     m_PersistentCalls:
       m_Calls: []
-  reloadInterval: 0.75
-  maxBullets: 4
 --- !u!1 &3966524922812548495
 GameObject:
   m_ObjectHideFlags: 0
@@ -842,6 +843,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 878684275ffab334c88f33aced06a713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  identity: {fileID: 0}
+  _maxLives: 1
   _bodyAnimator: {fileID: 940226523918340105}
   _legsAnimator: {fileID: 1102915339310005689}
   _input: {fileID: 6551163607537814994}
@@ -850,6 +853,7 @@ MonoBehaviour:
   _jumper: {fileID: 4528706484550952900}
   _shooter: {fileID: 8542703644469140135}
   _hitbox: {fileID: 6067494274432623516}
+  lives: 3
 --- !u!114 &6835962511662434557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1257,6 +1261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce5018f8d80145d4fb9847b105483542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  identity: {fileID: 0}
   layerMask:
     serializedVersion: 2
     m_Bits: 400

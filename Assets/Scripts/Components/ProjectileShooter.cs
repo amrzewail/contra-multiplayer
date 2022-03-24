@@ -52,7 +52,6 @@ public class ProjectileShooter : MonoBehaviourOwner, IShooter
         float interval = currentBullet.reloadInterval - _extraFireRate * 0.25f / currentBullet.reloadInterval;
         if (_currentReloadTime > interval)
         {
-            Debug.Log(interval);
             Reload();
         }
 

@@ -8,10 +8,12 @@ namespace UI
     public class Selection : MonoBehaviour
     {
         public UnityEvent OnSelect;
+        public UnityEvent OnHighlight;
 
         public void Highlight()
         {
             transform.Find("Cursor").gameObject.SetActive(true);
+            OnHighlight?.Invoke();
         }
 
         public void UnHighlight()

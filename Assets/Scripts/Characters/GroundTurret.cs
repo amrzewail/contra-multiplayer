@@ -42,12 +42,14 @@ public class GroundTurret : NetworkBehaviourOwner
     private Direction _currentDirection;
     private Direction _targetDirection;
     private PlayerTargeter _targeter;
-    [SyncVar] private int _currentHealth;
     private float _lastTargetUpdateTime = -5000;
     private float _lastRotateTime = 0;
     private float _lastBulletTime = 0;
     private float _lastShootTime = 0;
     private int _currentBullets = 0;
+
+    [SyncVar] private float _currentHealth;
+
 
     public override void ServerStart()
     {
@@ -200,8 +202,8 @@ public class GroundTurret : NetworkBehaviourOwner
     [Command(requiresAuthority = false)]
     private void CmdHit(int hits)
     {
-        _currentHealth-=hits;
-        if(_currentHealth <= 0)
+        _currentHealth -= (float)hits / GameNetworkManager.singleton.numberOfPlayers;
+        if (_currentHealth <= 0)
         {
             Die();
         }

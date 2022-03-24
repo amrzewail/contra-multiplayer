@@ -90,9 +90,9 @@ public class SuperMachine : NetworkBehaviourOwner
 
     private PlayerTargeter _targeter;
 
-    [SyncVar] private int _currentCoreHealth;
-    [SyncVar] private int _currentRightShooterHealth;
-    [SyncVar] private int _currentLeftShooterHealth;
+    [SyncVar] private float _currentCoreHealth;
+    [SyncVar] private float _currentRightShooterHealth;
+    [SyncVar] private float _currentLeftShooterHealth;
 
     private float _lastTargetUpdateTime = -5000;
     private float _lastShootTime = 0;
@@ -274,21 +274,21 @@ public class SuperMachine : NetworkBehaviourOwner
         switch (part)
         {
             case Part.LeftShooter:
-                _currentLeftShooterHealth-= hits;
+                _currentLeftShooterHealth -= (float)hits / GameNetworkManager.singleton.numberOfPlayers;
                 if (_currentLeftShooterHealth <= 0)
                 {
                     Die(part);
                 }
                 break;
             case Part.RightShooter:
-                _currentRightShooterHealth-= hits;
+                _currentRightShooterHealth -= (float)hits / GameNetworkManager.singleton.numberOfPlayers;
                 if (_currentRightShooterHealth <= 0)
                 {
                     Die(part);
                 }
                 break;
             case Part.Core:
-                _currentCoreHealth-=hits;
+                _currentCoreHealth -= (float)hits / GameNetworkManager.singleton.numberOfPlayers;
                 if (_currentCoreHealth <= 0)
                 {
                     RpcInvokeBossDefeated();

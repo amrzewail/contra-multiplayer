@@ -21,36 +21,46 @@ namespace UI
             invadeSearchingText.gameObject.SetActive(false);
         }
 
-        public void HostSession()
+        public async void HostSession()
         {
             joinSearchingText.gameObject.SetActive(false);
             invadeSearchingText.gameObject.SetActive(false);
 
             GameManager.instance.isInvader = false;
-            GameNetworkManager.singleton.HostMultiplayer();
+            GameNetworkManager.singleton.StopSearching();
+            if (await GameNetworkManager.singleton.HostMultiplayer())
+            {
+                SceneManager.LoadScene((int)SceneIndex.Game);
+            }
             Debug.Log("Host");
         }
 
-        public void JoinSession()
+        public async void JoinSession()
         {
             joinSearchingText.gameObject.SetActive(true);
             invadeSearchingText.gameObject.SetActive(false);
 
             GameManager.instance.isInvader = false;
             GameNetworkManager.singleton.StopSearching();
-            GameNetworkManager.singleton.JoinMultiplayer();
+            if (await GameNetworkManager.singleton.JoinMultiplayer())
+            {
+                SceneManager.LoadScene((int)SceneIndex.Game);
+            }
 
             Debug.Log("Join");
         }
 
-        public void Invade()
+        public async void Invade()
         {
             joinSearchingText.gameObject.SetActive(false);
             invadeSearchingText.gameObject.SetActive(true);
 
             GameManager.instance.isInvader = true;
             GameNetworkManager.singleton.StopSearching();
-            GameNetworkManager.singleton.JoinMultiplayer();
+            if (await GameNetworkManager.singleton.JoinMultiplayer())
+            {
+                SceneManager.LoadScene((int)SceneIndex.Game);
+            }
 
             Debug.Log("Invade");
         }

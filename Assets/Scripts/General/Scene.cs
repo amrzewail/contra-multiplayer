@@ -6,5 +6,7 @@ public enum SceneIndex
 {
     MainMenu = 0,
     Multiplayer = 1,
-    Game = 2,
+    Customize = 2,
+    Game = 3,
+    Staging = 4
 }

@@ -36,10 +36,14 @@ namespace UI
             _isRevealing = false;
         }
 
-        public void SingleplayerCallback()
+        public async void SingleplayerCallback()
         {
-            GameNetworkManager.singleton.StartSinglePlayer();
-            Debug.Log("Singleplayer");
+            bool ready = await GameNetworkManager.singleton.StartSinglePlayer();
+            if (ready)
+            {
+                SceneManager.LoadScene((int)SceneIndex.Game);
+            }
+            Debug.Log("Singleplayer: "+ ready);
         }
 
         public void MultiplayerCallback()
@@ -49,9 +53,9 @@ namespace UI
             Debug.Log("Multiplayer");
         }
 
-        public void CustomizeCallback()
+        public async void CustomizeCallback()
         {
-            GameNetworkManager.singleton.JoinMultiplayer();
+            SceneManager.LoadScene((int)SceneIndex.Customize);
 
             Debug.Log("Customize");
         }

@@ -18,6 +18,8 @@ public class Soldier : NetworkBehaviourOwner
     private PlayerTargeter _targeter;
     private float _lastTargetUpdateTime = -5000;
 
+    [SyncVar] private float _currentHealth;
+
     public IAnimator animator => (IAnimator)_animator;
     public IJumper jumper => (IJumper)_jumper;
 
@@ -36,7 +38,7 @@ public class Soldier : NetworkBehaviourOwner
     public override void ServerStart()
     {
         Physics2D.IgnoreLayerCollision((int)Layer.Character, (int)Layer.Character);
-
+        _currentHealth = 1;
         _targeter = GetComponentInChildren<PlayerTargeter>();
     }
 
@@ -50,7 +52,7 @@ public class Soldier : NetworkBehaviourOwner
 
         if (hitbox.IsHit(out int x))
         {
-            Die();
+            CmdHit(x);
         }
     }
 
@@ -58,8 +60,8 @@ public class Soldier : NetworkBehaviourOwner
     {
         if (hitbox.IsHit(out int x))
         {
-            DisableHitboxes();
-            CmdDisableHitboxes();
+            CmdHit(x);
+
         }
     }
 
@@ -188,11 +190,14 @@ public class Soldier : NetworkBehaviourOwner
         _state = State.Dead;
         UpdateAnimations();
     }
-
     [Command(requiresAuthority = false)]
-    public void CmdDisableHitboxes()
+    private void CmdHit(int hits)
     {
-        Die();
+        _currentHealth -= (float)hits / GameNetworkManager.singleton.numberOfPlayers;
+        if (_currentHealth <= 0)
+        {
+            Die();
+        }
     }
 
     [ClientRpc]

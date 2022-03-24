@@ -27,21 +27,30 @@ public class CameraController : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
         }
     }
+    private void FixedUpdate()
+    {
+        if (_target)
+        {
 
-    private void LateUpdate()
+            FLateUpdate();
+        }
+
+    }
+    private void FLateUpdate()
     {
         if (!_target) return;
 
         Vector3 pos = transform.position;
 
 
-        pos.x = _target.position.x;
         if (_lockCameraToBossLocation && !GameManager.instance.isInvader)
         {
-            if (_target.transform.position.x < transform.position.x)
-            {
-                pos = Vector3.MoveTowards(pos, LevelController.instance.GetBossCameraLocation().position, Time.deltaTime * 2);
-            }
+            pos = Vector3.MoveTowards(pos, LevelController.instance.GetBossCameraLocation().position, Time.deltaTime * 4);
+        }
+        else
+        {
+            pos.x = Mathf.MoveTowards(pos.x, _target.position.x, Mathf.Abs(_target.position.x - pos.x) * Time.deltaTime * 10);
+            if (Mathf.Abs(pos.x - _target.position.x) < 1) pos.x = _target.position.x;
         }
         pos.x = Mathf.Clamp(pos.x, -2, 190);
         transform.position = pos;
@@ -50,6 +59,7 @@ public class CameraController : MonoBehaviour
         targetPos.x = Mathf.Clamp(targetPos.x, pos.x - 8, Mathf.Infinity);
         _target.transform.position = targetPos;
     }
+
 
     private void BossStartedCallback()
     {

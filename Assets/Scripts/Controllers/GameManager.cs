@@ -23,6 +23,10 @@ public class GameManager : MonoBehaviour
         Application.targetFrameRate = 120;
     }
 
+    internal void Update()
+    {
+
+    }
     internal void OnDestroy()
     {
         isInvader = false;

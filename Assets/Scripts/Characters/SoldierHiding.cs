@@ -25,6 +25,8 @@ public class SoldierHiding : NetworkBehaviourOwner
     private float _aimingStartedTime = 0;
     private float _startYPosition;
 
+    [SyncVar] private float _currentHealth;
+
     public IAnimator animator => (IAnimator)_animator;
     public IJumper jumper => (IJumper)_jumper;
 
@@ -47,6 +49,7 @@ public class SoldierHiding : NetworkBehaviourOwner
         _startYPosition = transform.position.y;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         _targeter = GetComponentInChildren<PlayerTargeter>();
+        _currentHealth = 1;
     }
 
     public override void ServerUpdate()
@@ -57,18 +60,18 @@ public class SoldierHiding : NetworkBehaviourOwner
 
         UpdateAnimations();
 
-        if (hitbox.IsHit(out int _))
+        if (hitbox.IsHit(out int x))
         {
-            Die();
+            CmdHit(x);
         }
     }
 
     public override void ClientUpdate()
     {
-        if (hitbox.IsHit(out int _))
+        if (hitbox.IsHit(out int x))
         {
-            DisableHitboxes();
-            CmdDisableHitboxes();
+            CmdHit(x);
+
         }
     }
 
@@ -199,21 +202,26 @@ public class SoldierHiding : NetworkBehaviourOwner
         }
         animator.Play(animation);
     }
-
     private void Die()
     {
         RpcDisableHitboxes();
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+
         jumper.Jump();
         _state = State.Dead;
         UpdateAnimations();
     }
 
     [Command(requiresAuthority = false)]
-    public void CmdDisableHitboxes()
+    private void CmdHit(int hits)
     {
-        Die();
+        _currentHealth -= (float)hits / GameNetworkManager.singleton.numberOfPlayers;
+        if (_currentHealth <= 0)
+        {
+            Die();
+        }
     }
+
 
     [ClientRpc]
     public void RpcDisableHitboxes()
