@@ -232,7 +232,8 @@ public class Turret : NetworkBehaviourOwner
     [Command(requiresAuthority = false)]
     private void CmdHit(int hits)
     {
-        _currentHealth-=(float)hits / GameNetworkManager.singleton.numberOfPlayers;
+        SoundEvents.Play(SFX.EnemyHit);
+        _currentHealth -= (float)hits / GameNetworkManager.singleton.numberOfPlayers;
         if(_currentHealth <= 0)
         {
             Die();

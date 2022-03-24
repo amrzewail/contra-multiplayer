@@ -844,7 +844,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   identity: {fileID: 0}
-  _maxLives: 10000
+  _maxLives: 2
   _bodyAnimator: {fileID: 940226523918340105}
   _legsAnimator: {fileID: 1102915339310005689}
   _input: {fileID: 6551163607537814994}

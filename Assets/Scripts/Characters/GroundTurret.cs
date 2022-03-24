@@ -202,6 +202,8 @@ public class GroundTurret : NetworkBehaviourOwner
     [Command(requiresAuthority = false)]
     private void CmdHit(int hits)
     {
+        SoundEvents.Play(SFX.EnemyHit);
+
         _currentHealth -= (float)hits / GameNetworkManager.singleton.numberOfPlayers;
         if (_currentHealth <= 0)
         {

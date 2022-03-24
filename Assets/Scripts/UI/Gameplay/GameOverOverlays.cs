@@ -23,10 +23,12 @@ public class GameOverOverlays : MonoBehaviour
     private void VictoryCallback()
     {
         victoryOverlay.SetActive(true);
+        SoundEvents.Play(SFX.Victory);
     }
 
     private void DefeatCallback()
     {
         defeatOverlay.SetActive(true);
+        SoundEvents.Play(SFX.Defeat);
     }
 }

@@ -111,6 +111,7 @@ public class Soldier : NetworkBehaviourOwner
                 if (Shoot())
                 {
                     _state = State.Shooting;
+                    SoundEvents.Play(SFX.EnemyGun);
                 }
 
                 break;
@@ -193,6 +194,8 @@ public class Soldier : NetworkBehaviourOwner
     [Command(requiresAuthority = false)]
     private void CmdHit(int hits)
     {
+        SoundEvents.Play(SFX.EnemyHit2);
+
         _currentHealth -= (float)hits / GameNetworkManager.singleton.numberOfPlayers;
         if (_currentHealth <= 0)
         {

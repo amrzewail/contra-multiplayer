@@ -27,6 +27,7 @@ public class GameNetworkManager : NetworkManager
     private bool _readyToJoin=false;
     private bool _cancelJoining = false;
 
+    private Dictionary<int, CreateCharacterMessage> _connectedPlayers = new Dictionary<int, CreateCharacterMessage>();
 
     public async Task<bool> StartSinglePlayer()
     {
@@ -163,8 +164,16 @@ public class GameNetworkManager : NetworkManager
     public override void OnServerDisconnect(NetworkConnection conn)
     {
         base.OnServerDisconnect(conn);
-        _numberOfPlayers--;
-        if (_numberOfPlayers < 0) _numberOfPlayers = 0;
+        if (_connectedPlayers.ContainsKey(conn.connectionId))
+        {
+            if(_connectedPlayers[conn.connectionId].isInvader == false)
+            {
+                _numberOfPlayers--;
+                if (_numberOfPlayers < 0) _numberOfPlayers = 0;
+            }
+            _connectedPlayers.Remove(conn.connectionId);
+            Debug.Log($"{GetType().Name}::{nameof(OnServerDisconnect)} PlayerConnection:{conn.connectionId} NumOfPlayers:{_numberOfPlayers}");
+        }
     }
 
     public override void OnClientDisconnect()
@@ -173,7 +182,7 @@ public class GameNetworkManager : NetworkManager
     }
 
 
-    private void SceneLoadedCallback(Scene scene, LoadSceneMode mode)
+    private async void SceneLoadedCallback(Scene scene, LoadSceneMode mode)
     {
         SceneManager.sceneLoaded -= SceneLoadedCallback;
 
@@ -208,12 +217,17 @@ public class GameNetworkManager : NetworkManager
         }
         else
         {
+            Debug.Log($"{this.GetType().Name}::{nameof(CreateCharacterCallback)} controller instance:{LevelController.instance}");
             playerObj.transform.position = LevelController.instance.GetSpawnLocation().position;
             _numberOfPlayers++;
         }
+
         // call this to use this gameobject as the primary controller
         NetworkServer.AddPlayerForConnection(conn, playerObj);
         NetworkServer.SetClientReady(conn);
         NetworkServer.SpawnObjects();
+
+        if (_connectedPlayers == null) _connectedPlayers = new Dictionary<int, CreateCharacterMessage>();
+        _connectedPlayers[conn.connectionId] = message;
     }
 }

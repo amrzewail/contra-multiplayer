@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 55677549615778950, guid: e25838a1cdc3eb440beb9502436db46b, type: 3}
       propertyPath: sceneId
-      value: 644319976
+      value: 4051946568
       objectReference: {fileID: 0}
     - target: {fileID: 55677549615779000, guid: e25838a1cdc3eb440beb9502436db46b, type: 3}
       propertyPath: m_RootOrder
@@ -1170,6 +1170,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1641163795}
   - component: {fileID: 1641163794}
+  - component: {fileID: 1641163796}
   m_Layer: 0
   m_Name: Room Manager
   m_TagString: Untagged
@@ -1189,8 +1190,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0900bbf6a634c0e4d8d51fa0d7a264f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   spawnLocation: {fileID: 593591965}
-  invaderSpawnLocation: {fileID: 0}
+  invaderSpawnLocations: []
   bossCameraLocation: {fileID: 0}
   isBossDefeated: 0
 --- !u!4 &1641163795
@@ -1209,6 +1212,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1641163796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1641163793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 4037711520
+  serverOnly: 0
+  visible: 0
+  m_AssetId: 
+  hasSpawned: 0
 --- !u!1 &1810420446
 GameObject:
   m_ObjectHideFlags: 0

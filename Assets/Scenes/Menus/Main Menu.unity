@@ -409,6 +409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 076283587e562a94ca14a108b25f5fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rowsCount: 1
 --- !u!1 &756835750
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,7 +429,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &756835751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1293,6 +1294,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnHighlight:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1521697003
 GameObject:
   m_ObjectHideFlags: 0
@@ -2035,6 +2039,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnHighlight:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2081565917
 GameObject:
   m_ObjectHideFlags: 0
@@ -2327,6 +2334,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnHighlight:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2092249755
 GameObject:
   m_ObjectHideFlags: 0

@@ -1516,6 +1516,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: NES - Contra - Bill Rizer & Lance Bean_0
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 512
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a688f7c9bd6778b40a53a4f77e135162
+      internalID: -1067991578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1549,6 +1570,7 @@ TextureImporter:
       Water Aim Up 2: -1523847652799924369
       Run Up Shoot 6: -2271392787263640857
       Dive 2: 8571792221730450013
+      NES - Contra - Bill Rizer & Lance Bean_0: -1067991578
       Jump 4: 6152951045423901791
       Body Run 3: -5210164673568959710
       Run Down Shoot 5: -5268613961077778176

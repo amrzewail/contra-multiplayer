@@ -14,7 +14,7 @@ public class Player : MonoBehaviourOwner
 {
 
 
-    private enum State
+    public enum State
     {
         Idle,
         Moving,
@@ -71,6 +71,7 @@ public class Player : MonoBehaviourOwner
     private AimDirection _aimDirection;
     private LookDirection _lookDirection;
 
+    public State state => _state;
 
     public override void MyStart()
     {
@@ -130,6 +131,8 @@ public class Player : MonoBehaviourOwner
     {
         if (shooter.Shoot(_aimDirection))
         {
+            SoundEvents.Play(SFX.EnemyGun);
+
             _isShooting = true;
             _lastShootingTime = Time.time;
         }
@@ -333,6 +336,7 @@ public class Player : MonoBehaviourOwner
                     else
                     {
                         _state = State.Spectate;
+                        LevelController.instance.StartSpectate();
                         LevelEvents.OnPlayerDead?.Invoke(identity.netId);
                     }
                 }
@@ -340,8 +344,12 @@ public class Player : MonoBehaviourOwner
                 break;
 
             case State.Spectate:
-                mover.Move(new Vector2(horizontal, 0));
-                transform.position = new Vector2(transform.position.x, -9000);
+                hitbox.isInvincible = true;
+                _invincibility.isInvincible = true;
+                if (jump)
+                {
+                    LevelController.instance.ChangeSpectateTarget(1);
+                }
                 break;
         }
 
@@ -352,6 +360,8 @@ public class Player : MonoBehaviourOwner
             _deadTime = Time.time;
             _rigidBody.velocity = Vector2.zero;
             jumper.Jump();
+
+            SoundEvents.Play(SFX.Death);
         }
 
         _lastVelocity = _rigidBody.velocity;
@@ -361,6 +371,7 @@ public class Player : MonoBehaviourOwner
     private void UpdateHitbox()
     {
         if (_state == State.Dead) return;
+        if (_state == State.Spectate) return;
 
         hitbox.isInvincible = _invincibility.isInvincible;
         switch (_state)

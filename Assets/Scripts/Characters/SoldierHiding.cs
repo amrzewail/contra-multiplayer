@@ -137,6 +137,7 @@ public class SoldierHiding : NetworkBehaviourOwner
                     if (Shoot())
                     {
                         _state = State.Shooting;
+                        SoundEvents.Play(SFX.EnemyGun);
                     }
                     else if(Time.time - _aimingStartedTime > aimingTime)
                     {
@@ -215,6 +216,8 @@ public class SoldierHiding : NetworkBehaviourOwner
     [Command(requiresAuthority = false)]
     private void CmdHit(int hits)
     {
+        SoundEvents.Play(SFX.EnemyHit2);
+
         _currentHealth -= (float)hits / GameNetworkManager.singleton.numberOfPlayers;
         if (_currentHealth <= 0)
         {

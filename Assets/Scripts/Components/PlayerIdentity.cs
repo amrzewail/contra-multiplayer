@@ -27,6 +27,7 @@ public class PlayerIdentity : NetworkBehaviourOwner
             GetComponentInChildren<ShooterNetworkSyncer>().isInvader = true;
             GetComponentsInChildren<Hitbox>().ToList().ForEach(x => x.supportedTypes = new List<DamageType>() { DamageType.Player, DamageType.Invader });
             GetComponent<Player>().isInvader = true;
+            GetComponent<Player>().lives = 1;
         }
     }
 

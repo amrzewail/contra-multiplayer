@@ -274,6 +274,8 @@ public class SuperMachine : NetworkBehaviourOwner
         switch (part)
         {
             case Part.LeftShooter:
+                SoundEvents.Play(SFX.EnemyHit);
+
                 _currentLeftShooterHealth -= (float)hits / GameNetworkManager.singleton.numberOfPlayers;
                 if (_currentLeftShooterHealth <= 0)
                 {
@@ -281,6 +283,8 @@ public class SuperMachine : NetworkBehaviourOwner
                 }
                 break;
             case Part.RightShooter:
+                SoundEvents.Play(SFX.EnemyHit);
+
                 _currentRightShooterHealth -= (float)hits / GameNetworkManager.singleton.numberOfPlayers;
                 if (_currentRightShooterHealth <= 0)
                 {
@@ -288,9 +292,13 @@ public class SuperMachine : NetworkBehaviourOwner
                 }
                 break;
             case Part.Core:
+                SoundEvents.Play(SFX.EnemyHit);
+
                 _currentCoreHealth -= (float)hits / GameNetworkManager.singleton.numberOfPlayers;
                 if (_currentCoreHealth <= 0)
                 {
+                    SoundEvents.Play(SFX.BossDefeat);
+
                     RpcInvokeBossDefeated();
                     Die(Part.Core);
                     if (_leftShooterState != ShooterState.Destroyed) Die(Part.LeftShooter);

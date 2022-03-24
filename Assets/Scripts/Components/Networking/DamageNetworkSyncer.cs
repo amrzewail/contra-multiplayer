@@ -25,8 +25,20 @@ public class DamageNetworkSyncer : NetworkBehaviourOwner
         //_damagePlayer = target.playerDamage;
     }
 
+
+    public override void ServerUpdate()
+    {
+        _damageType = target.damageType;
+    }
+
+    public override void ClientUpdate()
+    {
+        target.damageType = _damageType;
+    }
+
     public override void ClientStart()
     {
+        target.damageType = _damageType;
         //if (applyInvaderDamageInstantly && isMine && GameManager.instance.isInvader)
         //{
         //    target.damageType = DamageType.Invader;
