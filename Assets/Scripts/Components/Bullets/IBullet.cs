@@ -17,4 +17,6 @@ public interface IBullet
     void SetDirection(Vector2 direction);
 
     void SetShooterId(uint id);
+
+    SFX sfx { get; }
 }

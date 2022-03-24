@@ -70,7 +70,7 @@ public class Bridge : NetworkBehaviourOwner
     {
         while(_localBrokenPartsCount < parts.Length)
         {
-            SoundEvents.Play(SFX.Explode);
+            SoundEvents.PlayLocal(SFX.Explode);
 
             StartCoroutine(Break(parts[_localBrokenPartsCount]));
             yield return new WaitForSeconds(breakInterval);

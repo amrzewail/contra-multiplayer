@@ -12,9 +12,10 @@ public class GameManager : MonoBehaviour
 
     internal void Awake()
     {
+#if !UNITY_EDITOR
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-
+#endif
         if (instance)
         {
             Destroy(this.gameObject);

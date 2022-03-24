@@ -7,6 +7,7 @@ public static class SoundEvents
 {
 
     public static Action<SFX> Play;
+    public static Action<SFX> PlayLocal;
 
     public static Action StopBackground;
 
@@ -29,5 +30,7 @@ public enum SFX
     Rapid2,
     Rifle,
     Spread,
-    EnemyHit2
+    EnemyHit2,
+    Powerup,
+    EnemyExplode
 }

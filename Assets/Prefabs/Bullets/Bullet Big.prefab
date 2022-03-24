@@ -71,6 +71,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c390392ae3257947bd35571f8285df0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  identity: {fileID: 0}
   damageType: 0
   OnHit:
     m_PersistentCalls:
@@ -237,6 +238,7 @@ MonoBehaviour:
   speed: 10
   _index: 1
   destroyAfter: 1.5
+  _sfx: 5
 --- !u!114 &8880403764762798428
 MonoBehaviour:
   m_ObjectHideFlags: 0

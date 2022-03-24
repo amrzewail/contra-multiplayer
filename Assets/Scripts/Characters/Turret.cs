@@ -224,6 +224,7 @@ public class Turret : NetworkBehaviourOwner
 
     private void Die()
     {
+        SoundEvents.Play(SFX.EnemyExplode);
         _state = State.Destroyed;
         RpcDisableHitboxes();
         UpdateAnimations();

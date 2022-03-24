@@ -37,6 +37,8 @@ public class BulletPowerup : NetworkBehaviourOwner
         if (!player.isMine) return;
         player.shooter.AssignBullet(bulletIndex);
 
+        SoundEvents.Play(SFX.Powerup);
+
         CmdPowerupTaken(identity.netId);
         gameObject.SetActive(false);
     }

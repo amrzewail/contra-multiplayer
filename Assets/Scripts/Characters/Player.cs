@@ -131,7 +131,7 @@ public class Player : MonoBehaviourOwner
     {
         if (shooter.Shoot(_aimDirection))
         {
-            SoundEvents.Play(SFX.EnemyGun);
+            SoundEvents.Play(shooter.GetBullet().sfx);
 
             _isShooting = true;
             _lastShootingTime = Time.time;

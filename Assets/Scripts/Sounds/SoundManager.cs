@@ -18,12 +18,16 @@ public class SoundManager : MonoBehaviour
     internal void Start()
     {
         SoundEvents.Play += PlayCallback;
+        SoundEvents.PlayLocal += PlayCallback;
+
         SoundEvents.StopBackground += StopBackgroundCallback;
     }
 
     internal void OnDestroy()
     {
         SoundEvents.Play -= PlayCallback;
+        SoundEvents.PlayLocal -= PlayCallback;
+
         SoundEvents.StopBackground -= StopBackgroundCallback;
     }
 
@@ -32,7 +36,7 @@ public class SoundManager : MonoBehaviour
         Object.FindObjectsOfType<AudioSource>().ToList().Single(x => x.name.Equals("Background")).Stop();
     }
 
-    private void PlayCallback(SFX type)
+    public void PlayCallback(SFX type)
     {
         foreach(var s in sounds)
         {

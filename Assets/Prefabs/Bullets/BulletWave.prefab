@@ -98,7 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c3918a34e42acc4ca3efde8b1a392cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  identity: {fileID: 0}
   _explosion: {fileID: 4412780893324412060, guid: 128f21651ddbc674787f7df3be773f36, type: 3}
+  _sfx: 0
 --- !u!1 &1243194276900719695
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,7 +199,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c3918a34e42acc4ca3efde8b1a392cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  identity: {fileID: 0}
   _explosion: {fileID: 4412780893324412060, guid: 128f21651ddbc674787f7df3be773f36, type: 3}
+  _sfx: 0
 --- !u!1 &3992352607135302539
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,6 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c390392ae3257947bd35571f8285df0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  identity: {fileID: 0}
   damageType: 0
   OnHit:
     m_PersistentCalls:
@@ -371,7 +376,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c3918a34e42acc4ca3efde8b1a392cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  identity: {fileID: 0}
   _explosion: {fileID: 4412780893324412060, guid: 128f21651ddbc674787f7df3be773f36, type: 3}
+  _sfx: 0
 --- !u!1 &5017058613755564796
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,6 +450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c390392ae3257947bd35571f8285df0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  identity: {fileID: 0}
   damageType: 0
   OnHit:
     m_PersistentCalls:
@@ -545,7 +553,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c3918a34e42acc4ca3efde8b1a392cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  identity: {fileID: 0}
   _explosion: {fileID: 4412780893324412060, guid: 128f21651ddbc674787f7df3be773f36, type: 3}
+  _sfx: 0
 --- !u!1 &6340645097046495293
 GameObject:
   m_ObjectHideFlags: 0
@@ -617,6 +627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c390392ae3257947bd35571f8285df0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  identity: {fileID: 0}
   damageType: 0
   OnHit:
     m_PersistentCalls:
@@ -703,9 +714,12 @@ MonoBehaviour:
   _explosion: {fileID: 0}
   _bullets: 2
   _reloadInterval: 1
+  _isContinuous: 0
+  _fireRate: 10
   speed: 11
   _index: 3
   destroyAfter: 0.75
+  _sfx: 13
 --- !u!114 &2143755035549553252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1054,7 +1068,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c3918a34e42acc4ca3efde8b1a392cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  identity: {fileID: 0}
   _explosion: {fileID: 4412780893324412060, guid: 128f21651ddbc674787f7df3be773f36, type: 3}
+  _sfx: 0
 --- !u!1 &8552127215507818973
 GameObject:
   m_ObjectHideFlags: 0
@@ -1126,6 +1142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c390392ae3257947bd35571f8285df0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  identity: {fileID: 0}
   damageType: 0
   OnHit:
     m_PersistentCalls:
@@ -1201,6 +1218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c390392ae3257947bd35571f8285df0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  identity: {fileID: 0}
   damageType: 0
   OnHit:
     m_PersistentCalls:

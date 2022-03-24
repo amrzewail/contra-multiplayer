@@ -11,7 +11,8 @@ public class BulletSpin : BulletBase, IBullet
     [SerializeField] float destroyAfter = 1f;
     [SerializeField] float radius = 1;
     [SerializeField] float spinSpeed = 1;
-
+    [SerializeField] SFX _sfx;
+    public SFX sfx => _sfx;
     public int index => _index;
 
     private Vector3 _straightPosition;

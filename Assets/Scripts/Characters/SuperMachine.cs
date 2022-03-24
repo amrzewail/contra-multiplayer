@@ -153,6 +153,7 @@ public class SuperMachine : NetworkBehaviourOwner
                 Part shootingPart;
                 if(Shoot(out shootingPart))
                 {
+                    SoundEvents.Play(SFX.EnemyGun2);
                     switch (shootingPart)
                     {
                         case Part.RightShooter: _rightShooterState = ShooterState.Shooting; break;
@@ -279,6 +280,8 @@ public class SuperMachine : NetworkBehaviourOwner
                 _currentLeftShooterHealth -= (float)hits / GameNetworkManager.singleton.numberOfPlayers;
                 if (_currentLeftShooterHealth <= 0)
                 {
+                    SoundEvents.Play(SFX.EnemyExplode);
+
                     Die(part);
                 }
                 break;
@@ -288,6 +291,8 @@ public class SuperMachine : NetworkBehaviourOwner
                 _currentRightShooterHealth -= (float)hits / GameNetworkManager.singleton.numberOfPlayers;
                 if (_currentRightShooterHealth <= 0)
                 {
+                    SoundEvents.Play(SFX.EnemyExplode);
+
                     Die(part);
                 }
                 break;

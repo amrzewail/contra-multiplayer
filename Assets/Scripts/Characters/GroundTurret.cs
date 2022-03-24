@@ -194,6 +194,8 @@ public class GroundTurret : NetworkBehaviourOwner
 
     private void Die()
     {
+        SoundEvents.Play(SFX.EnemyExplode);
+
         _state = State.Destroyed;
         RpcDisableHitboxes();
         UpdateAnimations();

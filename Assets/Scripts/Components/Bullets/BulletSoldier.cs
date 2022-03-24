@@ -9,6 +9,8 @@ public class BulletSoldier : NetworkBehaviourOwner, IBullet
     [SerializeField] int _index = 0;
     [SerializeField] float destroyAfter = 1f;
     [SerializeField] GameObject _explosion;
+    [SerializeField] SFX _sfx;
+    public SFX sfx => _sfx;
     public int index => _index;
 
     public float speed = 1;
