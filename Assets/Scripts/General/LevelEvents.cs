@@ -12,6 +12,9 @@ public class LevelEvents : NetworkBehaviour
     public static Action<uint> OnPlayerDead;
     public static Action OnGameOver;
 
+    public static Action OnVictory;
+    public static Action OnDefeat;
+
     private void Awake()
     {
         ResetEvents();
@@ -31,6 +34,8 @@ public class LevelEvents : NetworkBehaviour
         StageBossDefeated = null;
         OnPlayerDead = null;
         OnGameOver = null;
+        OnVictory = null;
+        OnDefeat = null;
     }
 
     private void PlayerDeadCallback(uint id)

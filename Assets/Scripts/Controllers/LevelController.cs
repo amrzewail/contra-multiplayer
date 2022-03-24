@@ -33,6 +33,7 @@ public class LevelController : NetworkBehaviour
         NetworkEvents.OnClientDisconnect += ClientDisconnectCallback;
         LevelEvents.OnPlayerDead += PlayerDeadCallback;
         LevelEvents.OnGameOver += GameOverCallback;
+        LevelEvents.StageBossDefeated += StageBossDefeatedCallback;
     }
 
     internal void OnDestroy()
@@ -40,6 +41,7 @@ public class LevelController : NetworkBehaviour
         NetworkEvents.OnClientDisconnect -= ClientDisconnectCallback;
         LevelEvents.OnPlayerDead -= PlayerDeadCallback;
         LevelEvents.OnGameOver -= GameOverCallback;
+        LevelEvents.StageBossDefeated -= StageBossDefeatedCallback;
     }
 
     public Transform GetSpawnLocation()
@@ -99,6 +101,24 @@ public class LevelController : NetworkBehaviour
         SceneManager.LoadScene((int)SceneIndex.MainMenu);
     }
 
+    private void StageBossDefeatedCallback()
+    {
+        Debug.Log($"LevelController::StageBossDefeatedCallback Is Server:{NetworkClient.isHostClient} Game Over");
+
+        var myPlayer = FindObjectsOfType<Player>().First(x => x.isMine);
+
+        if (myPlayer.isInvader)
+        {
+            LevelEvents.OnDefeat?.Invoke();
+        }
+        else
+        {
+            LevelEvents.OnVictory?.Invoke();
+        }
+
+        StartCoroutine(GameOverCoroutine());
+    }
+
     private void PlayerDeadCallback(uint id)
     {
         NetworkIdentity identity = GetComponentInChildren<NetworkIdentity>();
@@ -111,7 +131,7 @@ public class LevelController : NetworkBehaviour
             bool allDead = true;
             for (int i = 0; i < players.Length; i++)
             {
-                if(!deadPlayersList.Contains(players[i].identity.netId))
+                if(players[i].isInvader == false && !deadPlayersList.Contains(players[i].identity.netId))
                 {
                     allDead = false;
                     break;
@@ -122,11 +142,39 @@ public class LevelController : NetworkBehaviour
                 LevelEvents.OnGameOver?.Invoke();
             }
         }
+        else
+        {
+            var myPlayer = FindObjectsOfType<Player>().First(x => x.isMine);
+            if(myPlayer.isInvader && myPlayer.identity.netId == id)
+            {
+                LevelEvents.OnDefeat?.Invoke();
+                StartCoroutine(GameOverCoroutine());
+            }
+        }
     }
 
     private void GameOverCallback()
     {
         Debug.Log($"LevelController::GameOverCallback Is Server:{NetworkClient.isHostClient} Game Over");
 
+        var myPlayer = FindObjectsOfType<Player>().First(x => x.isMine);
+
+        if (myPlayer.isInvader)
+        {
+            LevelEvents.OnVictory?.Invoke();
+        }
+        else
+        {
+            LevelEvents.OnDefeat?.Invoke();
+        }
+
+        StartCoroutine(GameOverCoroutine());
+    }
+
+
+    private IEnumerator GameOverCoroutine()
+    {
+        yield return new WaitForSeconds(5);
+        ExitLevel();
     }
 }
