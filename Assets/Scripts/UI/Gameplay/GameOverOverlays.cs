@@ -23,12 +23,14 @@ public class GameOverOverlays : MonoBehaviour
     private void VictoryCallback()
     {
         victoryOverlay.SetActive(true);
+        SoundEvents.StopBackground();
         SoundEvents.Play(SFX.Victory);
     }
 
     private void DefeatCallback()
     {
         defeatOverlay.SetActive(true);
+        SoundEvents.StopBackground();
         SoundEvents.Play(SFX.Defeat);
     }
 }
