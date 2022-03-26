@@ -197,20 +197,20 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   clientAuthority: 1
-  sendInterval: 0.01
+  sendInterval: 0.1
   syncPosition: 1
   syncRotation: 0
   syncScale: 0
-  interpolatePosition: 0
+  interpolatePosition: 1
   interpolateRotation: 0
   interpolateScale: 0
   bufferTimeMultiplier: 1
   bufferSizeLimit: 64
   catchupThreshold: 4
   catchupMultiplier: 0.1
-  onlySyncOnChange: 0
+  onlySyncOnChange: 1
   bufferResetMultiplier: 5
-  positionSensitivity: 0.001
+  positionSensitivity: 0.1
   rotationSensitivity: 1
   scaleSensitivity: 1
   showGizmos: 0

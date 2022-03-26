@@ -34,7 +34,14 @@ public class GameNetworkManager : NetworkManager
         _readyToJoin = false;
         _cancelJoining = false;
 
-        ((KcpTransport)transport).Port = 0;
+        if (transport is KcpTransport)
+        {
+            ((KcpTransport)transport).Port = 0;
+        }
+        else if (transport is LatencySimulation)
+        {
+            ((KcpTransport)((LatencySimulation)transport).wrap).Port = 0;
+        }
         StartHost();
 
         await Task.Run(async () =>
@@ -53,7 +60,13 @@ public class GameNetworkManager : NetworkManager
         _readyToJoin = false;
         _cancelJoining = false;
 
-        ((KcpTransport)transport).Port = 7777;
+        if(transport is KcpTransport)
+        {
+            ((KcpTransport)transport).Port = 7777;
+        }else if (transport is LatencySimulation)
+        {
+            ((KcpTransport)((LatencySimulation)transport).wrap).Port = 7777;
+        }
         InternalHostMultiplayer(0); 
         
         await Task.Run(async () =>
@@ -72,7 +85,14 @@ public class GameNetworkManager : NetworkManager
         _readyToJoin = false;
         _cancelJoining = false;
 
-        ((KcpTransport)transport).Port = 7777;
+        if (transport is KcpTransport)
+        {
+            ((KcpTransport)transport).Port = 7777;
+        }
+        else if (transport is LatencySimulation)
+        {
+            ((KcpTransport)((LatencySimulation)transport).wrap).Port = 7777;
+        }
         networkDiscovery.StartDiscovery();
         networkDiscovery.OnServerFound.AddListener(OnDiscoveredServer);
 
@@ -120,7 +140,14 @@ public class GameNetworkManager : NetworkManager
             else
             {
                 await System.Threading.Tasks.Task.Delay(100);
-                ((KcpTransport)transport).Port++;
+                if (transport is KcpTransport)
+                {
+                    ((KcpTransport)transport).Port++;
+                }
+                else if (transport is LatencySimulation)
+                {
+                    ((KcpTransport)((LatencySimulation)transport).wrap).Port++;
+                }
                 InternalHostMultiplayer(count+1);
             }
         }

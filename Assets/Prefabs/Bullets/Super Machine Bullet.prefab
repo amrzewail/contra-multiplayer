@@ -28,6 +28,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8577934181131387165}
   m_RootOrder: 0
@@ -70,8 +71,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c390392ae3257947bd35571f8285df0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagePlayer: 1
-  generalDamage: 0
+  identity: {fileID: 0}
+  damageType: 2
   OnHit:
     m_PersistentCalls:
       m_Calls: []
@@ -103,6 +104,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8577934181131387165}
   m_RootOrder: 2
@@ -145,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85893e406427dd84984c811aacff489d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  identity: {fileID: 0}
   layerMask:
     serializedVersion: 2
     m_Bits: 144
@@ -203,6 +206,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8577934181131387165}
   m_RootOrder: 1
@@ -233,10 +237,9 @@ GameObject:
   - component: {fileID: 8577934181131387165}
   - component: {fileID: 8734772454272059595}
   - component: {fileID: 4497500192539476656}
-  - component: {fileID: 190838716257002650}
   - component: {fileID: 5412573614214335425}
   - component: {fileID: 6354428100698825906}
-  - component: {fileID: 2024858291140010902}
+  - component: {fileID: 2121752116743656638}
   m_Layer: 0
   m_Name: Super Machine Bullet
   m_TagString: Untagged
@@ -254,6 +257,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -95.91, y: 1.78, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9159477902925133094}
   - {fileID: 8234082526335525088}
@@ -330,40 +334,6 @@ MonoBehaviour:
   visible: 0
   m_AssetId: a8503fc1ddc921e4d8574d252349884e
   hasSpawned: 0
---- !u!114 &190838716257002650
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7395015139121695209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f74aedd71d9a4f55b3ce499326d45fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  clientAuthority: 0
-  sendInterval: 0.01
-  syncPosition: 1
-  syncRotation: 0
-  syncScale: 0
-  interpolatePosition: 0
-  interpolateRotation: 0
-  interpolateScale: 0
-  bufferTimeMultiplier: 1
-  bufferSizeLimit: 64
-  catchupThreshold: 4
-  catchupMultiplier: 0.1
-  onlySyncOnChange: 0
-  bufferResetMultiplier: 5
-  positionSensitivity: 0.001
-  rotationSensitivity: 1
-  scaleSensitivity: 1
-  showGizmos: 0
-  showOverlay: 0
-  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
 --- !u!50 &5412573614214335425
 Rigidbody2D:
   serializedVersion: 4
@@ -402,8 +372,9 @@ MonoBehaviour:
   _index: 0
   destroyAfter: 2
   _explosion: {fileID: 4412780893324412060, guid: 11ef2ed1314261b48bb5105dcc91eda1, type: 3}
+  _sfx: 5
   speed: 5
---- !u!114 &2024858291140010902
+--- !u!114 &2121752116743656638
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -412,10 +383,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7395015139121695209}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce6739aae9becf7499aa0e24dedf8d97, type: 3}
+  m_Script: {fileID: 11500000, guid: cec1e95bb413fc740acd49e6a2bae3d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serverAuthority: 1
   StartEvent:
     m_PersistentCalls:
       m_Calls:

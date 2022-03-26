@@ -32,10 +32,10 @@ public class LogDebugger : MonoBehaviour
         switch (type)
         {
             case LogType.Log:
-                _text.text = "* "+condition + "\n" + _text.text;
+                _text.text = $"[{Time.time}] "+condition + "\n" + _text.text;
                 break;
             case LogType.Error:
-                _text.text = "* " + $"<color=red>{condition}</color>" + "\n" + _text.text;
+                _text.text = $"[{Time.time}] " + $"<color=red>{condition}</color>" + "\n" + _text.text;
                 break;
         }
         if(_text.text.Length > 1000) _text.text = _text.text.Substring(0, 1000);

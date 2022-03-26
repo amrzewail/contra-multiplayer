@@ -47,6 +47,8 @@ public abstract class BulletBase : NetworkBehaviourOwner
     {
         if (!this || !this.gameObject) return;
 
+        Debug.Log("Rpc Explode bullet");
+
         if (!_didExplode) Explode();
     }
 
@@ -63,6 +65,8 @@ public abstract class BulletBase : NetworkBehaviourOwner
         _didExplode = true;
         GameObject.Instantiate(_explosion).transform.position = this.transform.position;
         Destroy(this.gameObject);
+
+        Debug.Log("Explode bullet");
 
     }
 

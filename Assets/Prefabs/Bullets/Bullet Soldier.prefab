@@ -87,7 +87,6 @@ GameObject:
   - component: {fileID: 8577934181131387165}
   - component: {fileID: 8734772454272059595}
   - component: {fileID: 4497500192539476656}
-  - component: {fileID: 190838716257002650}
   - component: {fileID: 2157390997620037650}
   m_Layer: 0
   m_Name: Bullet Soldier
@@ -181,40 +180,6 @@ MonoBehaviour:
   visible: 0
   m_AssetId: efe8a72f15929cf42be11d78fba7779c
   hasSpawned: 0
---- !u!114 &190838716257002650
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7395015139121695209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f74aedd71d9a4f55b3ce499326d45fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  clientAuthority: 0
-  sendInterval: 0.01
-  syncPosition: 1
-  syncRotation: 0
-  syncScale: 0
-  interpolatePosition: 0
-  interpolateRotation: 0
-  interpolateScale: 0
-  bufferTimeMultiplier: 1
-  bufferSizeLimit: 64
-  catchupThreshold: 4
-  catchupMultiplier: 0.1
-  onlySyncOnChange: 0
-  bufferResetMultiplier: 5
-  positionSensitivity: 0.001
-  rotationSensitivity: 1
-  scaleSensitivity: 1
-  showGizmos: 0
-  showOverlay: 0
-  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
 --- !u!114 &2157390997620037650
 MonoBehaviour:
   m_ObjectHideFlags: 0

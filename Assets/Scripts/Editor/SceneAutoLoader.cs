@@ -103,9 +103,9 @@ public static class SceneAutoLoader
     }
 
     // Properties are remembered as editor preferences.
-    private const string cEditorPrefLoadMasterOnPlay = "CONTRA_ONLINE_SceneAutoLoader.LoadMasterOnPlay";
-    private const string cEditorPrefMasterScene = "CONTRA_ONLINE_SceneAutoLoader.MasterScene";
-    private const string cEditorPrefPreviousScene = "CONTRA_ONLINE_SceneAutoLoader.PreviousScene";
+    private static string cEditorPrefLoadMasterOnPlay => $"{Application.dataPath}_SceneAutoLoader.LoadMasterOnPlay";
+    private static string cEditorPrefMasterScene => $"{Application.dataPath}_SceneAutoLoader.MasterScene";
+    private static string cEditorPrefPreviousScene => $"{Application.dataPath}_SceneAutoLoader.PreviousScene";
     public static bool LoadMasterOnPlay
     {
         get { return EditorPrefs.GetBool(cEditorPrefLoadMasterOnPlay, false); }

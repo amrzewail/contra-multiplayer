@@ -93,6 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6700f00bc97a46478d6086644cc6acd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  identity: {fileID: 0}
   _bullet: {fileID: 2157390997620037650, guid: efe8a72f15929cf42be11d78fba7779c, type: 3}
   _OnShoot:
     m_PersistentCalls:
@@ -170,6 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc930167a06cf47418cd2d0e6d74512f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  identity: {fileID: 0}
   _supportedTypes: 00000000
   _isInvincible: 0
   pivot: {x: 0.5, y: 0}
@@ -263,6 +265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c390392ae3257947bd35571f8285df0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  identity: {fileID: 0}
   damageType: 2
   OnHit:
     m_PersistentCalls:
@@ -583,11 +586,11 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   clientAuthority: 0
-  sendInterval: 0.01
+  sendInterval: 0.1
   syncPosition: 1
   syncRotation: 0
   syncScale: 1
-  interpolatePosition: 0
+  interpolatePosition: 1
   interpolateRotation: 0
   interpolateScale: 0
   bufferTimeMultiplier: 1
@@ -751,6 +754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85893e406427dd84984c811aacff489d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  identity: {fileID: 0}
   layerMask:
     serializedVersion: 2
     m_Bits: 400

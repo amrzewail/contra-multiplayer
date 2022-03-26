@@ -14,7 +14,22 @@ public class DamageNetworkSyncer : NetworkBehaviourOwner
 
     public override void MyStart()
     {
-        target.GetComponentsInChildren<Collider2D>().ToList().ForEach(x => x.enabled = false);
+
+        if(_damageType == DamageType.Player)
+        {
+            target.GetComponentsInChildren<Collider2D>().ToList().ForEach(x => x.enabled = true);
+            Debug.Log($"DamageNetworkSyncer::MyStart time:{Time.time} This is my bullet therefore Enable");
+
+        }
+    }
+
+    public override void OtherStart()
+    {
+        if (_damageType == DamageType.Player)
+        {
+            target.GetComponentsInChildren<Collider2D>().ToList().ForEach(x => x.enabled = false);
+            Debug.Log($"DamageNetworkSyncer::MyStart time:{Time.time} Not my bullet therefore Disable");
+        }
 
     }
 
@@ -39,20 +54,17 @@ public class DamageNetworkSyncer : NetworkBehaviourOwner
     public override void ClientStart()
     {
         target.damageType = _damageType;
-        //if (applyInvaderDamageInstantly && isMine && GameManager.instance.isInvader)
-        //{
-        //    target.damageType = DamageType.Invader;
-        //}
     }
 
 
     [ClientRpc]
     private void RpcSetDamageType(uint netId)
     {
+        Debug.Log($"DamageNetworkSyncer::RpcSetDamageType time:{Time.time} id:{netId} identity:{identity.netId} condition:{identity.netId == netId}");
         if (identity.netId == netId)
         {
             target.damageType = _damageType;
-            target.GetComponentsInChildren<Collider2D>().ToList().ForEach(x => x.enabled = true);
+            //target.GetComponentsInChildren<Collider2D>().ToList().ForEach(x => x.enabled = true);
         }
     }
 }

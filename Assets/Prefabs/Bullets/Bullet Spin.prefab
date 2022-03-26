@@ -71,6 +71,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c390392ae3257947bd35571f8285df0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  identity: {fileID: 0}
   damageType: 0
   OnHit:
     m_PersistentCalls:
@@ -232,11 +233,14 @@ MonoBehaviour:
   _explosion: {fileID: 4412780893324412060, guid: 128f21651ddbc674787f7df3be773f36, type: 3}
   _bullets: 4
   _reloadInterval: 1
+  _isContinuous: 0
+  _fireRate: 10
   speed: 8
   _index: 2
   destroyAfter: 30
   radius: 1
   spinSpeed: 20
+  _sfx: 13
 --- !u!114 &8880403764762798428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,4 +256,3 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   target: {fileID: 7198323355303009778}
-  applyInvaderDamageInstantly: 1

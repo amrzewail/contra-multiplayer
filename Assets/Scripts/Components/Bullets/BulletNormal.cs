@@ -20,6 +20,7 @@ public class BulletNormal : BulletBase, IBullet
         GetComponentInChildren<Damage>().OnHit.AddListener(OnHitCallback);
     }
 
+
     public override void MyStart()
     {
         var instance = FindObjectsOfType<NetworkBehaviourOwner>().First(x => x.netId.Equals(_shooterId));
@@ -35,6 +36,6 @@ public class BulletNormal : BulletBase, IBullet
     public override void MyUpdate()
     {
         transform.position += _direction.normalized * speed * Time.deltaTime;
-
     }
+
 }

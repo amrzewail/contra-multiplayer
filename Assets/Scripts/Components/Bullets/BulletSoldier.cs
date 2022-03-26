@@ -29,24 +29,35 @@ public class BulletSoldier : NetworkBehaviourOwner, IBullet
 
     public bool isContinuous => false;
 
+    public override void Start()
+    {
+        base.Start();
+
+        var instance = FindObjectsOfType<NetworkBehaviourOwner>().First(x => x.netId.Equals(_shooterId));
+        transform.position += instance.transform.position - Vector3.one * 9000;
+        Invoke(nameof(CmdDestroySelf), destroyAfter);
+        GetComponentInChildren<Damage>().OnHit.AddListener(OnHitCallback);
+
+    }
+
     public override void ServerStart()
     {
-        var instance = FindObjectsOfType<NetworkBehaviourOwner>().First(x => x.netId.Equals(_shooterId));
+        //var instance = FindObjectsOfType<NetworkBehaviourOwner>().First(x => x.netId.Equals(_shooterId));
 
-        transform.position += instance.transform.position - Vector3.one * 9000;
+        //transform.position += instance.transform.position - Vector3.one * 9000;
 
-        Invoke("CmdDestroySelf", destroyAfter);
+        //Invoke("CmdDestroySelf", destroyAfter);
 
-        GetComponentInChildren<Damage>().OnHit.AddListener(OnHitCallback);
+        //GetComponentInChildren<Damage>().OnHit.AddListener(OnHitCallback);
     }
 
     public override void ClientStart()
     {
-        if (GetComponent<Rigidbody2D>())
-        {
-            Destroy(GetComponent<Rigidbody2D>());
-        }
-        GetComponentInChildren<Damage>().OnHit.AddListener(OnHitCallback);
+        //if (GetComponent<Rigidbody2D>())
+        //{
+        //    Destroy(GetComponent<Rigidbody2D>());
+        //}
+        //GetComponentInChildren<Damage>().OnHit.AddListener(OnHitCallback);
     }
 
     private void OnHitCallback(IHitbox hitbox)
@@ -77,8 +88,10 @@ public class BulletSoldier : NetworkBehaviourOwner, IBullet
         Destroy(this.gameObject);
     }
 
-    public override void ServerUpdate()
+    public override void Update()
     {
+        base.Update();
+
         transform.position += _direction.normalized * speed * Time.deltaTime;
 
     }
