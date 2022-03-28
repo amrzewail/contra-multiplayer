@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3405726749239259300}
   - component: {fileID: 2661013345542440733}
   - component: {fileID: 3477550685993295312}
+  - component: {fileID: 6109319415333047262}
   m_Layer: 0
   m_Name: Bullet Child (3)
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 193818738219725219}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.3, y: -0.125, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -100,7 +101,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   identity: {fileID: 0}
   _explosion: {fileID: 4412780893324412060, guid: 128f21651ddbc674787f7df3be773f36, type: 3}
-  _sfx: 0
+--- !u!114 &6109319415333047262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193818738219725219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2750f1ec1fcc2b4094f572d2b27730a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localScale: {x: 1.5, y: 1.5, z: 1.5}
+  preserveScale: 1
 --- !u!1 &1243194276900719695
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,6 +126,7 @@ GameObject:
   - component: {fileID: 2116908956731014404}
   - component: {fileID: 7470338771325146118}
   - component: {fileID: 7780395502649145178}
+  - component: {fileID: 439009787773744144}
   m_Layer: 0
   m_Name: Bullet Child (1)
   m_TagString: Untagged
@@ -127,7 +142,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1243194276900719695}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.3, y: 0.125, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -201,7 +216,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   identity: {fileID: 0}
   _explosion: {fileID: 4412780893324412060, guid: 128f21651ddbc674787f7df3be773f36, type: 3}
-  _sfx: 0
+--- !u!114 &439009787773744144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243194276900719695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2750f1ec1fcc2b4094f572d2b27730a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localScale: {x: 1.5, y: 1.5, z: 1.5}
+  preserveScale: 1
 --- !u!1 &3992352607135302539
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,6 +317,7 @@ GameObject:
   - component: {fileID: 2835693961904554226}
   - component: {fileID: 1764047403642735526}
   - component: {fileID: 1871282885071875843}
+  - component: {fileID: 8220823180299529828}
   m_Layer: 0
   m_Name: Bullet Child (2)
   m_TagString: Untagged
@@ -304,7 +333,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4683838487106525839}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.35, y: 0, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -378,7 +407,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   identity: {fileID: 0}
   _explosion: {fileID: 4412780893324412060, guid: 128f21651ddbc674787f7df3be773f36, type: 3}
-  _sfx: 0
+--- !u!114 &8220823180299529828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4683838487106525839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2750f1ec1fcc2b4094f572d2b27730a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localScale: {x: 1.5, y: 1.5, z: 1.5}
+  preserveScale: 1
 --- !u!1 &5017058613755564796
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,6 +508,7 @@ GameObject:
   - component: {fileID: 4710880557843343517}
   - component: {fileID: 5715837707046854987}
   - component: {fileID: 2426945709138315011}
+  - component: {fileID: 6240358409365949658}
   m_Layer: 0
   m_Name: Bullet Child
   m_TagString: Untagged
@@ -481,7 +524,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5821683507771170921}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.25, y: 0.25, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -555,7 +598,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   identity: {fileID: 0}
   _explosion: {fileID: 4412780893324412060, guid: 128f21651ddbc674787f7df3be773f36, type: 3}
-  _sfx: 0
+--- !u!114 &6240358409365949658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5821683507771170921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2750f1ec1fcc2b4094f572d2b27730a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localScale: {x: 1.5, y: 1.5, z: 1.5}
+  preserveScale: 1
 --- !u!1 &6340645097046495293
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,18 +699,13 @@ GameObject:
   - component: {fileID: 8577934181131387165}
   - component: {fileID: 4767450920443923469}
   - component: {fileID: 6630166637864294668}
-  - component: {fileID: 2143755035549553252}
-  - component: {fileID: 5010090168676942448}
-  - component: {fileID: 2330787459685452101}
-  - component: {fileID: 816991317816451934}
-  - component: {fileID: 562351512381704357}
   - component: {fileID: 2975190056937858099}
   - component: {fileID: 1898009911560522106}
   - component: {fileID: 4102691837452629231}
   - component: {fileID: 1772297225004849951}
   - component: {fileID: 7023992128471866924}
   m_Layer: 0
-  m_Name: BulletWave
+  m_Name: Bullet Wave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -716,185 +767,10 @@ MonoBehaviour:
   _reloadInterval: 1
   _isContinuous: 0
   _fireRate: 10
-  speed: 11
+  speed: 30
   _index: 3
-  destroyAfter: 0.75
+  destroyAfter: 0.45
   _sfx: 13
---- !u!114 &2143755035549553252
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7395015139121695209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 734b48bea0b204338958ee3d885e11f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  clientAuthority: 1
-  sendInterval: 0.01
-  syncPosition: 1
-  syncRotation: 0
-  syncScale: 0
-  interpolatePosition: 0
-  interpolateRotation: 0
-  interpolateScale: 0
-  bufferTimeMultiplier: 1
-  bufferSizeLimit: 64
-  catchupThreshold: 4
-  catchupMultiplier: 0.1
-  onlySyncOnChange: 0
-  bufferResetMultiplier: 5
-  positionSensitivity: 0.001
-  rotationSensitivity: 0.5
-  scaleSensitivity: 0.5
-  showGizmos: 0
-  showOverlay: 0
-  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
-  target: {fileID: 4710880557843343517}
---- !u!114 &5010090168676942448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7395015139121695209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 734b48bea0b204338958ee3d885e11f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  clientAuthority: 1
-  sendInterval: 0.01
-  syncPosition: 1
-  syncRotation: 0
-  syncScale: 0
-  interpolatePosition: 0
-  interpolateRotation: 0
-  interpolateScale: 0
-  bufferTimeMultiplier: 1
-  bufferSizeLimit: 64
-  catchupThreshold: 4
-  catchupMultiplier: 0.1
-  onlySyncOnChange: 0
-  bufferResetMultiplier: 5
-  positionSensitivity: 0.001
-  rotationSensitivity: 0.5
-  scaleSensitivity: 0.5
-  showGizmos: 0
-  showOverlay: 0
-  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
-  target: {fileID: 2116908956731014404}
---- !u!114 &2330787459685452101
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7395015139121695209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 734b48bea0b204338958ee3d885e11f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  clientAuthority: 1
-  sendInterval: 0.01
-  syncPosition: 1
-  syncRotation: 0
-  syncScale: 0
-  interpolatePosition: 0
-  interpolateRotation: 0
-  interpolateScale: 0
-  bufferTimeMultiplier: 1
-  bufferSizeLimit: 64
-  catchupThreshold: 4
-  catchupMultiplier: 0.1
-  onlySyncOnChange: 0
-  bufferResetMultiplier: 5
-  positionSensitivity: 0.001
-  rotationSensitivity: 0.5
-  scaleSensitivity: 0.5
-  showGizmos: 0
-  showOverlay: 0
-  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
-  target: {fileID: 2835693961904554226}
---- !u!114 &816991317816451934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7395015139121695209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 734b48bea0b204338958ee3d885e11f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  clientAuthority: 1
-  sendInterval: 0.01
-  syncPosition: 1
-  syncRotation: 0
-  syncScale: 0
-  interpolatePosition: 0
-  interpolateRotation: 0
-  interpolateScale: 0
-  bufferTimeMultiplier: 1
-  bufferSizeLimit: 64
-  catchupThreshold: 4
-  catchupMultiplier: 0.1
-  onlySyncOnChange: 0
-  bufferResetMultiplier: 5
-  positionSensitivity: 0.001
-  rotationSensitivity: 0.5
-  scaleSensitivity: 0.5
-  showGizmos: 0
-  showOverlay: 0
-  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
-  target: {fileID: 3405726749239259300}
---- !u!114 &562351512381704357
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7395015139121695209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 734b48bea0b204338958ee3d885e11f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  clientAuthority: 1
-  sendInterval: 0.01
-  syncPosition: 1
-  syncRotation: 0
-  syncScale: 0
-  interpolatePosition: 0
-  interpolateRotation: 0
-  interpolateScale: 0
-  bufferTimeMultiplier: 1
-  bufferSizeLimit: 64
-  catchupThreshold: 4
-  catchupMultiplier: 0.1
-  onlySyncOnChange: 0
-  bufferResetMultiplier: 5
-  positionSensitivity: 0.001
-  rotationSensitivity: 0.5
-  scaleSensitivity: 0.5
-  showGizmos: 0
-  showOverlay: 0
-  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
-  target: {fileID: 3115811302551136536}
 --- !u!114 &2975190056937858099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -981,6 +857,7 @@ GameObject:
   - component: {fileID: 3115811302551136536}
   - component: {fileID: 8493145071217737049}
   - component: {fileID: 6061301469101498336}
+  - component: {fileID: 98559737136256526}
   m_Layer: 0
   m_Name: Bullet Child (4)
   m_TagString: Untagged
@@ -996,7 +873,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8183871257160223783}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.25, y: -0.25, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1070,7 +947,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   identity: {fileID: 0}
   _explosion: {fileID: 4412780893324412060, guid: 128f21651ddbc674787f7df3be773f36, type: 3}
-  _sfx: 0
+--- !u!114 &98559737136256526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8183871257160223783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2750f1ec1fcc2b4094f572d2b27730a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localScale: {x: 1.5, y: 1.5, z: 1.5}
+  preserveScale: 1
 --- !u!1 &8552127215507818973
 GameObject:
   m_ObjectHideFlags: 0

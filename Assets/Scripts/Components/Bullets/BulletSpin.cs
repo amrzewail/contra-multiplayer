@@ -22,11 +22,13 @@ public class BulletSpin : BulletBase, IBullet
 
     public override void OtherStart()
     {
-        GetComponentInChildren<Damage>().OnHit.AddListener(OnHitCallback);
+        //GetComponentInChildren<Damage>().OnHit.AddListener(OnHitCallback);
     }
 
-    public override void MyStart()
+    public override void Start()
     {
+        base.Start();
+
         var instance = FindObjectsOfType<NetworkBehaviourOwner>().First(x => x.netId.Equals(_shooterId));
 
         transform.position += instance.transform.position - Vector3.one * 9000;
@@ -38,8 +40,10 @@ public class BulletSpin : BulletBase, IBullet
     }
 
 
-    public override void MyUpdate()
+    public override void Update()
     {
+        base.Update();
+
         _direction.Normalize();
         _straightPosition += _direction * speed * Time.deltaTime;
 

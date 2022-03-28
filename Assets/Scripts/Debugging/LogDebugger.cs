@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -32,10 +33,10 @@ public class LogDebugger : MonoBehaviour
         switch (type)
         {
             case LogType.Log:
-                _text.text = $"[{Time.time}] "+condition + "\n" + _text.text;
+                _text.text = $"[{DateTime.Now.ToLongTimeString()}.{DateTime.Now.Millisecond}] "+condition + "\n" + _text.text;
                 break;
             case LogType.Error:
-                _text.text = $"[{Time.time}] " + $"<color=red>{condition}</color>" + "\n" + _text.text;
+                _text.text = $"[{DateTime.Now.ToLongTimeString()}.{DateTime.Now.Millisecond}] " + $"<color=red>{condition}</color>" + "\n" + _text.text;
                 break;
         }
         if(_text.text.Length > 1000) _text.text = _text.text.Substring(0, 1000);

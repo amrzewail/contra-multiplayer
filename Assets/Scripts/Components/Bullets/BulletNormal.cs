@@ -17,12 +17,15 @@ public class BulletNormal : BulletBase, IBullet
 
     public override void OtherStart()
     {
-        GetComponentInChildren<Damage>().OnHit.AddListener(OnHitCallback);
+        //GetComponentInChildren<Damage>().OnHit.AddListener(OnHitCallback);
     }
 
 
-    public override void MyStart()
+    public override void Start()
     {
+        base.Start();
+
+        Debug.Log($"BulletNormal:: shooterId:{_shooterId}");
         var instance = FindObjectsOfType<NetworkBehaviourOwner>().First(x => x.netId.Equals(_shooterId));
 
         transform.position += instance.transform.position - Vector3.one * 9000;
@@ -33,8 +36,10 @@ public class BulletNormal : BulletBase, IBullet
     }
 
 
-    public override void MyUpdate()
+    public override void Update()
     {
+        base.Update();
+
         transform.position += _direction.normalized * speed * Time.deltaTime;
     }
 

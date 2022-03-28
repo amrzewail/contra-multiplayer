@@ -60,6 +60,7 @@ public class ProjectileShooter : MonoBehaviourOwner, IShooter
     public bool Shoot(AimDirection direction)
     {
         //GameObject g = Instantiate(bullet.gameObject, point.transform.position, point.transform.rotation);
+        Debug.Log($"Shoot {_currentBullets} rate:{Time.time - _lastFireTime > 1f / (currentBullet.fireRate + _extraFireRate)}");
         if (_currentBullets > 0)
         {
             if (Time.time - _lastFireTime > 1f / (currentBullet.fireRate + _extraFireRate))
@@ -70,7 +71,7 @@ public class ProjectileShooter : MonoBehaviourOwner, IShooter
                 var point = GetShootingPoint(direction);
 
                 OnShoot?.Invoke(direction, point.forward);
-
+                Debug.Log("shoot!");
                 return true;
             }
         }
@@ -83,6 +84,7 @@ public class ProjectileShooter : MonoBehaviourOwner, IShooter
 
     public void AssignBullet(int index)
     {
+        Debug.Log($"ProjectileShooter::AssignBullet {LevelController.instance.myPlayer.identity.netId} index:{index}");
         _currentBullet = _bullets.Single(x => ((IBullet)x).index == index);
         BulletChanged?.Invoke(index);
     }

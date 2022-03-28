@@ -87,7 +87,6 @@ GameObject:
   - component: {fileID: 8577934181131387165}
   - component: {fileID: 8734772454272059595}
   - component: {fileID: 4497500192539476656}
-  - component: {fileID: 190838716257002650}
   - component: {fileID: 5711051318528095536}
   - component: {fileID: 8880403764762798428}
   m_Layer: 0
@@ -182,40 +181,6 @@ MonoBehaviour:
   visible: 0
   m_AssetId: 0c059d470eff13c4690384d45b092d1e
   hasSpawned: 0
---- !u!114 &190838716257002650
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7395015139121695209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f74aedd71d9a4f55b3ce499326d45fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  clientAuthority: 1
-  sendInterval: 0.1
-  syncPosition: 1
-  syncRotation: 0
-  syncScale: 0
-  interpolatePosition: 1
-  interpolateRotation: 0
-  interpolateScale: 0
-  bufferTimeMultiplier: 1
-  bufferSizeLimit: 64
-  catchupThreshold: 4
-  catchupMultiplier: 0.1
-  onlySyncOnChange: 1
-  bufferResetMultiplier: 5
-  positionSensitivity: 0.1
-  rotationSensitivity: 1
-  scaleSensitivity: 1
-  showGizmos: 0
-  showOverlay: 0
-  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
 --- !u!114 &5711051318528095536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,7 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfcab07b803edd94ab319a4f1512ab79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 1
+  syncMode: 0
   syncInterval: 0.1
   _explosion: {fileID: 4412780893324412060, guid: 128f21651ddbc674787f7df3be773f36, type: 3}
   _bullets: 6
@@ -237,7 +202,7 @@ MonoBehaviour:
   _fireRate: 6
   speed: 10
   _index: 1
-  destroyAfter: 1.5
+  destroyAfter: 1.15
   _sfx: 5
 --- !u!114 &8880403764762798428
 MonoBehaviour:

@@ -784,6 +784,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 076283587e562a94ca14a108b25f5fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rowsCount: 1
 --- !u!1 &792737707
 GameObject:
   m_ObjectHideFlags: 0
@@ -1471,6 +1472,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnHighlight:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1521697003
 GameObject:
   m_ObjectHideFlags: 0
@@ -1614,6 +1618,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnHighlight:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1615628756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2046,6 +2053,7 @@ MonoBehaviour:
   selections: {fileID: 756447883}
   joinSearchingText: {fileID: 125264912}
   invadeSearchingText: {fileID: 373182079}
+  invadeSelection: {fileID: 1435642002}
 --- !u!1 &1857753688
 GameObject:
   m_ObjectHideFlags: 0
@@ -2210,6 +2218,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnHighlight:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2082998094
 GameObject:
   m_ObjectHideFlags: 0
@@ -2374,3 +2385,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnHighlight:
+    m_PersistentCalls:
+      m_Calls: []

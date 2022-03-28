@@ -53,13 +53,6 @@ public abstract class BulletBase : NetworkBehaviourOwner
     }
 
 
-    public override void MyUpdate()
-    {
-        transform.position += _direction.normalized * speed * Time.deltaTime;
-
-    }
-
-
     protected virtual void Explode()
     {
         _didExplode = true;

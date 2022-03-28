@@ -40,13 +40,13 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 75777052340972043}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.060566902}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -57,7 +57,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.32, y: 0.32}
+  m_Size: {x: 0.32, y: 0.44113374}
   m_EdgeRadius: 0
 --- !u!114 &7198323355303009778
 MonoBehaviour:
@@ -87,7 +87,6 @@ GameObject:
   - component: {fileID: 8577934181131387165}
   - component: {fileID: 8734772454272059595}
   - component: {fileID: 4497500192539476656}
-  - component: {fileID: 190838716257002650}
   - component: {fileID: 7578652243911045852}
   - component: {fileID: 8880403764762798428}
   m_Layer: 0
@@ -182,40 +181,6 @@ MonoBehaviour:
   visible: 0
   m_AssetId: 07409a9ad7e8042469e1a271178176dd
   hasSpawned: 0
---- !u!114 &190838716257002650
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7395015139121695209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f74aedd71d9a4f55b3ce499326d45fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  clientAuthority: 1
-  sendInterval: 0.01
-  syncPosition: 1
-  syncRotation: 0
-  syncScale: 0
-  interpolatePosition: 0
-  interpolateRotation: 0
-  interpolateScale: 0
-  bufferTimeMultiplier: 1
-  bufferSizeLimit: 64
-  catchupThreshold: 4
-  catchupMultiplier: 0.1
-  onlySyncOnChange: 0
-  bufferResetMultiplier: 5
-  positionSensitivity: 0.001
-  rotationSensitivity: 1
-  scaleSensitivity: 1
-  showGizmos: 0
-  showOverlay: 0
-  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
 --- !u!114 &7578652243911045852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,7 +202,7 @@ MonoBehaviour:
   _fireRate: 10
   speed: 8
   _index: 2
-  destroyAfter: 30
+  destroyAfter: 1.5
   radius: 1
   spinSpeed: 20
   _sfx: 13

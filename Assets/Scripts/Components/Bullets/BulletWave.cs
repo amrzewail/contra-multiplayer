@@ -14,31 +14,18 @@ public class BulletWave : BulletBase, IBullet
     public int index => _index;
 
     private IBullet[] bullets;
-    private Vector2[] directions;
 
-    public override void OtherStart()
+
+    public override void Start()
     {
-        var instance = FindObjectsOfType<NetworkBehaviourOwner>().First(x => x.netId.Equals(_shooterId));
+        base.Start();
 
-        transform.position += instance.transform.position - Vector3.one * 9000;
-
-        bullets = new IBullet[transform.childCount];
-        directions = new Vector2[transform.childCount];
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            bullets[i] = transform.GetChild(i).GetComponent<IBullet>();
-        }
-    }
-
-    public override void MyStart()
-    {
         var instance = FindObjectsOfType<NetworkBehaviourOwner>().First(x => x.netId.Equals(_shooterId));
 
         transform.position += instance.transform.position - Vector3.one * 9000;
         Invoke("CmdDestroySelf", destroyAfter);
 
         bullets = new IBullet[transform.childCount];
-        directions = new Vector2[transform.childCount];
         for (int i = 0; i < transform.childCount; i++)
         {
             int index = i;
@@ -50,35 +37,21 @@ public class BulletWave : BulletBase, IBullet
             };
         }
 
-        _direction.Normalize();
-        var perp = Vector3.Cross(_direction, new Vector3(0, 0, 1));
-
-        directions[0] = (_direction);
-
-        directions[1] = (_direction + perp * 0.25f);
-        directions[2] = (_direction - perp * 0.25f);
-
-        directions[3] = (_direction + perp * 0.5f);
-        directions[4] = (_direction - perp * 0.5f);
+        float angle = Vector2.Angle(Vector2.right, _direction);
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, (_direction.normalized.y < 0 ? -1 : 1) * angle);
     }
 
 
-    public override void MyUpdate()
+    public override void Update()
     {
+        base.Update();
+
         if (bullets == null) return;
 
-        //transform.position += Vector3.right * 1f * Time.deltaTime;
+        transform.localScale += Vector3.one * speed * Time.deltaTime;
 
-        for (int i = 0; i < bullets.Length; i++)
-        {
-            if (bullets[i] != null)
-            {
-                bullets[i].gameObject.transform.position += (Vector3)directions[i].normalized * speed * Time.deltaTime;
-            }
-        }
-
+        Debug.Log(transform.localScale);
     }
-
 
     [Command(requiresAuthority = false)]
     public void CmdDestroyChild(int index)
@@ -96,6 +69,8 @@ public class BulletWave : BulletBase, IBullet
 
     protected override void Explode()
     {
+        if (bullets == null) return;
+
         foreach (var b in bullets)
         {
             if (b.gameObject)

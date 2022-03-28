@@ -9,34 +9,26 @@ public class DamageNetworkSyncer : NetworkBehaviourOwner
 
     public Damage target;
 
-    [SyncVar]
+    [SyncVar(hook = nameof(OnDamageTypeChange))]
     private DamageType _damageType;
 
     public override void MyStart()
     {
 
-        if(_damageType == DamageType.Player)
-        {
-            target.GetComponentsInChildren<Collider2D>().ToList().ForEach(x => x.enabled = true);
-            Debug.Log($"DamageNetworkSyncer::MyStart time:{Time.time} This is my bullet therefore Enable");
-
-        }
     }
 
     public override void OtherStart()
     {
-        if (_damageType == DamageType.Player)
-        {
-            target.GetComponentsInChildren<Collider2D>().ToList().ForEach(x => x.enabled = false);
-            Debug.Log($"DamageNetworkSyncer::MyStart time:{Time.time} Not my bullet therefore Disable");
-        }
-
     }
 
     public override void ServerStart()
     {
+
         _damageType = target.damageType;
-        RpcSetDamageType(identity.netId);
+
+        Debug.Log($"DamageNetworkSyncer::ServerStart id:{netId} damageType:{_damageType} identity:{identity.netId} condition:{identity.netId == netId}");
+
+        RpcSetDamageType(identity.netId, _damageType);
         //_damagePlayer = target.playerDamage;
     }
 
@@ -48,23 +40,42 @@ public class DamageNetworkSyncer : NetworkBehaviourOwner
 
     public override void ClientUpdate()
     {
-        target.damageType = _damageType;
     }
 
     public override void ClientStart()
     {
-        target.damageType = _damageType;
+
+    }
+
+    private void OnDamageTypeChange(DamageType old, DamageType newType) 
+    {
+        target.damageType = newType;
     }
 
 
     [ClientRpc]
-    private void RpcSetDamageType(uint netId)
+    private void RpcSetDamageType(uint netId, DamageType damageType)
     {
-        Debug.Log($"DamageNetworkSyncer::RpcSetDamageType time:{Time.time} id:{netId} identity:{identity.netId} condition:{identity.netId == netId}");
+        Debug.Log($"DamageNetworkSyncer::RpcSetDamageType id:{netId} damageType:{damageType} identity:{identity.netId} condition:{identity.netId == netId}");
         if (identity.netId == netId)
         {
-            target.damageType = _damageType;
-            //target.GetComponentsInChildren<Collider2D>().ToList().ForEach(x => x.enabled = true);
+            target.damageType = damageType;
+
+            bool enableDamage = false;
+
+            if (LevelController.instance.myPlayer.isInvader)
+            {
+                enableDamage = (target.damageType == DamageType.Player && !isMine);
+
+            }
+            else
+            {
+                enableDamage = isMine || target.damageType == DamageType.Invader;
+            }
+
+            Debug.Log($"DamageNetworkSyncer::RpcSetDamageType enableDamage:{enableDamage} damageType:{target.damageType} isInvader:{LevelController.instance.myPlayer.isInvader} isMine:{isMine}");
+
+            target.GetComponentsInChildren<Collider2D>().ToList().ForEach(x => x.enabled = enableDamage);
         }
     }
 }

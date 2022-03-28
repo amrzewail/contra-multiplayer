@@ -140,6 +140,7 @@ public class LevelController : MonoBehaviour
         }
         else
         {
+            PlayerPrefs.SetInt("DidKillBoss", 1);
             LevelEvents.OnVictory?.Invoke();
         }
 

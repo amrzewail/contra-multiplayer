@@ -14,6 +14,12 @@ namespace UI
 
         public TextMeshProUGUI joinSearchingText;
         public TextMeshProUGUI invadeSearchingText;
+        public Selection invadeSelection;
+
+        private void Awake()
+        {
+            //invadeSelection.gameObject.SetActive(PlayerPrefs.GetInt("DidKillBoss", 0) == 1);
+        }
 
         private void Start()
         {

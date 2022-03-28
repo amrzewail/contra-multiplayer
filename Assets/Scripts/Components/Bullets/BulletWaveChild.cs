@@ -8,8 +8,7 @@ using UnityEngine;
 public class BulletWaveChild : MonoBehaviourOwner, IBullet
 {
     [SerializeField] GameObject _explosion;
-    [SerializeField] SFX _sfx;
-    public SFX sfx => _sfx;
+    public SFX sfx => SFX.EnemyHit2;
 
     public int index => 0;
 
