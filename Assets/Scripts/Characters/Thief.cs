@@ -25,6 +25,7 @@ public class Thief : NetworkBehaviourOwner
 
     private PlayerTargeter _targeter;
     private float _lastTargetUpdateTime;
+    private bool _isDestroyed = false;
 
     [SyncVar]
     private float _currentHealth;
@@ -57,6 +58,12 @@ public class Thief : NetworkBehaviourOwner
         if (hitbox.IsHit(out int x))
         {
             CmdHit(x);
+        }
+
+        if(transform.position.y < -50 && !_isDestroyed)
+        {
+            RpcDestroy();
+            _isDestroyed = true;
         }
     }
 
