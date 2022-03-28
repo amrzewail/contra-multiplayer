@@ -31,8 +31,6 @@ public class GameNetworkManager : NetworkManager
 
     public async Task<bool> StartSinglePlayer()
     {
-        _readyToJoin = false;
-        _cancelJoining = false;
 
         if (transport is KcpTransport)
         {
@@ -43,22 +41,11 @@ public class GameNetworkManager : NetworkManager
             ((KcpTransport)((LatencySimulation)transport).wrap).Port = 0;
         }
         StartHost();
-
-        await Task.Run(async () =>
-        {
-            while (!_readyToJoin && !_cancelJoining)
-            {
-                await Task.Delay(100);
-            }
-        });
-
-        return !_cancelJoining;
+        return true;
     }
 
     public async Task<bool> HostMultiplayer()
     {
-        _readyToJoin = false;
-        _cancelJoining = false;
 
         if(transport is KcpTransport)
         {
@@ -67,17 +54,7 @@ public class GameNetworkManager : NetworkManager
         {
             ((KcpTransport)((LatencySimulation)transport).wrap).Port = 7777;
         }
-        InternalHostMultiplayer(0); 
-        
-        await Task.Run(async () =>
-        {
-            while (!_readyToJoin && !_cancelJoining)
-            {
-                await Task.Delay(100);
-            }
-        });
-
-        return !_cancelJoining;
+        return await InternalHostMultiplayer(0);
 
     }
     public async Task<bool> JoinMultiplayer()
@@ -124,18 +101,20 @@ public class GameNetworkManager : NetworkManager
         }
     }
 
-    private async void InternalHostMultiplayer(int count)
+    private async Task<bool> InternalHostMultiplayer(int count)
     {
         try
         {
             StartHost();
             networkDiscovery.AdvertiseServer();
+            return true;
         }
         catch (SocketException e)
         {
             if (count == 100)
             {
                 Debug.Log("No available ports");
+                return false;
             }
             else
             {
@@ -148,7 +127,7 @@ public class GameNetworkManager : NetworkManager
                 {
                     ((KcpTransport)((LatencySimulation)transport).wrap).Port++;
                 }
-                InternalHostMultiplayer(count+1);
+                return await InternalHostMultiplayer(count+1);
             }
         }
     }

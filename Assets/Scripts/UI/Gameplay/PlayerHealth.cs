@@ -10,12 +10,14 @@ namespace UI
 
     public class PlayerHealth : MonoBehaviour
     {
-        private Player player => LevelController.instance.myPlayer;
+        private Player player => LevelController.instance ? LevelController.instance.myPlayer : null;
         [SerializeField] Transform heartsContainer;
 
 
         internal IEnumerator Start()
         {
+            yield return null;
+
             while (true)
             {
                 UpdateUI();
@@ -32,9 +34,12 @@ namespace UI
 
         private void UpdateUI()
         {
+            if (!player) return;
+
             int healthValue = player.lives;
             Func<int> currentPoints = () =>
             {
+                if (!heartsContainer) return 0;
                 var childCount = heartsContainer.childCount;
                 if (childCount == 1)
                 {

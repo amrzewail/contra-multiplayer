@@ -18,7 +18,7 @@ namespace UI
 
         private void Awake()
         {
-            //invadeSelection.gameObject.SetActive(PlayerPrefs.GetInt("DidKillBoss", 0) == 1);
+            invadeSelection.gameObject.SetActive(PlayerPrefs.GetInt("DidKillBoss", 0) == 1);
         }
 
         private void Start()
@@ -36,9 +36,9 @@ namespace UI
             GameNetworkManager.singleton.StopSearching();
             if (await GameNetworkManager.singleton.HostMultiplayer())
             {
+                Debug.Log("Host Start");
                 SceneManager.LoadScene((int)SceneIndex.Game);
             }
-            Debug.Log("Host");
         }
 
         public async void JoinSession()
@@ -50,10 +50,10 @@ namespace UI
             GameNetworkManager.singleton.StopSearching();
             if (await GameNetworkManager.singleton.JoinMultiplayer())
             {
+                Debug.Log("Join Start");
                 SceneManager.LoadScene((int)SceneIndex.Game);
             }
 
-            Debug.Log("Join");
         }
 
         public async void Invade()
@@ -65,10 +65,10 @@ namespace UI
             GameNetworkManager.singleton.StopSearching();
             if (await GameNetworkManager.singleton.JoinMultiplayer())
             {
+                Debug.Log("Invade Start");
                 SceneManager.LoadScene((int)SceneIndex.Game);
             }
 
-            Debug.Log("Invade");
         }
         public void Back()
         {

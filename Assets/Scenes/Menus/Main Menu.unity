@@ -505,7 +505,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &756835751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2427,7 +2427,6 @@ GameObject:
   - component: {fileID: 2092249756}
   - component: {fileID: 2092249759}
   - component: {fileID: 2092249762}
-  - component: {fileID: 2092249763}
   m_Layer: 0
   m_Name: Network Manager
   m_TagString: Untagged
@@ -2497,7 +2496,7 @@ MonoBehaviour:
   serverTickRate: 30
   offlineScene: 
   onlineScene: 
-  transport: {fileID: 2092249763}
+  transport: {fileID: 2092249756}
   networkAddress: localhost
   maxConnections: 8
   authenticator: {fileID: 0}
@@ -2554,22 +2553,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   color: {r: 1, g: 1, b: 1, a: 1}
   padding: 2
---- !u!114 &2092249763
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2092249755}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96b149f511061407fb54895c057b7736, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wrap: {fileID: 2092249756}
-  latencySpikeMultiplier: 0.1
-  latencySpikeSpeedMultiplier: 1
-  reliableLatency: 0
-  unreliableLoss: 0
-  unreliableLatency: 0
-  unreliableScramble: 0
