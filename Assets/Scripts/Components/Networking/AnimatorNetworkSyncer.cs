@@ -14,6 +14,15 @@ public class AnimatorNetworkSyncer : NetworkBehaviourOwner
     [SyncVar]
     private string _currentAnimation;
 
+    private string Guid;
+
+    public override void Start()
+    {
+        base.Start();
+
+        Guid = System.Guid.NewGuid().ToString();
+    }
+
     public override void MyStart()
     {
         if (serverAuthority) return;
@@ -37,27 +46,27 @@ public class AnimatorNetworkSyncer : NetworkBehaviourOwner
         if (isServer)
         {
             _currentAnimation = animation.name;
-            RpcChangeAnimation(identity.netId, animation.name);
+            RpcChangeAnimation(identity.netId, Guid, animation.name);
         }
         else
         {
-            CmdChangeAnimation(identity.netId, animation.name);
+            CmdChangeAnimation(identity.netId, Guid, animation.name);
         }
     }
 
     [ClientRpc]
-    public void RpcChangeAnimation(uint netID, string animationName)
+    public void RpcChangeAnimation(uint netID, string guid, string animationName)
     {
-        if (netID == identity.netId && !isMine)
+        if (netID == identity.netId && !isMine && !guid.Equals(Guid))
         {
             animator.Play(animationName, true);
         }
     }
 
     [Command(channel = Channels.Unreliable)]
-    public void CmdChangeAnimation(uint netID, string animationName)
+    public void CmdChangeAnimation(uint netID, string guid, string animationName)
     {
         _currentAnimation = animationName;
-        RpcChangeAnimation(netID, animationName);
+        RpcChangeAnimation(netID, guid, animationName);
     }
 }

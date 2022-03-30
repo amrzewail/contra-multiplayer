@@ -39,6 +39,11 @@ public class Thief : NetworkBehaviourOwner
         Empty
     };
 
+    public override void ClientStart()
+    {
+        GetComponent<Collider2D>().isTrigger = true;
+        GetComponent<Rigidbody2D>().isKinematic = true;
+    }
 
     public override void ServerStart()
     {
@@ -187,6 +192,7 @@ public class Thief : NetworkBehaviourOwner
     {
         RpcDisableHitboxes();
 
+        GetComponent<Rigidbody2D>().gravityScale = 1f;
         jumper.Jump();
         _state = State.Dead;
         UpdateAnimations();
