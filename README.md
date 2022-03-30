@@ -1,4 +1,4 @@
-# contra-multiplayer
+# Contra Multiplayer
 A remake of Contra NES, Stage 1-1 with local multiplayer and new features. Made with Unity and Mirror.
 
 ### Controls
