@@ -1,5 +1,5 @@
 # Contra Multiplayer
-A remake of Contra NES, Stage 1-1 with local multiplayer and new features. Made with Unity and Mirror.
+A remake of Contra NES, Stage 1-1 with LAN multiplayer and new features. Made with Unity and Mirror.
 
 ## Description
 Contra Multiplayer is a recreation of Stage 1-1 of the original Contra NES, with an added LAN multiplayer support for up to 8 players, and new features such as color customization and PVP invasions!<br>
